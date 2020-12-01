@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> RoomScanner - Nova Reserva </title>
+    <link rel="stylesheet" href="./styles.css" />
+    <meta charset="UTF-8" />
+</head>
+<body>
+<div class="container">
+    <form method="post" action="#" th:object="${bookings}" th:action="@{/bookings}">
+        <h3> Reserva de Sala de Estudo</h3>
+        <input type="text" placeholder="Email" id="email" th:field="*{emailUser}"/>
+
+        <!-- TODO: comboBox  popular com valores da BD de departamentos, de salas do departamento selecionado | 2 box incremental: numero de pessoas; duracao; | hora para reserva -->
+        <label for="dept_id">
+            Departamento?
+            <select name="dept" id="dept_id" th:field="*{department}">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+            </select>
+        </label>
+
+        <label for="floor_id">
+            Andar?
+            <select name="floor" id="floor_id" th:field="*{floor}">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+            </select>
+        </label>
+
+        <input type="submit" value="Submit"/>
+    </form>
+
+
+    <div class="result_message" th:if="${submitted}">
+        <h3> Reserva efetuada com sucesso. </h3>
+    </div>
+</div>
+</body>
+</html>
