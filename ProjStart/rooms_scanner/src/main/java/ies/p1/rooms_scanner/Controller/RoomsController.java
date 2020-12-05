@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RoomsController {
-    @RequestMapping("/")
+
+    @RequestMapping("/home")
+    public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
+        return "/home";
+    }
+
+    @RequestMapping("/roomsstatistics")
     public String getStatistics(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
-        return "rooms/roomsStatistics";
+        return "/roomsStatistics";
     }
 
     //TODO: mapear o ESTADO das salas de forma individual ou apresentar essa info na pagina de estatisticas AKA pagina inicial no sistema
@@ -19,18 +25,18 @@ public class RoomsController {
     public String submitBooking(Bookings b, Model model) { //Associar À pagina de login da ua ou apenas simular isso (pedindo o mail e o nome)?
         model.addAttribute("booking", new Bookings());
         model.addAttribute("submitted", true);
-        return "rooms/bookingForm";
+        return "/bookingForm";
     }
 
    @GetMapping("/roomsList")
    //TODO: fazer uma pagina com lista de todos os departamentos e total de espaços livres, com barra de pesquisa sobre a lista e ainda decidir se colocar opçao de expandir aquele room ou "abrir" novo mapeamento
    public String getRoomsList(Model model) {
-       return "rooms/roomsList";
+       return "/roomsList";
     }
 
     @GetMapping("/bookingsList")
     public String getRoomBookings(Model model) {  //TODO: pagina disponivel apenas para funcionarias da biblioteca
-        return "rooms/bookingsList";
+        return "/bookingsList";
     }
 
 }
