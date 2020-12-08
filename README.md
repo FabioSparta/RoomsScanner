@@ -30,6 +30,7 @@ THEN I see which rooms are on the specified state
 
 **DEV NOTES**
 Filter the rooms in the table according to the specified state.
+
 **DESIGN Notes**
 We can yellow a room that is being cleaned and blue for a clean one.
 
