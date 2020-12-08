@@ -1,7 +1,7 @@
 # RoomsScanner
 IES Project 3º Year 2020
 
-
+# Initial User Stories
 Title: João should be able to see if the library has empty slots or not.
 
 Business/User Value: As João I want to see if there are any empty rooms in the library because I want to study with my colleagues.
