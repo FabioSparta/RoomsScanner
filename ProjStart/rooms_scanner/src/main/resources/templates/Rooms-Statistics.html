@@ -62,7 +62,7 @@
                 <ul class="u-nav u-unstyled u-nav-1">
                     <li class="u-nav-item"><a
                             class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{Home}" style="padding: 10px 20px;">Home</a>
+                            th:href="@{home}" style="padding: 10px 20px;">Home</a>
                     </li>
                     <li class="u-nav-item"><a
                             class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
@@ -250,7 +250,7 @@
             </div>
             <p class="u-align-center u-text u-text-default u-text-2">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
-                   href="#sec-f378">Don't have an account yet? Create One!</a>
+                   onclick="displaySignUp()">Don't have an account yet? Create One!</a>
             </p>
         </div>
         <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
@@ -415,7 +415,7 @@
             </div>
             <p class="u-align-center u-text u-text-default u-text-2">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
-                   href="#sec-e252">Already have an account? Click here to Login In</a>
+                   onclick="displayLogin()">Already have an account? Click here to Login In</a>
             </p>
         </div>
         <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
