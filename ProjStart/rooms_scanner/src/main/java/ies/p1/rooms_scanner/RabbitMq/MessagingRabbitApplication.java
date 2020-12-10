@@ -11,19 +11,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-//python -m pip install pika --upgrade
+//python3 -m pip install pika --upgrade
 // docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 // Open in browser: http://localhost:15672/#/
 //Login: user:guest ; pw:guest
 
-@SpringBootApplication
+//@SpringBootApplication
 public class MessagingRabbitApplication {
 
-    //static final String topicExchangeName = "spring-boot-exchange";
-    static final String topicExchangeName = "PYhellos";
+    static final String topicExchangeName = "spring-boot-exchange";
+    //static final String topicExchangeName = "PYhellos";
 
-    //static final String queueName = "spring-bootTEST";
-    static final String queueName = "hello";
+    static final String queueName = "spring-bootTEST";
+    //static final String queueName = "hello";
 
     @Bean
     //creates an AMQP queue
@@ -39,8 +39,8 @@ public class MessagingRabbitApplication {
 
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("hello");
-        // return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+        //return BindingBuilder.bind(queue).to(exchange).with("hello");
+         return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
     }
 
     @Bean
