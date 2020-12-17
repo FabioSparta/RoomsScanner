@@ -1,0 +1,52 @@
+Rooms List page : 
+Tabela
+ComboBox com ordenações diferentes: Lotação , nº de departamentos, Alfabético pelo nome dos departamentos
+ComboBox escolher departamento  
+
+
+Rooms Statistics page:
+Total de salas cheias 
+Total de salas com lotação acima do limite
+Total de salas vazias
+
+Room Reservations page :
+Form: 
+    Nmec
+    Email
+    Nome da Pessoa
+    Combobox para selecionar a sala da biblioteca
+    Combobox para sala de grupo ou individual
+        Caso - sala de grupo -Número de pessoas do grupo
+    Textboxs- Hora de ínicio e fim 
+
+
+Contact us page:
+Uma imagem de cada um de nós
+Possivelmente uma breve descrição
+Contactos: Email, Número de telefone,Facebook, LinkedIn
+
+Login e SignUp na navbar do Home
+
+Login:
+Form:
+    Username
+    Password
+    Botão de Login
+    TextView com 'Don't have an account yet? Sign up'
+Sign Up:
+    Username
+    Email (confirmar que é da ua)
+    Password
+    Confirm Password
+    TextView com 'Already have an account?'
+
+
+
+Estados para a sala:
+Cleaning
+Cleaned
+Empty
+Available
+Full
+
+

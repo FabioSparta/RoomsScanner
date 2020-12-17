@@ -18,17 +18,11 @@ public final class CustomMessage implements Serializable {
         this.secret = secret;
     }
 
-    public String getText() {
-        return text;
-    }
+    //Getters
+    public String getText() { return text; }
+    public int getPriority() { return priority; }
+    public boolean isSecret() { return secret; }
 
-    public int getPriority() {
-        return priority;
-    }
-
-    public boolean isSecret() {
-        return secret;
-    }
 
     @Override
     public String toString() {
