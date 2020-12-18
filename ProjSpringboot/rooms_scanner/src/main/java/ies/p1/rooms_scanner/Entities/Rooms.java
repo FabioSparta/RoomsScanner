@@ -18,6 +18,21 @@ public class Rooms {
     private int floor;
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
     public Rooms() {}
+    public long getId() {
+        return id;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public int getMaxSeats() {
         return maxSeats;

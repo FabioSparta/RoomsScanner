@@ -1,13 +1,20 @@
 package ies.p1.rooms_scanner.Controller;
 import ies.p1.rooms_scanner.Entities.*;
+import ies.p1.rooms_scanner.Repository.RoomsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class RoomsController {
+    @Autowired
+    private RoomsRepository RoomsRepository;
 
     @RequestMapping("/home")
     public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
@@ -30,10 +37,14 @@ public class RoomsController {
     public String getRoomsList(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
         return "/Rooms-List";
     }
-
-
-
-
+    public List<Rooms> getAllRooms(@RequestParam (required = false) String department, @RequestParam (required = false) int floor) {
+        if (department != null && floor != -1)
+            return RoomsRepository.findAllByDepartmentAndAndFloor(department, floor);
+        else if (department != null)
+            return RoomsRepository.findAllByDepartment(department);
+        else
+            return RoomsRepository.findAll();
+    }
 
 
 
