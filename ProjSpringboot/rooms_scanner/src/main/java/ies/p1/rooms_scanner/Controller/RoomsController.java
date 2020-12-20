@@ -31,6 +31,12 @@ public class RoomsController {
         return "/Rooms-List";
     }
 
+    @RequestMapping("/configurations")
+    public String getConfigurations(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
+        return "/Configurations";
+    }
+
+
 
 
 

@@ -5,14 +5,15 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Login, Sign UP">
+    <meta name="keywords" content="Rooms List, Login, Sign UP">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Rooms Statistics</title>
+    <title>Configurations</title>
     <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
-    <link rel="stylesheet" th:href="@{/css/Rooms-Statistics.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/Configurations1.css}" media="screen">
     <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
     <script src="js/popups.js"></script>
+    <script src="js/configurations1.js"></script>
     <script class="u-script" type="text/javascript" th:href="@{/static/js/nicepage.js}" defer=""></script>
     <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -27,155 +28,189 @@
         "logo": "images/1345300403-0.png",
         "sameAs": []
     }</script>
-    <meta property="og:title" content="Rooms Statistics">
+    <meta property="og:title" content="Configurations">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#478ac9">
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
-<body class="u-body">
+<body onload="HideComponents()" class="u-body">
 <header class="u-clearfix u-header u-header" id="sec-e07c">
-    <div class="u-clearfix u-sheet u-sheet-1" style="margin-top: 20px">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-width: max-content;">
-            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-                <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                   href="#">
-                    <svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
-                    </svg>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs>
-                            <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
-                                <rect y="1" width="16" height="2"></rect>
-                                <rect y="7" width="16" height="2"></rect>
-                                <rect y="13" width="16" height="2"></rect>
-                            </symbol>
-                        </defs>
-                    </svg>
-                </a>
-            </div>
-            <div class="u-custom-menu u-nav-container">
-                <ul class="u-nav u-unstyled u-nav-1">
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{home}" style="padding: 10px 20px;">Home</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomsList}" style="padding: 10px 20px;">Rooms List</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomReservations}" style="padding: 10px 20px;">Room Reservations</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomsStatistics}" style="padding: 10px 20px;">Rooms Statistics</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{configurations}" style="padding: 10px 20px;">Configurations</a></li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{contactUs}" style="padding: 10px 20px;">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="u-custom-menu u-nav-container-collapse">
-                <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                    <div class="u-sidenav-overflow">
-                        <div class="u-menu-close"></div>
-                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{Home}"
-                                                      style="padding: 10px 20px;">Home</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{roomsList}"
-                                                      style="padding: 10px 20px;">Rooms List</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{roomReservations}"
-                                                      style="padding: 10px 20px;">Room Reservations</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{roomsStatistics}"
-                                                      style="padding: 10px 20px;">Rooms Statistics</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{contactUs}"
-                                                      style="padding: 10px 20px;">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-            </div>
-        </nav>
-        <a onclick="displayLogin()" href="#sec-e252"
-           class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-1">LOGIN</a>
-        <a onclick="displaySignUp()" href="#sec-f378"
-           class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-2">SIGN UP</a>
-    </div>
+  <div class="u-clearfix u-sheet u-sheet-1" style="margin-top: 20px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-width: max-content;">
+      <div class="u-custom-menu u-nav-container">
+        <ul class="u-nav u-unstyled u-nav-1">
+          <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  th:href="@{home}" style="padding: 10px 20px;">Home</a>
+          </li>
+          <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  th:href="@{roomsList}" style="padding: 10px 20px;">Rooms List</a>
+          </li>
+          <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  th:href="@{roomReservations}" style="padding: 10px 20px;">Room Reservations</a>
+          </li>
+          <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  th:href="@{roomsStatistics}" style="padding: 10px 20px;">Rooms Statistics</a>
+          </li>
+          <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  th:href="@{configurations}" style="padding: 10px 20px;">Configurations</a></li>
+          <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                th:href="@{contactUs}" style="padding: 10px 20px;">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+    <a onclick="displayLogin()"
+       class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-1">LOGIN</a>
+    <a onclick="displaySignUp()"
+       class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-2">SIGN UP</a>
+  </div>
 </header>
 <section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="256"
-         data-image-height="256" id="sec-809c">
+         data-image-height="256" id="sec-4b7a">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-default u-title u-text-1">Rooms Statistics</h1>
-        <p class="u-large-text u-text u-text-default u-text-variant u-text-2">An overall representation of the of the
-            occupancy of the university's departments.&nbsp;</p>
-        <p class="u-text u-text-default u-text-3">Talvez fazer mais tabelas com estatisticas diferentes ou arranjar
-            maneira de mostrar um gráfico ?</p>
+        <h1 class="u-text u-text-default u-title u-text-1">Configurations</h1>
+        <p class="u-large-text u-text u-text-default u-text-variant u-text-2">Page where an admin can configure the
+            rooms information present in the database&nbsp; and sensors</p>
     </div>
 </section>
-<section class="u-align-center u-clearfix u-section-2" id="sec-e69d">
-    <div class="u-clearfix u-sheet u-sheet-1">
+<section class="u-align-center u-clearfix u-valign-middle u-section-2" id="sec-61d2">
+    <div class="u-form u-form-1">
+        <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+              style="padding: 15px;" source="custom">
+            <div class="u-form-group u-form-group-1">
+                <label for="text-c24d" class="u-form-control-hidden u-label">
+                    <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
+                       href="https://nicepage.com">Select a room (i.e 04.02.10)</a>
+                </label>
+                <input type="text" placeholder="Select a room (i.e 04.02.10)" id="text-c24d" name="text"
+                       class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
+            </div>
+            <div onclick="ShowConfigForm()" class="u-form-group u-form-submit">
+                <a href="#" class="u-btn u-btn-submit u-button-style">Search</a>
+                <input type="submit" value="submit" class="u-form-control-hidden">
+            </div>
+            <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
+            <div class="u-form-send-error u-form-send-message">#FormSendError</div>
+            <input type="hidden" value="" name="recaptchaResponse">
+        </form>
+    </div>
+    <div class="u-form u-form-2">
+        <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+              style="padding: 10px" source="custom" name="form">
+            <input type="hidden" id="siteId" name="siteId" value="175502796">
+            <input type="hidden" id="pageId" name="pageId" value="296945206">
+            <div onclick="ShowTable()" class="u-align-left u-form-group u-form-submit">
+                <a href="#" class="u-btn u-btn-submit u-button-style">Show All</a>
+                <input type="submit" value="submit" class="u-form-control-hidden">
+            </div>
+            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
+            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try
+                again.
+            </div>
+            <input type="hidden" value="" name="recaptchaResponse">
+        </form>
+    </div>
+</section>
+<section class="u-align-center u-clearfix u-section-3" id="sec-3e05">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
             <table class="u-table-entity u-table-entity-1">
                 <colgroup>
                     <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
+                    <col width="22%">
+                    <col width="28.5%">
+                    <col width="24.5%">
                 </colgroup>
                 <thead class="u-palette-4-base u-table-header u-table-header-1">
-                <tr style="height: 21px;">
+                <tr style="height: 26px;">
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Department</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Dnumber</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Total Ocuppancy</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Column 4</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Room</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Choose a room&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody class="u-table-body">
                 <tr style="height: 75px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-5">Row 1
+                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-5">DETI
                     </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.02</td>
+                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-8">Edit&nbsp;</td>
+                </tr>
+                <tr style="height: 71px;">
+                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-9">DETI
+                    </td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.03</td>
+                    <td  class="u-border-1 u-border-grey-30 u-table-cell">Edit</td>
                 </tr>
                 <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-9">Row 2
+                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-13">DETI
                     </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.04</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">Edit</td>
                 </tr>
                 <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-13">Row 3
+                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-17">DETI
                     </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                </tr>
-                <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-17">Row 4
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Description</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.05</td>
+                    <td class="u-border-1 u-border-grey-30 u-table-cell">Edit</td>
                 </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+</section>
+<section class="u-align-center u-clearfix u-section-4" id="sec-29f5">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-text u-text-default u-text-1">Choosen Room:</p>
+        <p class="u-text u-text-default u-text-2">número...</p>
+        <p class="u-text u-text-default u-text-3">People Sensor</p>
+        <p class="u-text u-text-default u-text-4">Department Name</p>
+        <div class="u-form u-form-1">
+            <form action="#" method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+                  style="padding: 15px;" source="custom" name="form">
+                <div class="u-form-group u-form-name u-form-group-1">
+                    <label for="name-6797" class="u-form-control-hidden u-label">Name</label>
+                    <input type="text" placeholder="Department name " id="name-6797" name="name"
+                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-email u-form-group u-form-group-2">
+                    <label for="email-6797" class="u-form-control-hidden u-label">Email</label>
+                    <input type="email" placeholder="Dnumber" id="email-6797" name="email"
+                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-group u-form-group-3">
+                    <label for="text-9dbf" class="u-form-control-hidden u-label"></label>
+                    <input type="text" placeholder="id" id="text-9dbf" name="text"
+                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
+                </div>
+                <div class="u-form-group u-form-group-4">
+                    <label for="text-2e35" class="u-form-control-hidden u-label"></label>
+                    <input type="text" placeholder="id" id="text-2e35" name="text-1"
+                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
+                </div>
+                <div class="u-align-left u-form-group u-form-submit u-form-group-5">
+                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                    <input type="submit" value="submit" class="u-form-control-hidden">
+                </div>
+                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been sent.</div>
+                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then
+                    try again.
+                </div>
+                <input type="hidden" value="" name="recaptchaResponse">
+            </form>
+        </div>
+        <p class="u-text u-text-default u-text-5">Temperature Sensor</p>
+        <p class="u-text u-text-default u-text-6">Department Number</p>
     </div>
 </section>
 
@@ -219,9 +254,19 @@
         </p>
     </div>
 </footer>
-
+<section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+        <span>Website Templates</span>
+    </a>
+    <p class="u-text">
+        <span>created with</span>
+    </p>
+    <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
+        <span>HTML Website Builder</span>
+    </a>.
+</section>
 <section
-        class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-section-5"
+        class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-section-7"
         id="sec-e252">
     <div class="u-align-center-xs u-container-style u-dialog u-white u-dialog-1">
         <div class="u-container-layout u-container-layout-1">
@@ -253,10 +298,10 @@
             </div>
             <p class="u-align-center u-text u-text-default u-text-2">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
-                   onclick="displaySignUp()">Don't have an account yet? Create One!</a>
+                   href="#sec-f378">Don't have an account yet? Create One!</a>
             </p>
         </div>
-        <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
+        <button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
             <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style="">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use>
             </svg>
@@ -265,54 +310,54 @@
         </button>
     </div>
 </section>
-<style>.u-section-5 {
+<style>.u-section-7 {
     min-height: 826px;
 }
 
-.u-section-5 .u-dialog-1 {
+.u-section-7 .u-dialog-1 {
     width: 566px;
     min-height: 454px;
     margin: 60px auto;
 }
 
-.u-section-5 .u-container-layout-1 {
+.u-section-7 .u-container-layout-1 {
     padding: 40px 30px;
 }
 
-.u-section-5 .u-text-1 {
+.u-section-7 .u-text-1 {
     font-size: 1.875rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 46px auto 0;
 }
 
-.u-section-5 .u-form-1 {
+.u-section-7 .u-form-1 {
     height: 154px;
     width: 400px;
     margin: 20px auto 0;
 }
 
-.u-section-5 .u-form-group-1 {
+.u-section-7 .u-form-group-1 {
     width: 100%;
 }
 
-.u-section-5 .u-label-1 {
+.u-section-7 .u-label-1 {
     font-size: 1rem;
 }
 
-.u-section-5 .u-form-group-2 {
+.u-section-7 .u-form-group-2 {
     width: 100%;
 }
 
-.u-section-5 .u-label-2 {
+.u-section-7 .u-label-2 {
     font-size: 1rem;
 }
 
-.u-section-5 .u-form-group-3 {
+.u-section-7 .u-form-group-3 {
     width: 100%;
 }
 
-.u-section-5 .u-btn-1 {
+.u-section-7 .u-btn-1 {
     padding-left: 60px;
     padding-right: 60px;
     background-image: none;
@@ -320,15 +365,15 @@
     text-transform: none;
 }
 
-.u-section-5 .u-text-2 {
+.u-section-7 .u-text-2 {
     margin: 20px auto 0;
 }
 
-.u-section-5 .u-btn-2 {
+.u-section-7 .u-btn-2 {
     padding: 0;
 }
 
-.u-section-5 .u-icon-1 {
+.u-section-7 .u-icon-1 {
     width: 15px;
     height: 15px;
     left: auto;
@@ -338,46 +383,46 @@
 }
 
 @media (max-width: 1199px) {
-    .u-section-5 .u-dialog-1 {
+    .u-section-7 .u-dialog-1 {
         height: auto;
     }
 }
 
 @media (max-width: 991px) {
-    .u-section-5 .u-container-layout-1 {
+    .u-section-7 .u-container-layout-1 {
         padding-top: 30px;
         padding-bottom: 30px;
     }
 }
 
 @media (max-width: 767px) {
-    .u-section-5 .u-dialog-1 {
+    .u-section-7 .u-dialog-1 {
         width: 540px;
     }
 }
 
 @media (max-width: 575px) {
-    .u-section-5 .u-dialog-1 {
+    .u-section-7 .u-dialog-1 {
         width: 340px;
     }
 
-    .u-section-5 .u-container-layout-1 {
+    .u-section-7 .u-container-layout-1 {
         padding-left: 25px;
         padding-right: 25px;
     }
 
-    .u-section-5 .u-text-1 {
+    .u-section-7 .u-text-1 {
         margin-top: 29px;
     }
 
-    .u-section-5 .u-form-1 {
+    .u-section-7 .u-form-1 {
         height: 152px;
         margin-right: initial;
         margin-left: initial;
         width: auto;
     }
 }</style>
-<section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-6"
+<section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-8"
          id="sec-f378">
     <div class="u-align-center-xs u-container-style u-dialog u-white u-dialog-1">
         <div class="u-container-layout u-container-layout-1">
@@ -418,10 +463,10 @@
             </div>
             <p class="u-align-center u-text u-text-default u-text-2">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
-                   onclick="displayLogin()">Already have an account? Click here to Login In</a>
+                   href="#sec-e252">Already have an account? Click here to Login In</a>
             </p>
         </div>
-        <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
+        <button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
             <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style="">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use>
             </svg>
@@ -430,71 +475,71 @@
         </button>
     </div>
 </section>
-<style>.u-section-6 {
+<style>.u-section-8 {
     min-height: 826px;
 }
 
-.u-section-6 .u-dialog-1 {
+.u-section-8 .u-dialog-1 {
     width: 566px;
     min-height: 495px;
     height: auto;
     margin: 157px auto 60px;
 }
 
-.u-section-6 .u-container-layout-1 {
+.u-section-8 .u-container-layout-1 {
     padding: 16px 30px 38px;
 }
 
-.u-section-6 .u-text-1 {
+.u-section-8 .u-text-1 {
     font-size: 1.875rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0 auto;
 }
 
-.u-section-6 .u-form-1 {
+.u-section-8 .u-form-1 {
     height: 104px;
     width: 400px;
     margin: 20px 53px 0;
 }
 
-.u-section-6 .u-form-group-1 {
+.u-section-8 .u-form-group-1 {
     width: 100%;
 }
 
-.u-section-6 .u-label-1 {
+.u-section-8 .u-label-1 {
     font-size: 1rem;
 }
 
-.u-section-6 .u-form-group-2 {
+.u-section-8 .u-form-group-2 {
     width: 100%;
 }
 
-.u-section-6 .u-label-2 {
+.u-section-8 .u-label-2 {
     font-size: 1rem;
 }
 
-.u-section-6 .u-form-group-3 {
+.u-section-8 .u-form-group-3 {
     width: 100%;
 }
 
-.u-section-6 .u-label-3 {
+.u-section-8 .u-label-3 {
     font-size: 1rem;
 }
 
-.u-section-6 .u-form-group-4 {
+.u-section-8 .u-form-group-4 {
     width: 100%;
 }
 
-.u-section-6 .u-label-4 {
+.u-section-8 .u-label-4 {
     font-size: 1rem;
 }
 
-.u-section-6 .u-form-group-5 {
+.u-section-8 .u-form-group-5 {
     width: 100%;
 }
 
-.u-section-6 .u-btn-1 {
+.u-section-8 .u-btn-1 {
     padding-left: 60px;
     padding-right: 60px;
     background-image: none;
@@ -502,15 +547,15 @@
     text-transform: none;
 }
 
-.u-section-6 .u-text-2 {
+.u-section-8 .u-text-2 {
     margin: 11px auto 0;
 }
 
-.u-section-6 .u-btn-2 {
+.u-section-8 .u-btn-2 {
     padding: 0;
 }
 
-.u-section-6 .u-icon-1 {
+.u-section-8 .u-icon-1 {
     width: 15px;
     height: 15px;
     left: auto;
@@ -520,32 +565,32 @@
 }
 
 @media (max-width: 991px) {
-    .u-section-6 .u-container-layout-1 {
+    .u-section-8 .u-container-layout-1 {
         padding-bottom: 30px;
     }
 }
 
 @media (max-width: 767px) {
-    .u-section-6 .u-dialog-1 {
+    .u-section-8 .u-dialog-1 {
         width: 540px;
     }
 }
 
 @media (max-width: 575px) {
-    .u-section-6 .u-dialog-1 {
+    .u-section-8 .u-dialog-1 {
         width: 340px;
     }
 
-    .u-section-6 .u-container-layout-1 {
+    .u-section-8 .u-container-layout-1 {
         padding-left: 25px;
         padding-right: 25px;
     }
 
-    .u-section-6 .u-text-1 {
+    .u-section-8 .u-text-1 {
         margin-top: 29px;
     }
 
-    .u-section-6 .u-form-1 {
+    .u-section-8 .u-form-1 {
         height: 152px;
         margin-right: initial;
         margin-left: initial;
