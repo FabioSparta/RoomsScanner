@@ -1,0 +1,3 @@
+ ssh anthonypereira@deti-engsoft-05.ua.pt
+ 
+ sudo scp -r docker_in_a_nutshell  anthonypereira@deti-engsoft-05.ua.pt:IES_VM
