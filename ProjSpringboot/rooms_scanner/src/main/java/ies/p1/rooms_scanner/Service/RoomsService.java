@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 @Service
-public class RoomsService implements RoomsServiceInt {
+public class RoomsService {
     @Autowired
     RoomsRepository repository;
 
@@ -33,29 +33,24 @@ public class RoomsService implements RoomsServiceInt {
         createRoom(r2);
     }
 
-    @Override
     public boolean createRoom(Rooms room) {
         if(repository.existsById(room.getId()))
             return false;
-        repository.save(room); //TODO: ver se dá algum return de sucesso
+        repository.save(room);
         return true;
     }
 
-    @Override
-    public boolean updateRoom(Long id, int maxSeats,int busySeats) {
+    public boolean updateRoom(int id, int maxSeats) {
         Rooms r = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + id));
-        r.setBusySeats(busySeats);
-        if (maxSeats != -1)
-            r.setMaxSeats(maxSeats);
-        repository.save(r);
+        r.setMaxSeats(maxSeats);
+        Rooms ret = repository.save(r);
         return true;
     }
-    @Override
-    public boolean deleteRoom(Long id) {
+
+    public boolean deleteRoom(int id) {
         repository.deleteById(id);
         return true;
     }
-    @Override
     public Collection<Rooms> getRooms() {
         return repository.findAll();
     }
