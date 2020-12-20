@@ -1,23 +1,25 @@
 package ies.p1.rooms_scanner.Service;
 
 import ies.p1.rooms_scanner.Entities.Rooms;
+import ies.p1.rooms_scanner.Repository.RoomsRepository;
+import org.apache.velocity.exception.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class RoomsService implements RoomsServiceInt {
-    private static Map<Long, Rooms> roomRepo = new HashMap<>();
-    static { //PARA TESTE
+    @Autowired
+    RoomsRepository repository;
+
+    public void test() {
         Rooms r1 = new Rooms();
         r1.setId(1);
         r1.setDepartment("DETI");
         r1.setFloor(2);
         r1.setBusySeats(3);
         r1.setMaxSeats(20);
-        roomRepo.put(r1.getId(), r1);
+        repository.findById(r1.getId());
 
         Rooms r2 = new Rooms();
         r2.setId(2);
@@ -25,25 +27,36 @@ public class RoomsService implements RoomsServiceInt {
         r2.setFloor(1);
         r2.setBusySeats(5);
         r2.setMaxSeats(25);
-        roomRepo.put(r2.getId(), r2);
-    }
-    @Override
-    public void createRoom(Rooms room) {
-        roomRepo.put(room.getId(), room);
+        repository.findById(r2.getId());
+
+        createRoom(r1);
+        createRoom(r2);
     }
 
     @Override
-    public void updateRoom(Long id, Rooms r) {
-        roomRepo.remove(id);
-        r.setId(id);
-        roomRepo.put(id, r);
+    public boolean createRoom(Rooms room) {
+        if(repository.existsById(room.getId()))
+            return false;
+        repository.save(room); //TODO: ver se dá algum return de sucesso
+        return true;
+    }
+
+    @Override
+    public boolean updateRoom(Long id, int maxSeats,int busySeats) {
+        Rooms r = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + id));
+        r.setBusySeats(busySeats);
+        if (maxSeats != -1)
+            r.setMaxSeats(maxSeats);
+        repository.save(r);
+        return true;
     }
     @Override
-    public void deleteRoom(Long id) {
-        roomRepo.remove(id);
+    public boolean deleteRoom(Long id) {
+        repository.deleteById(id);
+        return true;
     }
     @Override
     public Collection<Rooms> getRooms() {
-        return roomRepo.values();
+        return repository.findAll();
     }
 }

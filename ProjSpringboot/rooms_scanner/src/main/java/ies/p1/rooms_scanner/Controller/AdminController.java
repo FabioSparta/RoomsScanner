@@ -14,22 +14,33 @@ public class AdminController {
 
     @RequestMapping(value = "/allRooms")
     public ResponseEntity<Object> getRooms() {
+        roomsService.test();
         return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
     }
-    @RequestMapping(value = "/allRooms/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Object>
-    updateProduct(@PathVariable("id") Long id, @RequestBody Rooms room) {
-        roomsService.updateRoom(id, room);
-        return new ResponseEntity<>("Room is updated successsfully", HttpStatus.OK);
-    }
-    @RequestMapping(value = "/allRooms/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> delete(@PathVariable("id") Long id) {
-        roomsService.deleteRoom(id);
-        return new ResponseEntity<>("Room is deleted successsfully", HttpStatus.OK);
-    }
+
     @RequestMapping(value = "/allRooms", method = RequestMethod.POST)
     public ResponseEntity<Object> createRoom(@RequestBody Rooms room) {
-        roomsService.createRoom(room);
-        return new ResponseEntity<>("Room is created successfully", HttpStatus.CREATED);
+        if (roomsService.createRoom(room))
+            return new ResponseEntity<>("Room is created successfully", HttpStatus.CREATED);
+        else
+            return  new ResponseEntity<>("Room not created", HttpStatus.NOT_ACCEPTABLE);
     }
+
+    @RequestMapping(value = "/allRooms/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> updateRoom(@PathVariable("id") Long id, @RequestBody Rooms r) {
+        if (roomsService.updateRoom(id,r.getMaxSeats(),r.getBusySeats()))
+            return new ResponseEntity<>("Room is updated successfully", HttpStatus.OK);
+        else
+            return  new ResponseEntity<>("Room not updated", HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @RequestMapping(value = "/allRooms/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> delete(@PathVariable("id") Long id) {
+        if (roomsService.deleteRoom(id))
+            return new ResponseEntity<>("Room deleted successfully", HttpStatus.OK);
+        else
+            return  new ResponseEntity<>("Room not deleted", HttpStatus.NOT_ACCEPTABLE);
+    }
+
+
 }
