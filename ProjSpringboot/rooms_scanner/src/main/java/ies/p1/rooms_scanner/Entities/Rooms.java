@@ -9,15 +9,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rooms")
 public class Rooms {
-    @Id     // ->  !!!!!!!!!!! TODO: ID automatico ou dept+floor+numSala?
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String department;
     private int busySeats;
     private int maxSeats;
     private int floor;
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
     public Rooms() {}
+    public int getId() {
+        return id;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getMaxSeats() {
         return maxSeats;

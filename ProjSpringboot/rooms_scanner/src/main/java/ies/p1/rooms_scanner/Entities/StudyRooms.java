@@ -20,7 +20,7 @@ public class StudyRooms {
     private Timestamp closingHour;
     private State state; //TODO: associar estado a uma Data e Hora..
     //TODO: na pagina inicial lista de salas reservadas q permite terminar uma reserva -> atualiza o estado das salas de estudo
-    //  pagina inicial lista de salas reservadas q permite extender uma reserva -> atualiza a duracao
+    //  pagina inicial lista de salas reservadas q permite estender uma reserva -> atualiza a duracao
 
     //construtor
     public StudyRooms() {}
