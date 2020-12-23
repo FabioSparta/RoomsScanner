@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+    rabbitmq-container:
+        image: rabbitmq:management
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+
+    mysql-container:
+        image: mysql
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        volumes:
+            - ./mysql:/docker-entrypoint-initdb.d:ro
+
+    app-container:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8085:8085
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-container:3306/message?useSSL=false&allowPublicKeyRetrieval=true
+            - SPRING_DATASOURCE_USERNAME=root
+            - SPRING_DATASOURCE_PASSWORD=root
+            - SPRING_RABBITMQ_HOST=rabbitmq-container
+        depends_on:
+            - rabbitmq-container
+            - mysql-container
+
+
+
