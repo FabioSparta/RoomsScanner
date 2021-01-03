@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-public class SignUpController {
+class SignUpController {
 
     private static final Logger log = LoggerFactory.getLogger(SignUpController.class);
 
