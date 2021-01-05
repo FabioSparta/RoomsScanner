@@ -5,7 +5,7 @@ import sys
 import os 
 import random
 
-RABBIT_HOST= 'localhost' 
+RABBIT_HOST= '' 
 
 
 def main(argv):

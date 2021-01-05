@@ -17,7 +17,6 @@ public class RoomsService {
         r1.setId(1);
         r1.setDepartment("DETI");
         r1.setFloor(2);
-        r1.setBusySeats(3);
         r1.setMaxSeats(20);
         repository.findById(r1.getId());
 
@@ -25,7 +24,6 @@ public class RoomsService {
         r2.setId(2);
         r2.setDepartment("DMAT");
         r2.setFloor(1);
-        r2.setBusySeats(5);
         r2.setMaxSeats(25);
         repository.findById(r2.getId());
 

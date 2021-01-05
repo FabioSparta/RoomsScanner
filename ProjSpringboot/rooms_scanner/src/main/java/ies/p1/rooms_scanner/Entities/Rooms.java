@@ -13,7 +13,6 @@ public class Rooms {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String department;
-    private int busySeats;
     private int maxSeats;
     private int floor;
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
@@ -40,14 +39,6 @@ public class Rooms {
 
     public void setMaxSeats(int maxSeats) {
         this.maxSeats = maxSeats;
-    }
-
-    public int getBusySeats() {
-        return busySeats;
-    }
-
-    public void setBusySeats(int busySeats) {
-        this.busySeats = busySeats;
     }
 
     public String getDepartment() {
