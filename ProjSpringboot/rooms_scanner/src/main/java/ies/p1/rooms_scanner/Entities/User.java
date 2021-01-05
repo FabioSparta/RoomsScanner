@@ -17,12 +17,17 @@ public class User {
     @NotBlank(message = "Enter your password")
     private String password;
     @NotBlank(message = "Enter your role (Student, Teacher, Employee)")
-    private String role; // ENUM? -> FUNCIONARIO , PROFESSOR OU ESTUDANTE
+    private String role;
 
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
     public User() {}
 
     public User(int nmecUser, String username, String email, String password, String role) {
+        this.nmecUser = nmecUser;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public int getNmecUser() {
@@ -44,5 +49,4 @@ public class User {
     public String getRole() {
         return role;
     }
-
 }
