@@ -11,7 +11,7 @@ public class User {
     private int nmecUser;
     private String username;
     private String email;
-    private String role; // ENUM? -> FUNCIONARIO , PROFESSOR OU ESTUDANTE
+    private String role; //TODO: retirar???
 
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
     public User() {}
