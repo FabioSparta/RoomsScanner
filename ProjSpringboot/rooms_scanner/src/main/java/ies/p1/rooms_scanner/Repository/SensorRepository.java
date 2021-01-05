@@ -5,5 +5,5 @@ import java.util.*;
 
 public interface SensorRepository extends  JpaRepository<Sensor, Integer>{
     List<Sensor> findAll();
-    List<Sensor> findAllByRoom(int room_id);
+    Sensor getById (int id);
 }

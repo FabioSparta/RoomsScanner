@@ -21,30 +21,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class MessagingApplication {
 
-    //CustomMessage
-    public static final String EXCHANGE_NAME="PYhellos";
-    public static final String QUEUE_GENERIC_NAME="hello99";
-    public static final String QUEUE_SPECIFIC_NAME="hello99";
-    public static final String ROUTING_KEY="hello";
-
-    @Bean
-    public TopicExchange appExchange() {
-        return new TopicExchange(EXCHANGE_NAME);
-    }
-    @Bean
-    public Queue appQueueGeneric() {
-        return new Queue(QUEUE_GENERIC_NAME);
-    }
-    @Bean
-    public Queue appQueueSpecific() {
-        return new Queue(QUEUE_SPECIFIC_NAME);
-    }
-    @Bean
-    public Binding declareBindingGeneric() { return BindingBuilder.bind(appQueueGeneric()).to(appExchange()).with(ROUTING_KEY); }
-    @Bean
-    public Binding declareBindingSpecific() { return BindingBuilder.bind(appQueueSpecific()).to(appExchange()).with(ROUTING_KEY); }
-
-
     public static final String EXCHANGE_NAME2="PYsensors";
 
     //PeopleCounterMessage
