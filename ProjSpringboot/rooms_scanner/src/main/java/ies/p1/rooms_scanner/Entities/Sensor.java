@@ -11,10 +11,6 @@ public class Sensor {
     private int DataCaptured;
     private String SensorType;
 
-    @ManyToOne()
-    @JoinColumn(name = "room_id")
-    private Rooms room;
-
     public Sensor() {
     }
 
@@ -40,13 +36,5 @@ public class Sensor {
 
     public void setSensorType(String sensorType) {
         SensorType = sensorType;
-    }
-
-    public Rooms getRoom() {
-        return room;
-    }
-
-    public void setRoom(Rooms room) {
-        this.room = room;
     }
 }

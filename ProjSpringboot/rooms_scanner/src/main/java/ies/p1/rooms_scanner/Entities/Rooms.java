@@ -1,9 +1,6 @@
 package ies.p1.rooms_scanner.Entities;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -15,6 +12,11 @@ public class Rooms {
     private String department;
     private int maxSeats;
     private int floor;
+
+    @OneToMany(targetEntity = Sensor.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "sensor_id")
+    private List<Sensor> sensorList;
+
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
     public Rooms() {}
     public int getId() {
@@ -47,5 +49,13 @@ public class Rooms {
 
     public int getFloor() {
         return floor;
+    }
+
+    public List<Sensor> getSensorList() {
+        return sensorList;
+    }
+
+    public void setSensorList(List<Sensor> sensorList) {
+        this.sensorList = sensorList;
     }
 }
