@@ -1,13 +1,12 @@
 package ies.p1.rooms_scanner.Controller;
 import ies.p1.rooms_scanner.Entities.*;
 import ies.p1.rooms_scanner.Repository.RoomsRepository;
+import ies.p1.rooms_scanner.Service.RoomsService;
+import ies.p1.rooms_scanner.Service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +14,18 @@ import java.util.List;
 public class RoomsController {
     @Autowired
     private RoomsRepository RoomsRepository;
+    @Autowired
+    RoomsService roomsService;
+
+    @Autowired
+    SensorService sensorService;
+
+    @GetMapping("/roomsList")
+    public String getRoomsLists(Model model) {
+        model.addAttribute("rooms", this.RoomsRepository.findAll());
+        return "/Rooms-List";
+    }
+
 
     @RequestMapping("/home")
     public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
@@ -33,10 +44,6 @@ public class RoomsController {
         return "/Room-Reservations";
     }
 
-    @RequestMapping("/roomsList")
-    public String getRoomsList(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
-        return "/Rooms-List";
-    }
   
    @RequestMapping("/configurations")
    public String getConfigurations(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
@@ -78,11 +85,8 @@ public class RoomsController {
         return "/Room-Reservations";
     }
 
-   @GetMapping("/roomsList")
-   //TODO: fazer uma pagina com lista de todos os departamentos e total de espaços livres, com barra de pesquisa sobre a lista e ainda decidir se colocar opçao de expandir aquele room ou "abrir" novo mapeamento
-   public String getRoomsLists(Model model) {
-       return "/Rooms-List";
-    }
+
+
 
     @GetMapping("/bookingsList")
     public String getRoomBookings(Model model) {  //TODO: pagina disponivel apenas para funcionarias da biblioteca
