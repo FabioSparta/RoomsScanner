@@ -2,11 +2,13 @@ package ies.p1.rooms_scanner.Controller;
 
 import ies.p1.rooms_scanner.Entities.Rooms;
 import ies.p1.rooms_scanner.Entities.Sensor;
+import ies.p1.rooms_scanner.Repository.RoomsRepository;
 import ies.p1.rooms_scanner.Service.RoomsService;
 import ies.p1.rooms_scanner.Service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Null;
@@ -17,6 +19,27 @@ public class AdminController {
     RoomsService roomsService;
     @Autowired
     SensorService sensorService;
+
+    @Autowired
+    RoomsRepository roomsRepository;
+
+    @GetMapping(name="/roomsList", produces="templates/Rooms-List")
+    public ResponseEntity<Object> getRoomsLists(Model model) {
+        model.addAttribute("rooms", this.roomsRepository.findAll());
+        System.out.println(model);
+        System.out.println("aaa");
+        return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
+    }
+
+
+    @RequestMapping("/rooms")
+    public String getRooms(Model model) {
+        model.addAttribute("rooms", this.roomsRepository.findAll());
+        System.out.println("BBBBBBBBBBBBBBBBBBBBBBBB");
+        return "/Rooms-List";
+    }
+
+
 
     @RequestMapping(value = "/Rooms")
     public ResponseEntity<Object> getRooms() {

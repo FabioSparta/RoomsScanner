@@ -17,17 +17,23 @@ public class RoomsService {
     SensorRepository sensorRepo;
 
     public void test() {
+        System.out.println("Before inserting rooms");
         Rooms r1 = new Rooms();
-        r1.setId(1);
+        r1.setId(3);
         r1.setDepartment("DETI");
         r1.setFloor(2);
+        r1.setDnumber(4);
         r1.setMaxSeats(20);
+        r1.setNumber("04.02.02");
+
 
         Rooms r2 = new Rooms();
-        r2.setId(2);
+        r2.setId(4);
+        r2.setDnumber(11);
         r2.setDepartment("DMAT");
         r2.setFloor(1);
         r2.setMaxSeats(25);
+        r2.setNumber("11.01.10");
 
         createRoom(r1);
         createRoom(r2);
