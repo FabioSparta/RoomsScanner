@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "rooms")
-public class Rooms {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -18,14 +18,11 @@ public class Rooms {
 
 
     @OneToMany(targetEntity = Sensor.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "sensor_id")
+    @JoinColumn(name = "room_id")
     private List<Sensor> sensorList = new ArrayList<>();
 
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
-    public Rooms() {
-        //sensorList.add();
-        //sensorList.add();
-    }
+    public Room() {}
     public int getId() {
         return id;
     }

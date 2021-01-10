@@ -13,10 +13,12 @@ public class SensorService {
 
     public void test() {
         Sensor s1 = new Sensor();
+        s1.setId(1);
         s1.setSensorType("PeopleCounter");
         s1.setDataCaptured(7);
 
         Sensor s2 = new Sensor();
+        s2.setId(2);
         s2.setSensorType("Temperature");
         s2.setDataCaptured(5);
 
