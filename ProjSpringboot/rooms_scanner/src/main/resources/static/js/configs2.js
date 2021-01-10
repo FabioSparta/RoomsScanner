@@ -165,3 +165,38 @@ $(document).ready(
         }
 
     })
+
+// REMOVE SENSOR FROM ROOM  TODO: FAZER FORM PARA ESTE REMOVE
+$(document).ready(
+    function() {
+        // SUBMIT FORM
+        $("#removeForm").submit(function(event) {
+            // Prevent the form from submitting via the browser.
+            event.preventDefault();
+            ajaxPost(document.getElementById('idSelected').value); //TODO: NECESSARIO ALTERAR CONSOANTE O ID DA SALA ONDE SE VAI REMOVER
+        });
+
+        function ajaxPost(roomID) {
+            // PREPARE FORM DATA
+            var formData = {
+                id : $("#rmSensor").val(),
+                sensorType : ""
+            }
+            // DO POST
+            $.ajax({
+                type : "POST",
+                contentType : "application/json",
+                url : "roomRmSensor/"+roomID,
+                data : JSON.stringify(formData),
+                success : function(result) {
+                    $("#rmDiv").html("<p> Sensor removed from room "+roomID+"! </p>");
+                    console.log(result);
+                    $("#removeForm")[0].reset();
+                },
+                error : function(e) {
+                    $("#rmDiv").html("<p style='background-color:red;'> Error! </p>");
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
+    })
