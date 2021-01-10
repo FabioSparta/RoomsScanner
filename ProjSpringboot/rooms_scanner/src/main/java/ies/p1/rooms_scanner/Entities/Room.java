@@ -18,14 +18,12 @@ public class Room {
 
 
     @OneToMany(targetEntity = Sensor.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "sensor_id")
+    @JoinColumn(name = "room_id")
     private List<Sensor> sensorList = new ArrayList<>();
 
-    // room(id, departamento, andar, numLugaresOcupados, maxSeats)
-    public Room() {
-        //sensorList.add();
-        //sensorList.add();
-    }
+
+    public Room() {}
+
     public int getId() {
         return id;
     }
@@ -81,7 +79,9 @@ public class Room {
     public void setSensorList(List<Sensor> sensorList) {
         this.sensorList = sensorList;
     }
+
     public String  toString(){
         return this.department +" " +    this.number;
     }
+
 }

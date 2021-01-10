@@ -16,9 +16,8 @@ public class RoomsService {
     SensorRepository sensorRepo;
 
     public void test() {
-        System.out.println("Before inserting rooms");
+
         Room r1 = new Room();
-        r1.setId(3);
         r1.setDepartment("DETI");
         r1.setFloor(2);
         r1.setDnumber(4);
@@ -27,7 +26,6 @@ public class RoomsService {
 
 
         Room r2 = new Room();
-        r2.setId(4);
         r2.setDnumber(11);
         r2.setDepartment("DMAT");
         r2.setFloor(1);
@@ -55,15 +53,23 @@ public class RoomsService {
     public boolean updateSensorRoom(int roomID,int sensorId) {
         Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
         if(sensorRepo.existsById(sensorId)){
-            System.out.println(r.getSensorList());
             r.getSensorList().add(sensorRepo.getById(sensorId));
-            System.out.println(r.getSensorList());
             repository.save(r);
             return true;
         }
         return false;
     }
 
+    public boolean removeSensorRoom(int roomID,int sensorId) {
+        Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
+        if(sensorRepo.existsById(sensorId)){
+            int i = r.getSensorList().indexOf(sensorRepo.getById(sensorId));
+            r.getSensorList().remove(i);
+            repository.save(r);
+            return true;
+        }
+        return false;
+    }
     public boolean deleteRoom(int id) {
         repository.deleteById(id);
         return true;

@@ -27,15 +27,6 @@ public class RoomsController {
         return "/Rooms-List";
     }
 
-    //Configs Page
-    //@CrossOrigin(origins = "http://localhost:8080")
-    @RequestMapping("/roomsList2")
-    public String getRoomsLists2(Model model) {
-        model.addAttribute("rooms", this.RoomsRepository.findAll());
-        System.out.println(model);
-        System.out.println("aaa");
-        return "/Configurations";
-    }
 
     @RequestMapping("/home")
     public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
