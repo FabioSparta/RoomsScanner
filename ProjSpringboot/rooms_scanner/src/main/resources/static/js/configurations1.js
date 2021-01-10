@@ -18,16 +18,17 @@ GET: $(document).ready(
                     $("#roomsTable").find("tr:gt(0)").remove();
                     $.each(result,
                         function (i, room) {
-                            trHTML += '<tr style="height: 75px;" ><td  class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + room.id +
+                            trHTML += '<tr style="height: 75px;" ><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + room.id +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.department +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.dnumber +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.number +
-                                '</td><td  align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
+                                '</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
                                 '<td  align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
                         });
                     console.log("Success: ", result);
                     $('#records_table').append(trHTML);
                     ActivateDeleteRoom()
+                    ActivateEditRoom()
                 },
                 error: function (e) {
                     $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
@@ -57,7 +58,7 @@ GET: $(document).ready(
                     $("#sensorsTable").find("tr:gt(0)").remove();
                     $.each(result,
                         function (i, sensor) {
-                            trHTML += '<tr style="height: 75px;" ><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + sensor.id +
+                            trHTML += '<tr style="height: 75px;" ><td id="idSelected" class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + sensor.id +
                                 '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.sensorType +
                                 '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.dataCaptured +
                                 '</u> </td><td class="u-border-1 u-border-grey-30 u-table-cell"><u style="color: blue"><i style="color:red;" class="fas fa-trash-alt"></i></u> </td></tr>';
@@ -91,13 +92,25 @@ function ActivateDeleteSensor() {
         };
     }
 }
+//EDIT ROOM
+function ActivateEditRoom() {
+    var table = document.getElementById('roomsTable');
+    for (var i = 1; i < table.rows.length; i++) {
+        table.rows[i].cells[4].onclick = function () {
+            var c = confirm("Do you want to edit this room? ");
+            if (c === true) {
+                ShowConfigForm(this.parentElement.cells[0].textContent);
+            }
+        };
+    }
+}
 
 //DELETE ROOM FROM TABLE
 function ActivateDeleteRoom() {
     var index, table = document.getElementById('roomsTable');
     for (var i = 1; i < table.rows.length; i++) {
         table.rows[i].cells[5].onclick = function () {
-            var c = confirm("do you want to delete this Room");
+            var c = confirm("Do you want to delete this room?");
             if (c === true) {
                 index = this.parentElement.rowIndex;
                 deleted_id = this.parentElement.cells[0].textContent;
@@ -160,7 +173,6 @@ function AjaxDeleteSensor(sensor_id) {
 
 function HideComponents() {
     var table_rooms = document.getElementById('carousel_3133');
-    ;
     var table_sensors = document.getElementById('sec-3e05');
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
@@ -176,7 +188,6 @@ function HideComponents() {
 
 function ShowTableRooms() {
     var table_rooms = document.getElementById('carousel_3133');
-    ;
     var table_sensors = document.getElementById('sec-3e05');
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
@@ -193,7 +204,6 @@ function ShowTableRooms() {
 
 function ShowTableSensors() {
     var table_rooms = document.getElementById('carousel_3133');
-    ;
     var table_sensors = document.getElementById('sec-3e05');
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
@@ -208,15 +218,19 @@ function ShowTableSensors() {
 }
 
 
-function ShowConfigForm() {
+function ShowConfigForm(num) {
     var table_rooms = document.getElementById('carousel_3133');
-    ;
     var table_sensors = document.getElementById('sec-3e05');
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
-    var id = document.getElementById('idSelected').value;
+    var id = null;
 
+    if (num == -1) {
+        id = document.getElementById('idSelected').value;
+    }else{
+        id = num;
+    }
     config_form.style.display = "block";
 
     table_rooms.style.display = "none";

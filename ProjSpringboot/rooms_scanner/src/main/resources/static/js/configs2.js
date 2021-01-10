@@ -45,7 +45,8 @@ $(document).ready(
         $("#editRoomForm").submit(function(event) {
             // Prevent the form from submitting via the browser.
             event.preventDefault();
-            var roomID =  document.getElementById('idSelected').value;
+            var roomID =  document.getElementById('editID').innerText;
+            alert(roomID)
             ajaxPost(roomID);
             ajaxPost1(roomID);
             ajaxPost2(roomID);
@@ -57,7 +58,6 @@ $(document).ready(
                 id:  roomID,
                 maxSeats : $("#seatsEdit").val()
             }
-            alert(roomID)
             // DO POST
             $.ajax({
                 type : "POST",
