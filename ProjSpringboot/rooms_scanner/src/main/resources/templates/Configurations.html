@@ -14,13 +14,26 @@
     <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
     <script src="js/popups.js"></script>
     <script src="js/popups.js"></script>
-    <script src="js/configurations1.js"></script>
-    <script class="u-script" type="text/javascript" th:href="@{/static/js/nicepage.js}" defer=""></script>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+            integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-
+    <script src="https://kit.fontawesome.com/e953ab24de.js" crossorigin="anonymous"></script>
     <script type="application/ld+json">{
         "@context": "http://schema.org",
         "@type": "Organization",
@@ -36,130 +49,95 @@
     <meta property="og:url" content="index.html">
 </head>
 <body onload="HideComponents()" class="u-body">
-<header class="u-clearfix u-header u-header" id="sec-e07c">
-    <div class="u-clearfix u-sheet u-sheet-1" style="margin-top: 20px">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-width: max-content;">
-            <div class="u-custom-menu u-nav-container">
-                <ul class="u-nav u-unstyled u-nav-1">
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{home}" style="padding: 10px 20px;">Home</a>
+<header>
+    <div>
+        <nav class="navbar navbar-expand-lg py-0 navbar navbar-dark bg-dark">
+            <a style="margin-left: 15px " class="navbar-brand" href="/home">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/roomsList">Rooms List <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomsList}" style="padding: 10px 20px;">Rooms List</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/roomReservations">Room Reservations</a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomReservations}" style="padding: 10px 20px;">Room Reservations</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/roomsStatistics">Rooms Statistics</a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomsStatistics}" style="padding: 10px 20px;">Rooms Statistics</a>
+                    <li class="nav-item active ">
+                        <a class="nav-link " href="/configurations">Configurations</a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{configurations}" style="padding: 10px 20px;">Configurations</a></li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{contactUs}" style="padding: 10px 20px;">Contact Us</a></li>
+                    <li class="nav-item active ">
+                        <a class="nav-link " href="/contactUs">Contact Us</a>
+                    </li>
                 </ul>
+                <div style="margin-left: auto; margin-right: 15px" ;>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SignUp</button>
+                </div>
             </div>
         </nav>
-        <a onclick="displayLogin()"
-           class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-1">LOGIN</a>
-        <a onclick="displaySignUp()"
-           class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-2">SIGN UP</a>
     </div>
 </header>
 <section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="256"
          data-image-height="256" id="sec-4b7a">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-default u-title u-text-1">Configurations</h1>
+        <h1  id="fk_title" class="u-text u-text-default u-title u-text-1">Configurations </h1>
         <p class="u-large-text u-text u-text- default u-text-variant u-text-2">Page where an admin can configure the
             rooms information present in the database&nbsp; and sensors</p>
     </div>
 </section>
 <section class="u-align-center u-clearfix u-section-2" id="sec-61d2">
-    <div class="u-form u-form-1">
-        <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
-              style="padding: 15px;" source="custom">
-            <div class="u-form-group u-form-group-1">
-                <label for="text-c24d" class="u-form-control-hidden u-label">
-                    <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
-                       href="">Select a room by id</a>
-                </label>
-                <input type="text" placeholder="Select a room by id" id="text-c24dd" name="text"
-                       class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-            </div>
-            <div class="u-form-group u-form-submit">
-                <a onclick="ShowConfigForm()" href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-            <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-            <input type="hidden" value="" name="recaptchaResponse">
-        </form>
-    </div>
-    <div class="u-form u-form-2">
-        <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
-              style="padding: 10px" source="custom" name="form">
-            <div class="u-align-left u-form-group u-form-submit">
-                <a onclick="ShowTableRooms()" href="#" class="u-btn u-btn-submit u-button-style">Show All</a>
-                <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try
-                again.
-            </div>
-            <input type="hidden" value="" name="recaptchaResponse">
-        </form>
-    </div>
-</section>
-<section class="u-align-center u-clearfix u-section-2" id="sec-61ds2">
-    <div class="u-form u-form-1">
-        <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
-              style="padding: 15px;" source="custom">
-            <div class="u-form-group u-form-group-1">
-                <label for="text-c24d" class="u-form-control-hidden u-label">
-                    <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
-                       href="">Select a sensor by id.</a>
-                </label>
-                <input type="text" placeholder="Select a sensor by id" id="text-c24d" name="text"
-                       class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-            </div>
-            <div class="u-form-group u-form-submit">
-                <a onclick="ShowTableSensors()" href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-            <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-            <input type="hidden" value="" name="recaptchaResponse">
-        </form>
-    </div>
-    <div class="u-form u-form-2">
-        <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
-              style="padding: 10px" source="custom" name="form">
-            <div class="u-align-left u-form-group u-form-submit">
-                <a onclick="ShowTableSensors()" href="#" class="u-btn u-btn-submit u-button-style">Show All</a>
-                <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try
-                again.
-            </div>
-            <input type="hidden" value="" name="recaptchaResponse">
-        </form>
-        <div>
+    <div style="padding-left: 50px; padding-top:70px; alignment: left ;">
+        <div style="alignment: left ;">
+            <form>
+                <div style="display: inline-block; *display: inline; " class="form-group mx-sm-3 mb-2">
+                    <label for="id" class="sr-only">Select a room by id</label>
+                    <input type="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" id="id" placeholder="Select a room by id">
+                </div>
+                <div style="display: inline-block; *display: inline;" >
+                    <button onclick="ShowConfigForm()" type="submit" class="u-btn u-btn-submit u-button-style">Submit</button>
+                </div>
+                <div style="display: inline-block; *display: inline;" >
+                    <a id="getRooms" class="u-btn u-btn-submit u-button-style">Show All</a>
+                </div>
+            </form>
         </div>
     </div>
-    <div>
-        <a onclick="ShowNewRoom()" style="display:inline-block;"
+    <div style="padding-left: 50px; padding-top:10px; alignment: left ;">
+        <div style="alignment: left ;">
+            <form>
+                <div style="display: inline-block; *display: inline; " class="form-group mx-sm-3 mb-2">
+                    <label for="id" class="sr-only">Select a room by id</label>
+                    <input type="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" id="id2" placeholder="Select a room by id">
+                </div>
+                <div style="display: inline-block; *display: inline;" >
+                    <button onclick="ShowTableSensors()" type="submit" class="u-btn u-btn-submit u-button-style">Submit</button>
+                </div>
+                <div style="display: inline-block; *display: inline;" >
+                    <a id="getSensors"  class="u-btn u-btn-submit u-button-style">Show All</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="padding-left: 50px; padding-top:10px; alignment: left ;">
+        <a href="#" onclick="ShowNewRoom()" style="display:inline-block;"
            class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-4">New
             Room</a>
         <a onclick="ShowNewSensor()" style="display:inline-block;"
            class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-5">New
             Sensor</a>
+    </div>
+
+</section>
+<section class="u-align-center u-clearfix u-section-2" id="sec-61ds2">
+
+    <div>
+
     </div>
 
 
@@ -168,7 +146,7 @@
 <section class="u-align-center u-clearfix u-section-4" id="sec-3e05">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <table class="u-table-entity u-table-entity-1">
+            <table id='sensorsTable' class="u-table-entity u-table-entity-1">
                 <colgroup>
                     <col width="24.9%">
                     <col width="21.9%">
@@ -183,50 +161,19 @@
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Delete</th>
                 </tr>
                 </thead>
-                <tbody class="u-table-body">
-                <tr style="height: 75px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-5">0</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">People</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">20</td>
-                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-8"></td>
-                </tr>
-                <tr style="height: 71px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-9">1</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">People</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">20</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                </tr>
-                <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-13">2</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Temperature</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">20</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                </tr>
-                <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-17">3</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Temperature</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">20</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                </tr>
+                <tbody id="sensors_list" class="u-table-body">
                 </tbody>
             </table>
         </div>
-        <span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1"><svg class="u-svg-link"
-                                                                               preserveAspectRatio="xMidYMin slice"
-                                                                               viewBox="0 0 512 512" style=""><use
-                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-524f"></use></svg><svg
-                xmlns="http://www.w3.org/2000/svg" xmln0s:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-524f"><path d="m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0" fill="#f44336"></path><path
-                d="m350.273438 320.105469c8.339843 8.34375 8.339843 21.824219 0 30.167969-4.160157 4.160156-9.621094 6.25-15.085938 6.25-5.460938 0-10.921875-2.089844-15.082031-6.25l-64.105469-64.109376-64.105469 64.109376c-4.160156 4.160156-9.621093 6.25-15.082031 6.25-5.464844 0-10.925781-2.089844-15.085938-6.25-8.339843-8.34375-8.339843-21.824219 0-30.167969l64.109376-64.105469-64.109376-64.105469c-8.339843-8.34375-8.339843-21.824219 0-30.167969 8.34375-8.339843 21.824219-8.339843 30.167969 0l64.105469 64.109376 64.105469-64.109376c8.34375-8.339843 21.824219-8.339843 30.167969 0 8.339843 8.34375 8.339843 21.824219 0 30.167969l-64.109376 64.105469zm0 0"
-                fill="#fafafa"></path></svg></span>
     </div>
 </section>
 <section class="u-align-center u-clearfix u-section-5" id="carousel_3133">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <table class="u-table-entity u-table-entity-1">
+            <table id="roomsTable" class="u-table-entity u-table-entity-1">
                 <colgroup>
-                    <col width="20%">
+                    <col width="5%">
+                    <col width="15%">
                     <col width="17.6%">
                     <col width="22.8%">
                     <col width="19.6%">
@@ -234,6 +181,7 @@
                 </colgroup>
                 <thead class="u-palette-4-base u-table-header u-table-header-1">
                 <tr style="height: 26px;">
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">ID</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Department</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Dnumber</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Room</th>
@@ -241,50 +189,10 @@
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Delete</th>
                 </tr>
                 </thead>
-                <tbody class="u-table-body">
-                <tr style="height: 75px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.02</td>
-                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-9">Edit&nbsp;</td>
-                    <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-10"></td>
-                </tr>
-                <tr style="height: 71px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-11">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.03</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Edit</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                </tr>
-                <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-16">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.04</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Edit</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                </tr>
-                <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-21">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.05</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Edit</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                </tr>
+                <tbody id='records_table' class="u-table-body">
                 </tbody>
             </table>
         </div>
-        <span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1"><svg class="u-svg-link"
-                                                                               preserveAspectRatio="xMidYMin slice"
-                                                                               viewBox="0 0 512 512" style=""><use
-                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-524f"></use></svg><svg
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512" id="svg-524f"><path d="m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0" fill="#f44336"></path><path
-                d="m350.273438 320.105469c8.339843 8.34375 8.339843 21.824219 0 30.167969-4.160157 4.160156-9.621094 6.25-15.085938 6.25-5.460938 0-10.921875-2.089844-15.082031-6.25l-64.105469-64.109376-64.105469 64.109376c-4.160156 4.160156-9.621093 6.25-15.082031 6.25-5.464844 0-10.925781-2.089844-15.085938-6.25-8.339843-8.34375-8.339843-21.824219 0-30.167969l64.109376-64.105469-64.109376-64.105469c-8.339843-8.34375-8.339843-21.824219 0-30.167969 8.34375-8.339843 21.824219-8.339843 30.167969 0l64.105469 64.109376 64.105469-64.109376c8.34375-8.339843 21.824219-8.339843 30.167969 0 8.339843 8.34375 8.339843 21.824219 0 30.167969l-64.109376 64.105469zm0 0"
-                fill="#fafafa"></path></svg></span>
     </div>
 </section>
 <section class="u-align-center u-clearfix u-section-6" id="sec-29f5">
@@ -809,5 +717,7 @@
         width: auto;
     }
 }</style>
+
+<script src="js/configurations1.js"></script>
 </body>
 </html>

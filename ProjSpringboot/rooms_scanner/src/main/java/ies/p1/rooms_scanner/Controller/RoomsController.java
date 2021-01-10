@@ -20,12 +20,22 @@ public class RoomsController {
     @Autowired
     SensorService sensorService;
 
+    //RoomsList Page
     @GetMapping("/roomsList")
     public String getRoomsLists(Model model) {
         model.addAttribute("rooms", this.RoomsRepository.findAll());
         return "/Rooms-List";
     }
 
+    //Configs Page
+    //@CrossOrigin(origins = "http://localhost:8080")
+    @RequestMapping("/roomsList2")
+    public String getRoomsLists2(Model model) {
+        model.addAttribute("rooms", this.RoomsRepository.findAll());
+        System.out.println(model);
+        System.out.println("aaa");
+        return "/Configurations";
+    }
 
     @RequestMapping("/home")
     public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
@@ -50,7 +60,7 @@ public class RoomsController {
         return "/Configurations";
     }
   
-    public List<Rooms> getAllRooms(@RequestParam (required = false) String department, @RequestParam (required = false) int floor) {
+    public List<Room> getAllRooms(@RequestParam (required = false) String department, @RequestParam (required = false) int floor) {
         if (department != null && floor != -1)
             return RoomsRepository.findAllByDepartmentAndAndFloor(department, floor);
         else if (department != null)
@@ -79,8 +89,8 @@ public class RoomsController {
     //TODO: mapear o ESTADO das salas de forma individual ou apresentar essa info na pagina de estatisticas AKA pagina inicial no sistema
 
     @PostMapping("/roomreservations") // form que pede email do responsavel pela reserva, numero de ocupantes da sala, tempo de ocupacao previsto, data+hora, comboBox pra selecionar a sala
-    public String submitBooking(Bookings b, Model model) { //Associar À pagina de login da ua ou apenas simular isso (pedindo o mail e o nome)?
-        model.addAttribute("booking", new Bookings());
+    public String submitBooking(Booking b, Model model) { //Associar À pagina de login da ua ou apenas simular isso (pedindo o mail e o nome)?
+        model.addAttribute("booking", new Booking());
         model.addAttribute("submitted", true);
         return "/Room-Reservations";
     }

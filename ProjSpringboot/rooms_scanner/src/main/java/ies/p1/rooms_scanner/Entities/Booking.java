@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "bookings")
-public class Bookings {
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -24,7 +24,7 @@ public class Bookings {
 
     // bookings(id, departamento(?) -> so a biblioteca -> inserir por default, andar, numOcupantes, emailResponsavel, horaReserva, tempoPrevisto,dataReserva) //data e hora insere a do proprio dia automaticamente
     //nao ha reservas pra dias distintos
-    public Bookings() {}
+    public Booking() {}
 
     public Date getBookingDate() {
         return bookingDate;

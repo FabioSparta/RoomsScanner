@@ -1,7 +1,6 @@
 package ies.p1.rooms_scanner.Service;
 
-import ies.p1.rooms_scanner.Entities.Rooms;
-import ies.p1.rooms_scanner.Entities.Sensor;
+import ies.p1.rooms_scanner.Entities.Room;
 import ies.p1.rooms_scanner.Repository.RoomsRepository;
 import ies.p1.rooms_scanner.Repository.SensorRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
@@ -18,7 +17,7 @@ public class RoomsService {
 
     public void test() {
         System.out.println("Before inserting rooms");
-        Rooms r1 = new Rooms();
+        Room r1 = new Room();
         r1.setId(3);
         r1.setDepartment("DETI");
         r1.setFloor(2);
@@ -27,7 +26,7 @@ public class RoomsService {
         r1.setNumber("04.02.02");
 
 
-        Rooms r2 = new Rooms();
+        Room r2 = new Room();
         r2.setId(4);
         r2.setDnumber(11);
         r2.setDepartment("DMAT");
@@ -39,7 +38,7 @@ public class RoomsService {
         createRoom(r2);
     }
 
-    public boolean createRoom(Rooms room) {
+    public boolean createRoom(Room room) {
         if(repository.existsById(room.getId()))
             return false;
         repository.save(room);
@@ -47,14 +46,14 @@ public class RoomsService {
     }
 
     public boolean updateRoom(int id, int maxSeats) {
-        Rooms r = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + id));
+        Room r = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + id));
         r.setMaxSeats(maxSeats);
         repository.save(r);
         return true;
     }
 
     public boolean updateSensorRoom(int roomID,int sensorId) {
-        Rooms r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
+        Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
         if(sensorRepo.existsById(sensorId)){
             System.out.println(r.getSensorList());
             r.getSensorList().add(sensorRepo.getById(sensorId));
@@ -69,7 +68,7 @@ public class RoomsService {
         repository.deleteById(id);
         return true;
     }
-    public Collection<Rooms> getRooms() {
+    public Collection<Room> getRooms() {
         return repository.findAll();
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "rooms")
-public class Rooms {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -22,7 +22,7 @@ public class Rooms {
     private List<Sensor> sensorList = new ArrayList<>();
 
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
-    public Rooms() {
+    public Room() {
         //sensorList.add();
         //sensorList.add();
     }
@@ -80,5 +80,8 @@ public class Rooms {
 
     public void setSensorList(List<Sensor> sensorList) {
         this.sensorList = sensorList;
+    }
+    public String  toString(){
+        return this.department +" " +    this.number;
     }
 }
