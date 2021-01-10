@@ -30,11 +30,11 @@ public class AdminController {
 
     @GetMapping(value = "/sensors")
     public ResponseEntity<Object> getSensors() {
-            return new ResponseEntity<>(sensorService.getSensors(), HttpStatus.OK);
-
+        return new ResponseEntity<>(sensorService.getSensors(), HttpStatus.OK);
+    }
 
     // ------------------------------------------------ CREATE ------------------------------------
-    @RequestMapping(value = "/rooms", method = RequestMethod.POST)
+    @PostMapping("/rooms")
     public ResponseEntity<Object> createRoom(@RequestBody Room room) {
         if (roomsService.createRoom(room)){
             return new ResponseEntity<>("Room is created successfully", HttpStatus.OK);}
