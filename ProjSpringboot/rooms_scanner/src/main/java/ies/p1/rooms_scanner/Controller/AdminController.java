@@ -8,7 +8,6 @@ import ies.p1.rooms_scanner.Service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,25 +20,18 @@ public class AdminController {
     @Autowired
     RoomsRepository roomsRepository;
 
-    @GetMapping(name="/roomsList", produces="templates/Rooms-List")
-    public ResponseEntity<Object> getRoomsLists(Model model) {
-        model.addAttribute("rooms", this.roomsRepository.findAll());
-        return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
-    }
-
+ 
     // ------------------------------------------------ GET ------------------------------------
-    @RequestMapping(value = "/rooms")
+    @GetMapping("/rooms")
     public ResponseEntity<Object> getRooms() {
-        roomsService.test(); //TODO: retirar no final APENAS PRA TESTES
         return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
     }
 
 
     @GetMapping(value = "/sensors")
     public ResponseEntity<Object> getSensors() {
-        sensorService.test(); // TODO: retirar no final APENAS PRA TESTE
-        return new ResponseEntity<>(sensorService.getSensors(), HttpStatus.OK);
-    }
+            return new ResponseEntity<>(sensorService.getSensors(), HttpStatus.OK);
+
 
     // ------------------------------------------------ CREATE ------------------------------------
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)
@@ -48,6 +40,7 @@ public class AdminController {
             return new ResponseEntity<>("Room is created successfully", HttpStatus.OK);}
         else
             return  new ResponseEntity<>("Room not created", HttpStatus.NOT_ACCEPTABLE);
+
     }
 
     @PostMapping(value = "/sensors")
@@ -75,6 +68,8 @@ public class AdminController {
             return  new ResponseEntity<>("Sensor not updated", HttpStatus.NOT_ACCEPTABLE);
     }
 
+
+
     @PostMapping(value = "/roomSetSensor/{id}")
     public ResponseEntity<Object> updateSensorRoom(@PathVariable("id") int id,@RequestBody Sensor s) {
         if (roomsService.updateSensorRoom(id,s.getId()))
@@ -84,17 +79,17 @@ public class AdminController {
     }
 
     // ------------------------------------------------ DELETE ------------------------------------
-    @RequestMapping(value = "/sensors/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> deleteSensor(@PathVariable("id") int id) {
-        if (sensorService.deleteSensor(id))
+   @PostMapping(value = "/deleteSensor")
+    public ResponseEntity<Object> deleteSensor(@RequestBody Sensor s) {
+        if (sensorService.deleteSensor(s.getId()))
             return new ResponseEntity<>("Sensor deleted successfully", HttpStatus.OK);
         else
             return  new ResponseEntity<>("Sensor not deleted", HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> deleteRoom(@PathVariable("id") int id) {
-        if (roomsService.deleteRoom(id))
+    @PostMapping(value = "/deleteRoom")
+    public ResponseEntity<Object> deleteRoom(@RequestBody Room room) {
+        if (roomsService.deleteRoom(room.getId()))
             return new ResponseEntity<>("Room deleted successfully", HttpStatus.OK);
         else
             return  new ResponseEntity<>("Room not deleted", HttpStatus.NOT_ACCEPTABLE);
@@ -107,5 +102,4 @@ public class AdminController {
         else
             return  new ResponseEntity<>("Sensor "+s.getId()+" was not removed from room "+id+"", HttpStatus.NOT_ACCEPTABLE);
     }
-
 }

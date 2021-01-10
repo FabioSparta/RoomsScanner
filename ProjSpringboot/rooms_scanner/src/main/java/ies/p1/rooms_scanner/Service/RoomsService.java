@@ -16,6 +16,7 @@ public class RoomsService {
     SensorRepository sensorRepo;
 
     public void test() {
+
         Room r1 = new Room();
         r1.setDepartment("DETI");
         r1.setFloor(2);

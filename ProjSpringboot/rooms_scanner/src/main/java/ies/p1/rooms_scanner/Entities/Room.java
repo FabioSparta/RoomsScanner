@@ -21,8 +21,9 @@ public class Room {
     @JoinColumn(name = "room_id")
     private List<Sensor> sensorList = new ArrayList<>();
 
-    // room(id, departamento, andar, numLugaresOcupados, maxSeats)
+
     public Room() {}
+
     public int getId() {
         return id;
     }
@@ -78,4 +79,9 @@ public class Room {
     public void setSensorList(List<Sensor> sensorList) {
         this.sensorList = sensorList;
     }
+
+    public String  toString(){
+        return this.department +" " +    this.number;
+    }
+
 }

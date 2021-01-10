@@ -20,11 +20,13 @@ public class RoomsController {
     @Autowired
     SensorService sensorService;
 
+    //RoomsList Page
     @GetMapping("/roomsList")
     public String getRoomsLists(Model model) {
         model.addAttribute("rooms", this.RoomsRepository.findAll());
         return "/Rooms-List";
     }
+
 
     @RequestMapping("/home")
     public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
@@ -78,8 +80,8 @@ public class RoomsController {
     //TODO: mapear o ESTADO das salas de forma individual ou apresentar essa info na pagina de estatisticas AKA pagina inicial no sistema
 
     @PostMapping("/roomreservations") // form que pede email do responsavel pela reserva, numero de ocupantes da sala, tempo de ocupacao previsto, data+hora, comboBox pra selecionar a sala
-    public String submitBooking(Bookings b, Model model) { //Associar À pagina de login da ua ou apenas simular isso (pedindo o mail e o nome)?
-        model.addAttribute("booking", new Bookings());
+    public String submitBooking(Booking b, Model model) { //Associar À pagina de login da ua ou apenas simular isso (pedindo o mail e o nome)?
+        model.addAttribute("booking", new Booking());
         model.addAttribute("submitted", true);
         return "/Room-Reservations";
     }
