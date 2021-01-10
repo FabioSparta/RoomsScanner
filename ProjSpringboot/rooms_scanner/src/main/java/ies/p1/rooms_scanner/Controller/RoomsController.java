@@ -26,7 +26,6 @@ public class RoomsController {
         return "/Rooms-List";
     }
 
-
     @RequestMapping("/home")
     public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
         return "/index";
@@ -50,7 +49,7 @@ public class RoomsController {
         return "/Configurations";
     }
   
-    public List<Rooms> getAllRooms(@RequestParam (required = false) String department, @RequestParam (required = false) int floor) {
+    public List<Room> getAllRooms(@RequestParam (required = false) String department, @RequestParam (required = false) int floor) {
         if (department != null && floor != -1)
             return RoomsRepository.findAllByDepartmentAndAndFloor(department, floor);
         else if (department != null)

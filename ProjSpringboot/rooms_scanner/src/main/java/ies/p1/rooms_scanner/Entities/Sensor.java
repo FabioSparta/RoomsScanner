@@ -6,10 +6,9 @@ import javax.persistence.*;
 @Table(name = "sensors")
 public class Sensor  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int DataCaptured;
-    private String SensorType;
+    private int dataCaptured;
+    private String sensorType;
 
     public Sensor() {
     }
@@ -23,18 +22,18 @@ public class Sensor  {
     }
 
     public int getDataCaptured() {
-        return DataCaptured;
+        return dataCaptured;
     }
 
     public void setDataCaptured(int dataCaptured) {
-        DataCaptured = dataCaptured;
+        this.dataCaptured = dataCaptured;
     }
 
     public String getSensorType() {
-        return SensorType;
+        return sensorType;
     }
 
     public void setSensorType(String sensorType) {
-        SensorType = sensorType;
+        this.sensorType = sensorType;
     }
 }
