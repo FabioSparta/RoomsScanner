@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<div class="row justify-content-center">
+    <div class="col col-md5 text-center">
+        <form method="post" th:action="@{/register}" th:object="${users}">
+            <h1 class="display-4">Sign Up</h1>
+
+            <div class="form-row py-1">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" th:value="*{email}" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-row py-1">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" th:value="*{password}" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-row py-1">
+                <label>Username</label>
+                <input type="text" class="form-control" name="lastname" th:value="*{username}" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-row py-1">
+                <label>NMec</label>
+                <input type="text" class="form-control" name="nmecUser" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('nmecUser')}" th:errors="*{nmecUser}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-row py-1">
+                <label>Role</label>
+                <input type="text" class="form-control" name="role" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="form-row py-1">
+                <button type="submit" class="btn btn info btn-block">
+                    Create your account
+                </button>
+            </div>
+        </form>
+        <p class="py-2">Already have an account?<a href="/login"> SignIn</a></p>
+    </div>
+</div>
