@@ -1,5 +1,6 @@
 package ies.p1.rooms_scanner.Controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import ies.p1.rooms_scanner.Entities.Room;
 import ies.p1.rooms_scanner.Entities.Sensor;
 import ies.p1.rooms_scanner.Repository.RoomsRepository;
@@ -40,7 +41,6 @@ public class AdminController {
             return new ResponseEntity<>("Room is created successfully", HttpStatus.OK);}
         else
             return  new ResponseEntity<>("Room not created", HttpStatus.NOT_ACCEPTABLE);
-
     }
 
     @PostMapping(value = "/sensors")
@@ -102,4 +102,20 @@ public class AdminController {
         else
             return  new ResponseEntity<>("Sensor "+s.getId()+" was not removed from room "+id+"", HttpStatus.NOT_ACCEPTABLE);
     }
+
+
+    // ------------------------------------------------ FILTER SEARCH  ------------------------------------
+
+    @PostMapping("/filterRooms")
+    public ResponseEntity<Object> filterRoom(@RequestBody Room room) {
+        if (!room.getDepartment().equals("Department") && room.getFloor() != -1) {
+            return new ResponseEntity<>(roomsService.getRoomByDepartmentAndFloor(room.getDepartment(), room.getFloor()), HttpStatus.OK);
+        } else if (!room.getDepartment().equals("Department")){
+            return new ResponseEntity<>(roomsService.getRoomByDepartment(room.getDepartment()), HttpStatus.OK);
+        } else if (room.getFloor() != -1) {
+            return new ResponseEntity<>(roomsService.getRoomByFloor(room.getFloor()), HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
+    }
+
 }

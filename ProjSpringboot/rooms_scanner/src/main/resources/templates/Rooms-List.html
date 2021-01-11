@@ -13,7 +13,7 @@
     <link rel="stylesheet" th:href="@{/css/Rooms-List.css}" media="screen">
     <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
     <script src="js/popups.js"></script>
-    <script class="u-script" type="text/javascript" th:href="@{/static/js/nicepage.js}" defer=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -72,8 +72,8 @@
                     </li>
                 </ul>
                 <div style="margin-left: auto; margin-right: 15px"; >
-                    <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-                    <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">SignUp</button>
+                    <button onclick="displayLogin()" class="btn btn-outline-success my-2 my-sm-0">Login</button>
+                    <button onclick="displaySignUp()" class="btn btn-outline-success my-2 my-sm-0" >SignUp</button>
                 </div>
             </div>
         </nav>
@@ -91,19 +91,17 @@
 <section class="u-align-center u-clearfix u-section-2" id="sec-61d2">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-form u-form-1">
-            <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+            <form id="filter_form" method="post"   class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
                   style="padding: 15px;" source="custom">
                 <div class="u-form-group u-form-select u-form-group-1">
-                    <label for="select-f130" class="u-form-control-hidden u-label">
-                        <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
-                           href="https://nicepage.com">Selecionar Department2 1 Department2 2 Department3 3</a>
-                    </label>
                     <div class="u-form-select-wrapper">
-                        <select style="width: 200px" id="select-f130" name="select"
+                        <select id="filter_department" style="width: 200px"  name="select"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-                            <option value="Item 1">Item 1</option>
-                            <option value="Item 2">Item 2</option>
-                            <option value="Item 3">Item 3</option>
+                            <option value="Department">Department</option>
+                            <option value="DMAT">DMAT</option>
+                            <option value="DETI">DETI</option>
+                            <option value="DGEO">DGEO</option>
+                            <option value="DBIO">DBIO</option>
                         </select>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
                             <path fill="currentColor" d="M4 8L0 4h8z"></path>
@@ -111,13 +109,13 @@
                     </div>
                 </div>
                 <div class="u-form-group u-form-select u-form-group-2">
-                    <label for="select-50c8" class="u-form-control-hidden u-label">Selecionar</label>
                     <div class="u-form-select-wrapper">
-                        <select style="width: 200px" id="select-50c8" name="select-1"
+                        <select id="filter_floor"  style="width: 200px"  name="select-1"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-                            <option value="Item 1">Item 1</option>
-                            <option value="Item 2">Item 2</option>
-                            <option value="Item 3">Item 3</option>
+                            <option value="-1">Floor</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
                         </select>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
                             <path fill="currentColor" d="M4 8L0 4h8z"></path>
@@ -125,12 +123,8 @@
                     </div>
                 </div>
                 <div class="u-form-group u-form-submit">
-                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                    <input type="submit" value="submit" class="u-form-control-hidden">
+                    <input class="u-btn u-btn-submit u-button-style" type="submit" value="Submit"/>
                 </div>
-                <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-                <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-                <input type="hidden" value="" name="recaptchaResponse">
             </form>
         </div>
     </div>
@@ -138,7 +132,7 @@
 <section class="u-align-center u-clearfix u-section-3" id="sec-3e05">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <table class="u-table-entity u-table-entity-1">
+            <table id="roomsTable" class="u-table-entity u-table-entity-1">
                 <colgroup>
                     <col width="20%">
                     <col width="17.6%">
@@ -155,28 +149,13 @@
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Temperature</th>
                 </tr>
                 </thead>
-                <tbody class="u-table-body">
-                <th:block th:each="room : ${rooms}">
-                    <tr style="height: 75px;">
-                        <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6"
-                            th:text="${room.department}">...
-                        </td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${room.dnumber}">...</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:text="${room.number}">...</td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"
-                            th:text="${room.sensorList.size()} > 0  ? ${room.sensorList[0].DataCaptured} + '/' + ${room.maxSeats} : 'No sensor'">
-                            ...
-                        </td>
-                        <td class="u-border-1 u-border-grey-30 u-table-cell"
-                            th:text="${room.sensorList.size()} > 1  ? ${room.sensorList[1].DataCaptured} + ' ºC' : 'No sensor'">
-                            ...
-                        </td>
-                    </tr>
-                </th:block>
+                <tbody id="table_body" class="u-table-body">
+
                 </tbody>
             </table>
         </div>
     </div>
+    <div id="some_error" class="u-form-send-message u-form-send-success"></div>
 </section>
 
 
@@ -550,5 +529,7 @@
         width: auto;
     }
 }</style>
+
+<script src="js/rooms_list.js"></script>
 </body>
 </html>
