@@ -9,5 +9,6 @@ public interface RoomsRepository extends  JpaRepository<Room,Integer>{
     //@Query(value = "SELECT i FROM Rooms i ")
     List<Room> findAll();
     List<Room> findAllByDepartment(String department);
-    List<Room> findAllByDepartmentAndAndFloor(String department, int floor);
+    List<Room> findAllByFloor(int floor);
+    List<Room> findAllByDepartmentAndFloor(String department, int floor);
 }

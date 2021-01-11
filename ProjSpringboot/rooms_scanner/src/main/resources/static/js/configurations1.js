@@ -23,7 +23,7 @@ GET: $(document).ready(
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.dnumber +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.number +
                                 '</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
-                                '<td  align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
+                                '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
                         });
                     console.log("Success: ", result);
                     $('#records_table').append(trHTML);
