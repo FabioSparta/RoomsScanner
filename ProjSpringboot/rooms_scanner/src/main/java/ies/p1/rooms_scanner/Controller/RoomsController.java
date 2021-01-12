@@ -22,8 +22,7 @@ public class RoomsController {
 
     //RoomsList Page
     @RequestMapping("/roomsList")
-    public String getRoomsLists() { return "/Rooms-List";
-    }
+    public String getRoomsLists() { return "/Rooms-List";}
 
 
 

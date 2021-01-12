@@ -21,19 +21,35 @@ public class AdminController {
     @Autowired
     RoomsRepository roomsRepository;
 
- 
-    // ------------------------------------------------ GET ------------------------------------
-    @GetMapping("/rooms")
-    public ResponseEntity<Object> getRooms() {
-        return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
-    }
 
+    // ------------------------------------------------ GET ------------------------------------
+    @GetMapping(value = "/rooms")
+    public ResponseEntity<Object> getRooms(@RequestParam(required = false,defaultValue ="") String id) {
+        if(id.equals("")) return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
+        try {
+            int roomID = Integer.parseInt(id);
+            Room r = roomsService.getRoomById(roomID);
+            if (r == null)
+                return new ResponseEntity<>("Error, room not found!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(r, HttpStatus.OK);
+        } catch (Exception e){
+            return  new ResponseEntity<>("Error with room id", HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping(value = "/sensors")
-    public ResponseEntity<Object> getSensors() {
-        return new ResponseEntity<>(sensorService.getSensors(), HttpStatus.OK);
+    public ResponseEntity<Object> getSensors(@RequestParam(required = false,defaultValue ="") String id) {
+        if(id.equals("")) return new ResponseEntity<>(sensorService.getSensors(), HttpStatus.OK);
+        try {
+            int sensorID = Integer.parseInt(id);
+            Sensor s = sensorService.getSensorsById(sensorID);
+            if (s == null)
+                return new ResponseEntity<>("Error, sensor not found!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(s, HttpStatus.OK);
+        } catch (Exception e){
+            return  new ResponseEntity<>("Error with sensor id", HttpStatus.NOT_FOUND);
+        }
     }
-
     // ------------------------------------------------ CREATE ------------------------------------
     @PostMapping("/rooms")
     public ResponseEntity<Object> createRoom(@RequestBody Room room) {

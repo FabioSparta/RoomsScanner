@@ -157,6 +157,6 @@ public class SensorService {
         return repository.findAll();
     }
     public Sensor getSensorsById(int id) {
-        return repository.getById(id);
+        return repository.getSensorById(id);
     }
 }
