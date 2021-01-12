@@ -68,7 +68,7 @@ public class AdminController {
     }
 
     // ------------------------------------------------ UPDATE ------------------------------------
-    @PostMapping(value = "/roomsEdit")
+    @PutMapping(value = "/roomsEdit")
     public ResponseEntity<Object> updateRoom(@RequestBody Room room) {
         if (roomsService.updateRoom(room.getId(),room.getMaxSeats()))
             return new ResponseEntity<>("Room is updated successfully", HttpStatus.OK);
@@ -76,15 +76,13 @@ public class AdminController {
             return  new ResponseEntity<>("Room not updated", HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PostMapping(value = "/sensorsEdit")
+    @PutMapping(value = "/sensorsEdit")
     public ResponseEntity<Object> updateSensorData(@RequestBody Sensor s) {
         if (sensorService.updateSensor(s.getId(),s.getDataCaptured()))
             return new ResponseEntity<>("Sensor is updated successfully", HttpStatus.OK);
         else
             return  new ResponseEntity<>("Sensor not updated", HttpStatus.NOT_ACCEPTABLE);
     }
-
-
 
     @PostMapping(value = "/roomSetSensor/{id}")
     public ResponseEntity<Object> updateSensorRoom(@PathVariable("id") int id,@RequestBody Sensor s) {
@@ -95,17 +93,17 @@ public class AdminController {
     }
 
     // ------------------------------------------------ DELETE ------------------------------------
-   @PostMapping(value = "/deleteSensor")
-    public ResponseEntity<Object> deleteSensor(@RequestBody Sensor s) {
-        if (sensorService.deleteSensor(s.getId()))
+   @DeleteMapping(value = "/deleteSensor/{id}")
+    public ResponseEntity<Object> deleteSensor(@PathVariable("id") int id) {
+        if (sensorService.deleteSensor(id))
             return new ResponseEntity<>("Sensor deleted successfully", HttpStatus.OK);
         else
             return  new ResponseEntity<>("Sensor not deleted", HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PostMapping(value = "/deleteRoom")
-    public ResponseEntity<Object> deleteRoom(@RequestBody Room room) {
-        if (roomsService.deleteRoom(room.getId()))
+    @DeleteMapping(value = "/deleteRoom/{id}")
+    public ResponseEntity<Object> deleteRoom(@PathVariable("id") int id) {
+        if (roomsService.deleteRoom(id))
             return new ResponseEntity<>("Room deleted successfully", HttpStatus.OK);
         else
             return  new ResponseEntity<>("Room not deleted", HttpStatus.NOT_ACCEPTABLE);

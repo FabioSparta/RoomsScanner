@@ -100,7 +100,7 @@ $(document).ready(
             }
             // DO POST
             $.ajax({
-                type : "POST",
+                type : "PUT",
                 contentType : "application/json",
                 url : "roomsEdit",
                 data : JSON.stringify(formData),
