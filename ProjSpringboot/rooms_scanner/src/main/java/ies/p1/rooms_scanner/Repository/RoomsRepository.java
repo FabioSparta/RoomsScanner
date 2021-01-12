@@ -7,6 +7,7 @@ import java.util.*;
 public interface RoomsRepository extends  JpaRepository<Room,Integer>{
     List<Room> findAll();
     List<Room> findAllByDepartment(String department);
-    List<Room> findAllByDepartmentAndAndFloor(String department, int floor);
+    List<Room> findAllByFloor(int floor);
+    List<Room> findAllByDepartmentAndFloor(String department, int floor);
     Room getRoomsById (int id);
 }

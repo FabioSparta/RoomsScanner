@@ -21,11 +21,9 @@ public class RoomsController {
     SensorService sensorService;
 
     //RoomsList Page
-    @GetMapping("/roomsList")
-    public String getRoomsLists(Model model) {
-        model.addAttribute("rooms", this.RoomsRepository.findAll());
-           return "/Rooms-List";
-    }
+    @RequestMapping("/roomsList")
+    public String getRoomsLists() { return "/Rooms-List";}
+
 
 
     @RequestMapping("/home")
@@ -50,15 +48,9 @@ public class RoomsController {
    public String getConfigurations(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
         return "/Configurations";
     }
-  
-    public List<Room> getAllRooms(@RequestParam (required = false) String department, @RequestParam (required = false) int floor) {
-        if (department != null && floor != -1)
-            return RoomsRepository.findAllByDepartmentAndAndFloor(department, floor);
-        else if (department != null)
-            return RoomsRepository.findAllByDepartment(department);
-        else
-            return RoomsRepository.findAll();
-    }
+
+
+
 
 
     

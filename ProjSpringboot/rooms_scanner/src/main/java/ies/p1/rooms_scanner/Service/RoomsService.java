@@ -77,7 +77,10 @@ public class RoomsService {
     public Collection<Room> getRooms() {
         return repository.findAll();
     }
-    public Room getRoomById(int id) {
-        return repository.getRoomsById(id);
-    }
+
+    public Room getRoomById(int id) {return repository.getRoomsById(id);}
+    public Collection<Room> getRoomByDepartment(String dept){ return repository.findAllByDepartment(dept);}
+    public Collection<Room> getRoomByFloor(int floor){ return repository.findAllByFloor(floor);}
+    public Collection<Room> getRoomByDepartmentAndFloor(String dept,int floor){ return repository.findAllByDepartmentAndFloor(dept,floor);}
+
 }

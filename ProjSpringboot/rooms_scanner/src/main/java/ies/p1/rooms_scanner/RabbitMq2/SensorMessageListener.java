@@ -15,7 +15,7 @@ public class SensorMessageListener {
     SensorService sensorService;
     private static final Logger log = LoggerFactory.getLogger(SensorMessageListener.class);
 
-    // Number of Peoplle
+    // Number of People
     @RabbitListener(queues = MessagingApplication.QUEUE_GENERIC_NAME2)
     public void receiveMessage(final Message message) {
         //log.info("Received message as generic: {}", message.toString());
