@@ -24,38 +24,38 @@ GET: $(document).ready(
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.number +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.maxSeats;
 
-                            if(room.sensorList.length > 0) {
-                                if(room.sensorList[0].dataCaptured >= room.maxSeats){
-                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id +
-                                        '</td>';
-                                }
-                                else if (room.sensorList[0].dataCaptured ==0){
-                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id +
-                                        '</td>';
-                                }
-                                else{
-                                    console.log("smaller than limit");
-                                    trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id+
-                                        '</td>';
-                                }
-                            }
-                            else{
+                            //Sort by sensorType
+                            room.sensorList = room.sensorList.sort((a,b) => {
+                                if(a.sensorType > b.sensorType){
+                                    return 1
+                                } else{
+                                return -1
+                            }});
+
+                            //Fill Table
+                            if(room.sensorList.length < 1) {
                                 trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td>';
                             }
-                            if(room.sensorList.length > 1) {
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[1].id +
+                            else if(room.sensorList.length < 2 && room.sensorList[0].sensorType == "PeopleCounter"){
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">'  + room.sensorList[0].id +
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td>';
+                            }
+                            else if(room.sensorList.length <2  && room.sensorList[0].sensorType == "Temperature"){
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' +  room.sensorList[0].id +
                                     '</td>';
                             }
                             else{
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id+
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' +  room.sensorList[1].id +
                                     '</td>';
                             }
                             trHTML+='</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
                                 '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
-                        });
-
-
+                    });
                     console.log("Success: ", result);
                     $('#records_table').append(trHTML);
                     ActivateDeleteRoom();
