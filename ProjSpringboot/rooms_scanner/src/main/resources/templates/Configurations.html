@@ -146,7 +146,7 @@
                     <col width="24.800000000000004%">
                 </colgroup>
                 <thead class="u-palette-4-base u-table-header u-table-header-1">
-                <tr style="height: 26px;">
+                <tr  align="center" style="height: 26px;">
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Sensor ID</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Type</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Last Captured Value</th>
@@ -164,12 +164,15 @@
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
             <table id="roomsTable" class="u-table-entity u-table-entity-1">
                 <colgroup>
-                    <col width="5%">
-                    <col width="15%">
-                    <col width="17.6%">
-                    <col width="22.8%">
-                    <col width="19.6%">
-                    <col width="20%">
+                    <col width="9%">
+                    <col width="12%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
+                    <col width="11%">
                 </colgroup>
                 <thead class="u-palette-4-base u-table-header u-table-header-1">
                 <tr align="center" style="height: 26px;">
@@ -177,6 +180,9 @@
                     <th>Department</th>
                     <th>Dnumber</th>
                     <th>Room</th>
+                    <th>Max Seats</th>
+                    <th>People Sensor</th>
+                    <th>Temperature Sensor</th>
                     <th>Edit room</th>
                     <th>Delete</th>
                 </tr>
@@ -354,17 +360,7 @@
         </p>
     </div>
 </footer>
-<section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-    </a>
-    <p class="u-text">
-        <span>created with</span>
-    </p>
-    <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
-        <span>HTML Website Builder</span>
-    </a>.
-</section>
+
 <section
         class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-section-11"
         id="sec-e252">
@@ -401,7 +397,7 @@
                    href="#sec-f378">Don't have an account yet? Create One!</a>
             </p>
         </div>
-        <button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
+        <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
             <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style="">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use>
             </svg>
@@ -566,7 +562,7 @@
                    href="#sec-e252">Already have an account? Click here to Login In</a>
             </p>
         </div>
-        <button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
+        <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
             <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style="">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use>
             </svg>

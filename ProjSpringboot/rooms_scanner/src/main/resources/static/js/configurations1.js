@@ -22,9 +22,42 @@ GET: $(document).ready(
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.department +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.dnumber +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.number +
-                                '</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
+                                '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.maxSeats;
+
+                            if(room.sensorList.length > 0) {
+                                if(room.sensorList[0].dataCaptured >= room.maxSeats){
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:red">' + room.sensorList[0].id +
+                                        '</p></td>';
+                                }
+                                else if (room.sensorList[0].dataCaptured ==0){
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:green">' + room.sensorList[0].id +
+                                        '</p></td>';
+                                }
+                                else{
+                                    console.log("smaller than limit");
+                                    trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id+
+                                        '</td>';
+                                }
+                            }
+                            else{
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td>';
+                            }
+                            if(room.sensorList.length > 1) {
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[1].id +
+                                    '</td>';
+                            }
+                            else{
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td>';
+                            }
+                            trHTML+='</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
                                 '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
+
+
                         });
+
+
                     console.log("Success: ", result);
                     $('#records_table').append(trHTML);
                     ActivateDeleteRoom()
@@ -58,10 +91,10 @@ GET: $(document).ready(
                     $("#sensorsTable").find("tr:gt(0)").remove();
                     $.each(result,
                         function (i, sensor) {
-                            trHTML += '<tr style="height: 75px;" ><td id="idSelected" class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + sensor.id +
-                                '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.sensorType +
-                                '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.dataCaptured +
-                                '</u> </td><td class="u-border-1 u-border-grey-30 u-table-cell"><u style="color: blue"><i style="color:red;" class="fas fa-trash-alt"></i></u> </td></tr>';
+                            trHTML += '<tr style="height: 75px;" ><td id="idSelected" align="center" class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + sensor.id +
+                                '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.sensorType +
+                                '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.dataCaptured +
+                                '</u> </td><td align="center" align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
                         });
                     console.log("Success: ", result);
                     $('#sensors_list').append(trHTML);
