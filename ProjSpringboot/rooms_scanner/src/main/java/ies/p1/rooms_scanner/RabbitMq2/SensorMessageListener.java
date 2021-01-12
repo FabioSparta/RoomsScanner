@@ -34,6 +34,7 @@ public class SensorMessageListener {
     @RabbitListener(queues = MessagingApplication.QUEUE_SPECIFIC_NAME3)
     public void receiveMessage2(final SensorMessage sensorMessage) {
         log.info("Received message as specific class: {}", sensorMessage.toString());
+        sensorService.updateSensor(sensorMessage.getId(),sensorMessage.getData());
     }
 
 

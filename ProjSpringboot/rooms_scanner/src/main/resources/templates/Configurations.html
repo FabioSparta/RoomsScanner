@@ -137,7 +137,7 @@
 
 </section>
 
-<section class="u-align-center u-clearfix u-section-4" id="sec-3e05">
+<section class="u-align-center u-clearfix u-section-4"  style="padding-bottom: 5%" id="sec-3e05">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
             <table id='sensorsTable' class="u-table-entity u-table-entity-1">
@@ -161,7 +161,7 @@
         </div>
     </div>
 </section>
-<section class="u-align-center u-clearfix u-section-5" id="carousel_3133">
+<section class="u-align-center u-clearfix u-section-5"  style="padding-bottom: 5%" id="carousel_3133">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
             <table id="roomsTable" class="u-table-entity u-table-entity-1">
@@ -223,7 +223,7 @@
                            class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-form-group-6">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="u-btn u-btn-submit u-button-style">Submit</button>
                 </div>
                 <input type="hidden" value="" name="recaptchaResponse">
             </form>
@@ -235,49 +235,53 @@
     </div>
 </section>
 <section class="u-align-center u-clearfix u-section-7" id="carousel_ad56">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <p class="u-text u-text-default u-text-1">Edit Room:</p>
-        <p class="u-text u-text-default u-text-2" id="editID">Number...</p>
-        <p class="u-text u-text-default u-text-3">Temperature Sensor</p>
-        <p class="u-text u-text-default u-text-4">Occupancy Sensor</p>
-        <p class="u-text u-text-default u-text-5">Max Seats</p>
-        <div class="u-form u-form-1">
-            <form action="#" method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
-                  style="padding: 15px;" source="custom" name="form" id="editRoomForm">
-                <div class="u-form-group u-form-name u-form-group-1">
-                    <label for="seatsEdit" class="u-form-control-hidden u-label"></label>
-                    <input type="text" placeholder="max seats" id="seatsEdit" name="name"
-                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
-                </div>
-                <div class="u-form-email u-form-group u-form-group-2">
-                    <label for="x" class="u-form-control-hidden u-label"></label>
-                    <input type="text"  id="x" name="text-2" class="u-form-control-hidden">
-                </div>
-                <div class="u-form-group u-form-group-4">
-                </div>
-                <div class="u-form-group u-form-group-3">
-                    <label for="tempEdit" class="u-form-control-hidden u-label"></label>
-                    <input type="text" placeholder="temperature sensor id" id="tempEdit" name="text-2"
-                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-                </div>
-                <div class="u-form-group u-form-group-5">
-                    <label for="peopleEdit" class="u-form-control-hidden u-label"></label>
-                    <input type="text" placeholder="occupancy sensor id" id="peopleEdit" name="text-1"
-                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-                </div>
-                <div class="u-align-left u-form-group u-form-submit u-form-group-6">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                <input type="hidden" value="" name="recaptchaResponse">
-            </form>
+    <form id="editForm" style="padding-bottom: 3%;" method="POST">
+        <div class="row" style="padding-bottom: 1%;">
+            <div class="col-md-3 offset-md-2">
+                <label class="col-form-label col-form-label-lg">Edit room: </label>
+                <label id="editID"  class="col-form-label col-form-label-lg">number ...</label>
+            </div>
         </div>
-        <p class="u-text u-text-default u-text-6"></p>
-        <p class="u-form-control-hidden u-label"></p>
-    </div>
-    </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-2">
+                <label for="seatsEdit" class="col-form-label col-form-label-lg">Max Seats:</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="seatsEdit" class="form-control mb-2 mr-sm-2" placeholder="max seats">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-2">
+                <label for="tempEdit" class="col-form-label col-form-label-lg">Temperature Sensor:</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="tempEdit" class="form-control mb-2 mr-sm-2" placeholder="temperature id">
+            </div>
+            <div class="col-md-2 text-center">
+                <button type="submit" value="rmTemp"  class="btn btn-danger"> Remove </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-2">
+                <label for="peopleEdit" class="col-form-label col-form-label-lg">Occupancy Sensor:</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="peopleEdit" class="form-control mb-2 mr-sm-2" placeholder="occupancy id">
+            </div>
+            <div class="col-md-2 text-center">
+                <button type="submit" value="rmPeop" class="btn btn-danger"> Remove </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-5">
+                <button type="submit" value="update" style="color: white; background-color: dodgerblue" class="btn"> Update </button>
+            </div>
+        </div>
+    </form>
     <div id="editRoomdiv" class="u-form-send-message u-form-send-success"></div>
     <div id="editRoomdiv2" class="u-form-send-message u-form-send-success"></div>
     <div id="editRoomdiv3" class="u-form-send-message u-form-send-success"></div>
+    <div id="editRoomdiv4" class="u-form-send-message u-form-send-success"></div>
 </section>
 <section class="u-align-center u-clearfix u-section-8" id="carousel_8ccf">
     <div class="u-clearfix u-sheet u-sheet-1">
@@ -305,7 +309,7 @@
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-form-group-3">
                     <div class="u-align-left u-form-group u-form-submit u-form-group-6">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="u-btn u-btn-submit u-button-style">Submit</button>
                     </div>
                 </div>
                 <input type="hidden" value="" name="recaptchaResponse">

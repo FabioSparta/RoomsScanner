@@ -24,7 +24,7 @@ public class RoomsController {
     @GetMapping("/roomsList")
     public String getRoomsLists(Model model) {
         model.addAttribute("rooms", this.RoomsRepository.findAll());
-        return "/Rooms-List";
+           return "/Rooms-List";
     }
 
 

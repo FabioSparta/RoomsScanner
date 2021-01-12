@@ -1,6 +1,6 @@
 package ies.p1.rooms_scanner.Service;
-
 import ies.p1.rooms_scanner.Entities.Room;
+import ies.p1.rooms_scanner.Entities.Sensor;
 import ies.p1.rooms_scanner.Repository.RoomsRepository;
 import ies.p1.rooms_scanner.Repository.SensorRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
@@ -53,7 +53,7 @@ public class RoomsService {
     public boolean updateSensorRoom(int roomID,int sensorId) {
         Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
         if(sensorRepo.existsById(sensorId)){
-            r.getSensorList().add(sensorRepo.getById(sensorId));
+            r.getSensorList().add(sensorRepo.getSensorById(sensorId));
             repository.save(r);
             return true;
         }
@@ -63,7 +63,7 @@ public class RoomsService {
     public boolean removeSensorRoom(int roomID,int sensorId) {
         Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
         if(sensorRepo.existsById(sensorId)){
-            int i = r.getSensorList().indexOf(sensorRepo.getById(sensorId));
+            int i = r.getSensorList().indexOf(sensorRepo.getSensorById(sensorId));
             r.getSensorList().remove(i);
             repository.save(r);
             return true;
@@ -76,5 +76,8 @@ public class RoomsService {
     }
     public Collection<Room> getRooms() {
         return repository.findAll();
+    }
+    public Room getRoomById(int id) {
+        return repository.getRoomsById(id);
     }
 }

@@ -82,7 +82,7 @@ function ActivateDeleteSensor() {
     for (var i = 1; i < table.rows.length; i++) {
         console.log(table.rows[i].cells[0].textContent);
         table.rows[i].cells[3].onclick = function () {
-            var c = confirm("do you want to delete this row");
+            var c = confirm("Do you want to delete this row?");
             if (c === true) {
                 index = this.parentElement.rowIndex;
                 deleted_id = this.parentElement.cells[0].textContent;
@@ -97,10 +97,7 @@ function ActivateEditRoom() {
     var table = document.getElementById('roomsTable');
     for (var i = 1; i < table.rows.length; i++) {
         table.rows[i].cells[4].onclick = function () {
-            var c = confirm("Do you want to edit this room? ");
-            if (c === true) {
                 ShowConfigForm(this.parentElement.cells[0].textContent);
-            }
         };
     }
 }
@@ -138,10 +135,12 @@ function AjaxDeleteRoom(room_id) {
         success: function (result) {
             $("#postResultDiv").html("<p> Room Deleted Successfully! </p>");
             console.log(result);
+            $('#postResultDiv').fadeIn().delay(5000).fadeOut();
         },
         error: function (e) {
             $("#postResultDiv").html("<p style='background-color:red;'> Error! </p>");
             console.log("ERROR: ", e);
+            $('#postResultDiv').fadeIn().delay(5000).fadeOut();
         }
     });
 }
@@ -161,11 +160,13 @@ function AjaxDeleteSensor(sensor_id) {
         data: JSON.stringify(postData),
         success: function (result) {
             $("#postResultDiv").html("<p> Sensor Deleted Successfully! </p>");
+            $('#postResultDiv').fadeIn().delay(5000).fadeOut();
             console.log(result);
         },
         error: function (e) {
             $("#postResultDiv").html("<p style='background-color:red;'> Error! </p>");
             console.log("ERROR: ", e);
+            $('#postResultDiv').fadeIn().delay(5000).fadeOut();
         }
     });
 }
@@ -238,6 +239,9 @@ function ShowConfigForm(num) {
     new_sensor.style.display = "none";
     new_room.style.display = "none";
     document.getElementById("editID").innerHTML = id;
+    if (num == -1) {
+        document.getElementById('idSelected').value = '' //reset search
+    }
 }
 
 
