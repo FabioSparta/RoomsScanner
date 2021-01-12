@@ -1,64 +1,78 @@
 package ies.p1.rooms_scanner.Service;
 
+import com.sun.el.stream.Optional;
+import ies.p1.rooms_scanner.Entities.ConfirmationToken;
 import ies.p1.rooms_scanner.Entities.User;
 import ies.p1.rooms_scanner.Repository.UserRepository;
-<<<<<<< Updated upstream
+import lombok.AllArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
-@Service
-@Transactional
-public class UserService {
-
-    private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public void saveUser(User user) {
-        userRepository.save(user);
-    }
-
-}
-=======
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-
-import javax.transaction.Transactional;
+import java.text.MessageFormat;
 import java.util.Optional;
-
-public class UserService {
+@Service
+@AllArgsConstructor
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.modelMapper = modelMapper;
-        this.userRepository = userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private final ConfirmationTokenService confirmationTokenService;
+
+    private final EmailService emailSenderService;
+
+    void sendConfirmationMail(String userMail, String token) {
+
+        final SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(userMail);
+        mailMessage.setSubject("Mail Confirmation Link!");
+        mailMessage.setFrom("<MAIL>");
+        mailMessage.setText(
+                "Thank you for registering. Please click on the below link to activate your account." + "http://localhost:8080/sign-up/confirm?token="
+                        + token);
+
+        emailSenderService.sendEmail(mailMessage);
     }
 
-    @Transactional
-    public Optional<User> findUserByEmail(String email) {
-        return userRepository.findUserByEmail(email);
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        final Optional<User> optionalUser = userRepository.findByEmail(email);
+
+        return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with email {0} cannot be found.", email)));
+
     }
 
-    public boolean userExists() {
-        return findUserByEmail(email).isPresent();
+    public void signUpUser(User user) {
+
+        final String encryptedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+
+        user.setPassword(encryptedPassword);
+
+        final User createdUser = userRepository.save(user);
+
+        final ConfirmationToken confirmationToken = new ConfirmationToken(user);
+
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+        sendConfirmationMail(user.getEmail(), confirmationToken.getConfirmationToken());
+
     }
 
-    public User save(User user) {
-        return userRepository.save(user);
+    public void confirmUser(ConfirmationToken confirmationToken) {
+
+        final User user = confirmationToken.getUser();
+
+        user.setEnabled(true);
+
+        userRepository.save(user);
+
+        confirmationTokenService.deleteConfirmationToken(confirmationToken.getId());
+
     }
-
-    public User register(User user1) {
-        User user2 = new User();
-        modelMapper.map(user1, user2);
-        return save(user2);
-    }
-
-
 }
->>>>>>> Stashed changes

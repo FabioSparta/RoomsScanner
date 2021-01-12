@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "studyRooms")
-public class StudyRooms {
+public class StudyRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     // studyRoom(id, departamento,andar, estado, numMaxOcupantes, horaAbertura, horaFecho)
@@ -23,7 +23,7 @@ public class StudyRooms {
     //  pagina inicial lista de salas reservadas q permite estender uma reserva -> atualiza a duracao
 
     //construtor
-    public StudyRooms() {}
+    public StudyRoom() {}
 
     public State getState() {
         return state;

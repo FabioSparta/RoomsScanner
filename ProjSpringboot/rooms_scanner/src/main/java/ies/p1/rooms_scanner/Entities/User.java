@@ -1,87 +1,89 @@
 package ies.p1.rooms_scanner.Entities;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import lombok.*;
+import org.hibernate.engine.internal.Collections;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.util.Collection;
 
 
-@Entity
-@Table(name = "user")
-public class User {
+@Getter
+@Setter
+@Builder
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(name = "Users")
+public class User implements UserDetails {
+
     @Id
-    private int nmecUser;
-    @NotBlank(message = "Enter your username")
-    private String username;
-    @NotBlank(message = "Enter your email")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    private String surname;
+
     private String email;
-<<<<<<< Updated upstream
-    @NotBlank(message = "Enter your password")
+
     private String password;
-    @NotBlank(message = "Enter your role (Student, Teacher, Employee)")
-    private String role;
-=======
-    @NotBlank(message = "Enter your role")
-    private String role;
 
->>>>>>> Stashed changes
+    @Builder.Default
+    private UserRole userRole = UserRole.USER;
 
-    public User() {}
+    @Builder.Default
+    private Boolean locked = false;
 
-    public User(int nmecUser, String username, String email, String password, String role) {
-        this.nmecUser = nmecUser;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.role = role;
+    @Builder.Default
+    private Boolean enabled = false;
+
+    @Override
+    public java.util.Collection<? extends GrantedAuthority> getAuthorities() {
+        final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(userRole.name());
+        return Collections.singletonList(simpleGrantedAuthority);
     }
 
-    public int getNmecUser() {
-        return nmecUser;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public void setNmecUser(int nmecUser) {
-        this.nmecUser = nmecUser;
-    }
-
+    @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
         return email;
     }
 
-<<<<<<< Updated upstream
-    public String getPassword() {
-        return password;
-=======
-    public void setEmail(String email) {
-        this.email = email;
->>>>>>> Stashed changes
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getRole() {
-        return role;
-    }
-<<<<<<< Updated upstream
-=======
-
-    public void setRole(String role) {
-        this.role = role;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    @java.lang.Override
-    public String toString() {
-        return "User{" +
-                "nmecUser=" + nmecUser +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+    @Override
+    public boolean isAccountNonLocked() {
+        return !locked;
     }
->>>>>>> Stashed changes
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
 }

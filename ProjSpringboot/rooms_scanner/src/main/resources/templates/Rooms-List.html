@@ -13,7 +13,7 @@
     <link rel="stylesheet" th:href="@{/css/Rooms-List.css}" media="screen">
     <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
     <script src="js/popups.js"></script>
-    <script class="u-script" type="text/javascript" th:href="@{/static/js/nicepage.js}" defer=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -32,88 +32,51 @@
     <meta name="theme-color" content="#478ac9">
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+            integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body class="u-body">
-<header class="u-clearfix u-header u-header" id="sec-e07c">
-    <div class="u-clearfix u-sheet u-sheet-1" style="margin-top: 20px">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-width: max-content;">
-            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-                <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                   href="#">
-                    <svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
-                    </svg>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs>
-                            <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
-                                <rect y="1" width="16" height="2"></rect>
-                                <rect y="7" width="16" height="2"></rect>
-                                <rect y="13" width="16" height="2"></rect>
-                            </symbol>
-                        </defs>
-                    </svg>
-                </a>
-            </div>
-            <div class="u-custom-menu u-nav-container">
-                <ul class="u-nav u-unstyled u-nav-1">
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{home}" style="padding: 10px 20px;">Home</a>
+<header>
+    <div>
+        <nav class="navbar navbar-expand-lg py-0 navbar navbar-dark bg-dark">
+            <a style="margin-left: 15px " class="navbar-brand" href="/home">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active" >
+                        <a class="nav-link" href="/roomsList">Rooms List <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomsList}" style="padding: 10px 20px;">Rooms List</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/roomReservations">Room Reservations</a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomReservations}" style="padding: 10px 20px;">Room Reservations</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/roomsStatistics">Rooms Statistics</a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{roomsStatistics}" style="padding: 10px 20px;">Rooms Statistics</a>
+                    <li class="nav-item active ">
+                        <a class="nav-link " href="/configurations">Configurations</a>
                     </li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{configurations}" style="padding: 10px 20px;">Configurations</a></li>
-                    <li class="u-nav-item"><a
-                            class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                            th:href="@{contactUs}" style="padding: 10px 20px;">Contact Us</a></li>
+                    <li class="nav-item active ">
+                        <a class="nav-link " href="/contactUs">Contact Us</a>
+                    </li>
                 </ul>
-            </div>
-            <div class="u-custom-menu u-nav-container-collapse">
-                <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                    <div class="u-sidenav-overflow">
-                        <div class="u-menu-close"></div>
-                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{Home}"
-                                                      style="padding: 10px 20px;">Home</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{roomsList}"
-                                                      style="padding: 10px 20px;">Rooms List</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{roomReservations}"
-                                                      style="padding: 10px 20px;">Room Reservations</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{roomsStatistics}"
-                                                      style="padding: 10px 20px;">Rooms Statistics</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{contactUs}"
-                                                      style="padding: 10px 20px;">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div style="margin-left: auto; margin-right: 15px"; >
+                    <button onclick="displayLogin()" class="btn btn-outline-success my-2 my-sm-0">Login</button>
+                    <button onclick="displaySignUp()" class="btn btn-outline-success my-2 my-sm-0" >SignUp</button>
                 </div>
-                <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
             </div>
         </nav>
-        <a onclick="displayLogin()" href="#sec-e252"
-           class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-1">LOGIN</a>
-        <a onclick="displaySignUp()" href="#sec-f378"
-           class="u-btn u-button-style u-dialog-link u-gradient u-none u-text-body-alt-color u-btn-2">SIGN UP</a>
     </div>
 </header>
 <section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="256"
@@ -128,19 +91,17 @@
 <section class="u-align-center u-clearfix u-section-2" id="sec-61d2">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-form u-form-1">
-            <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+            <form id="filter_form" method="post"   class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
                   style="padding: 15px;" source="custom">
                 <div class="u-form-group u-form-select u-form-group-1">
-                    <label for="select-f130" class="u-form-control-hidden u-label">
-                        <a class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
-                           href="https://nicepage.com">Selecionar Department2 1 Department2 2 Department3 3</a>
-                    </label>
                     <div class="u-form-select-wrapper">
-                        <select style="width: 200px" id="select-f130" name="select"
+                        <select id="filter_department" style="width: 200px"  name="select"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-                            <option value="Item 1">Item 1</option>
-                            <option value="Item 2">Item 2</option>
-                            <option value="Item 3">Item 3</option>
+                            <option value="Department">Department</option>
+                            <option value="DMAT">DMAT</option>
+                            <option value="DETI">DETI</option>
+                            <option value="DGEO">DGEO</option>
+                            <option value="DBIO">DBIO</option>
                         </select>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
                             <path fill="currentColor" d="M4 8L0 4h8z"></path>
@@ -148,13 +109,13 @@
                     </div>
                 </div>
                 <div class="u-form-group u-form-select u-form-group-2">
-                    <label for="select-50c8" class="u-form-control-hidden u-label">Selecionar</label>
                     <div class="u-form-select-wrapper">
-                        <select style="width: 200px" id="select-50c8" name="select-1"
+                        <select id="filter_floor"  style="width: 200px"  name="select-1"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
-                            <option value="Item 1">Item 1</option>
-                            <option value="Item 2">Item 2</option>
-                            <option value="Item 3">Item 3</option>
+                            <option value="-1">Floor</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
                         </select>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
                             <path fill="currentColor" d="M4 8L0 4h8z"></path>
@@ -162,12 +123,8 @@
                     </div>
                 </div>
                 <div class="u-form-group u-form-submit">
-                    <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                    <input type="submit" value="submit" class="u-form-control-hidden">
+                    <input class="u-btn u-btn-submit u-button-style" type="submit" value="Submit"/>
                 </div>
-                <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-                <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-                <input type="hidden" value="" name="recaptchaResponse">
             </form>
         </div>
     </div>
@@ -175,7 +132,7 @@
 <section class="u-align-center u-clearfix u-section-3" id="sec-3e05">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <table class="u-table-entity u-table-entity-1">
+            <table id="roomsTable" class="u-table-entity u-table-entity-1">
                 <colgroup>
                     <col width="20%">
                     <col width="17.6%">
@@ -188,54 +145,23 @@
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Department</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Dnumber</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Room</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">State</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Ocuppation</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Occupation</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Temperature</th>
                 </tr>
                 </thead>
-                <tbody class="u-table-body">
-                <tr style="height: 75px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.02</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Available</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">10/20</td>
-                </tr>
-                <tr style="height: 71px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-11">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.03</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Available</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">5/20</td>
-                </tr>
-                <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-16">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.04</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Full</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">20/20</td>
-                </tr>
-                <tr style="height: 76px;">
-                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-21">DETI
-                    </td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">4</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">04.02.05</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">Empty</td>
-                    <td class="u-border-1 u-border-grey-30 u-table-cell">0/20</td>
-                </tr>
+                <tbody id="table_body" class="u-table-body">
+
                 </tbody>
             </table>
         </div>
     </div>
+    <div id="some_error" class="u-form-send-message u-form-send-success"></div>
 </section>
 
 
 <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5ff6">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Projeto da Cadeira de Introdução á Arquitetura de
-            Computadores, Curso de Licenciatura em Engenharia Informática na Universidade de Aveiro</p>
+        <p class="u-small-text u-text u-text-variant u-text-1">Projeto da Cadeira de Introdução á Engenharia de Software, Curso de Licenciatura em Engenharia Informática na Universidade de Aveiro</p>
         <div class="u-social-icons u-spacing-10 u-social-icons-1">
             <a class="u-social-url" target="_blank" href=""><span
                     class="u-icon u-icon-circle u-social-facebook u-social-type-logo u-icon-1"><svg class="u-svg-link"
@@ -603,5 +529,7 @@
         width: auto;
     }
 }</style>
+
+<script src="js/rooms_list.js"></script>
 </body>
 </html>
