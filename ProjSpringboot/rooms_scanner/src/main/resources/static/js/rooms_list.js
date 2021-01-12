@@ -116,11 +116,11 @@ $(document).ready(
                         });
                     console.log("Success: ", result);
                     $('#table_body').append(trHTML);
-                    console.log("Before if ")
                         if ($('#roomsTable tr').length == 1) {
-                        console.log("0 rows");
+                        console.log("entered if");
                         $("#some_error").html("<p style='background-color:#ff0000; color:white ;'> There are no rooms with the specified characteristic. </p>");
-                    }
+                            $("#some_error").show();
+                        }
                     else{
                         console.log("entered else ");
                         $("#some_error").hide();

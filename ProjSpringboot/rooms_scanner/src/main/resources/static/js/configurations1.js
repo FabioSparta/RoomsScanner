@@ -26,12 +26,12 @@ GET: $(document).ready(
 
                             if(room.sensorList.length > 0) {
                                 if(room.sensorList[0].dataCaptured >= room.maxSeats){
-                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:red">' + room.sensorList[0].id +
-                                        '</p></td>';
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id +
+                                        '</td>';
                                 }
                                 else if (room.sensorList[0].dataCaptured ==0){
-                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:green">' + room.sensorList[0].id +
-                                        '</p></td>';
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id +
+                                        '</td>';
                                 }
                                 else{
                                     console.log("smaller than limit");
@@ -53,15 +53,13 @@ GET: $(document).ready(
                             }
                             trHTML+='</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
                                 '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
-
-
                         });
 
 
                     console.log("Success: ", result);
                     $('#records_table').append(trHTML);
-                    ActivateDeleteRoom()
-                    ActivateEditRoom()
+                    ActivateDeleteRoom();
+                    ActivateEditRoom();
                 },
                 error: function (e) {
                     $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
@@ -129,7 +127,7 @@ function ActivateDeleteSensor() {
 function ActivateEditRoom() {
     var table = document.getElementById('roomsTable');
     for (var i = 1; i < table.rows.length; i++) {
-        table.rows[i].cells[4].onclick = function () {
+        table.rows[i].cells[7].onclick = function () {
                 ShowConfigForm(this.parentElement.cells[0].textContent);
         };
     }
@@ -137,9 +135,10 @@ function ActivateEditRoom() {
 
 //DELETE ROOM FROM TABLE
 function ActivateDeleteRoom() {
+    console.log("Inside activate delete room");
     var index, table = document.getElementById('roomsTable');
     for (var i = 1; i < table.rows.length; i++) {
-        table.rows[i].cells[5].onclick = function () {
+        table.rows[i].cells[8].onclick = function () {
             var c = confirm("Do you want to delete this room?");
             if (c === true) {
                 index = this.parentElement.rowIndex;
