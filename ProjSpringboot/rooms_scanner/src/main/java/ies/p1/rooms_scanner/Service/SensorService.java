@@ -1,11 +1,13 @@
 package ies.p1.rooms_scanner.Service;
 import ies.p1.rooms_scanner.Entities.Sensor;
+import ies.p1.rooms_scanner.Entities.SensorHistory;
 import ies.p1.rooms_scanner.Repository.SensorRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Collection;
-
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 @Service
 public class SensorService {
     @Autowired
@@ -143,9 +145,17 @@ public class SensorService {
 
     public boolean updateSensor(int id,int data) {
         Sensor s = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Sensor not found for this id :: " + id));
-        System.out.println("Data to be set ===== " + data);
+
+        //Update current date
         s.setDataCaptured(data);
+
+        //Add value to sensor history
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        SensorHistory h = new SensorHistory(dtf.format(now),data);
+        s.getSensor_history().add(h);
         repository.save(s);
+
         return true;
     }
 

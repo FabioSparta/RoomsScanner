@@ -8,7 +8,7 @@
     <meta name="keywords" content="Rooms List, Login, Sign UP">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Configurations</title>
+    <title id="el_title">Configurations</title>
     <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/Configs.css}" media="screen">
     <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
@@ -139,21 +139,34 @@
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
             <table id='sensorsTable' class="u-table-entity u-table-entity-1">
-                <colgroup>
-                    <col width="24.9%">
-                    <col width="21.9%">
-                    <col width="28.4%">
-                    <col width="24.800000000000004%">
-                </colgroup>
                 <thead class="u-palette-4-base u-table-header u-table-header-1">
                 <tr  align="center" style="height: 26px;">
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Sensor ID</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Type</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Last Captured Value</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">History</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Delete</th>
                 </tr>
                 </thead>
                 <tbody id="sensors_list" class="u-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section class="u-align-center u-clearfix u-section-4"  style="padding-bottom: 5%" id="senhistory">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+            <table id='sensor_history' class="u-table-entity u-table-entity-1">
+                <thead class="u-palette-4-base u-table-header u-table-header-1">
+                <tr  align="center" style="height: 26px;">
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Sensor ID</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Type</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Date</th>
+                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Values</th>
+                </tr>
+                </thead>
+                <tbody id="senhist_list" class="u-table-body">
                 </tbody>
             </table>
         </div>

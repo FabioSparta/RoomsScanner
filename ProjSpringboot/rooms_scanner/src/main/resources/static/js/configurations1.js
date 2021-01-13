@@ -34,32 +34,34 @@ GET: $(document).ready(
 
                             //Fill Table
                             if(room.sensorList.length < 1) {
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
-                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td>';
                             }
                             else if(room.sensorList.length < 2 && room.sensorList[0].sensorType == "PeopleCounter"){
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">'  + room.sensorList[0].id +
-                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' +  room.sensorList[0].id +
+                                    '</u></td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td>';
                             }
                             else if(room.sensorList.length <2  && room.sensorList[0].sensorType == "Temperature"){
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
-                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' +  room.sensorList[0].id +
-                                    '</td>';
+                                trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
+                                    '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' +  room.sensorList[0].id +
+                                    '</u></td>';
                             }
                             else{
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id+
-                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' +  room.sensorList[1].id +
-                                    '</td>';
+                                trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' + room.sensorList[0].id+
+                                    '</u></td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' +  room.sensorList[1].id +
+                                    '</u></td>';
                             }
-                            trHTML+='</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-pencil-alt fa-lg"></i>' +
+                            trHTML+='</td><td  align="center"  class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:orangered;"class="fas fa-pencil-alt fa-lg"></i>' +
                                 '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
                     });
                     console.log("Success: ", result);
                     $('#records_table').append(trHTML);
                     ActivateDeleteRoom();
                     ActivateEditRoom();
+                    ActivateSensorHistory(5,5,'roomsTable');
+                    ActivateSensorHistory(6,6,'roomsTable');
                 },
                 error: function (e) {
                     $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
@@ -92,11 +94,13 @@ GET: $(document).ready(
                             trHTML += '<tr style="height: 75px;" ><td id="idSelected" align="center" class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + sensor.id +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.sensorType +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.dataCaptured +
-                                '</u> </td><td align="center" align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
+                                '</td><td align="center" align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-history fa-lg"></i> </td>' +
+                                '<td align="center" align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
                         });
                     console.log("Success: ", result);
                     $('#sensors_list').append(trHTML);
                     ActivateDeleteSensor();
+                    ActivateSensorHistory(3,0,'sensorsTable')
                 },
                 error: function (e) {
                     $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
@@ -107,12 +111,37 @@ GET: $(document).ready(
     })
 
 
+// GET SENSOR HISTORY
+function ajaxSensorHistory(sensor_id) {
+    $.ajax({
+        type: "GET",
+        url: "sensors?id=" + sensor_id,
+        success: function (result) {
+            var trHTML = '';
+            $("#sensor_history").find("tr:gt(0)").remove();
+                for (i = result.sensor_history.length-1; i > -1; i--) {
+                    trHTML += '<tr style="height: 75px;" ><td id="idSelected" align="center" class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + result.id +
+                        '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + result.sensorType +
+                        '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + result.sensor_history[i].date +
+                        '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + result.sensor_history[i].value + '</td>' ;
+                }
+            console.log("Success: ", result);
+            $('#senhist_list').append(trHTML);
+        },
+        error: function (e) {
+            $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
+            console.log("ERROR: ", e);
+        }
+    });
+}
+
+
+
 //DELETE SENSOR FROM TABLE
 function ActivateDeleteSensor() {
     var index, table = document.getElementById('sensorsTable');
     for (var i = 1; i < table.rows.length; i++) {
-        console.log(table.rows[i].cells[0].textContent);
-        table.rows[i].cells[3].onclick = function () {
+        table.rows[i].cells[4].onclick = function () {
             var c = confirm("Do you want to delete this row?");
             if (c === true) {
                 index = this.parentElement.rowIndex;
@@ -123,6 +152,19 @@ function ActivateDeleteSensor() {
         };
     }
 }
+
+//See Sensor History
+function ActivateSensorHistory(cell,sensor_id_pos,table_id) {
+    var table = document.getElementById(table_id);
+    for (var i = 1; i < table.rows.length; i++) {
+        table.rows[i].cells[cell].onclick = function () {
+                ShowHistorySensors();
+                sensor_id = this.parentElement.cells[sensor_id_pos].textContent;
+                ajaxSensorHistory(sensor_id);
+        };
+    }
+}
+
 //EDIT ROOM
 function ActivateEditRoom() {
     var table = document.getElementById('roomsTable');
@@ -135,7 +177,6 @@ function ActivateEditRoom() {
 
 //DELETE ROOM FROM TABLE
 function ActivateDeleteRoom() {
-    console.log("Inside activate delete room");
     var index, table = document.getElementById('roomsTable');
     for (var i = 1; i < table.rows.length; i++) {
         table.rows[i].cells[8].onclick = function () {
@@ -151,9 +192,8 @@ function ActivateDeleteRoom() {
 }
 
 
+
 function AjaxDeleteRoom(room_id) {
-    console.log("This will be deleted.");
-    console.log(room_id);
     // PREPARE FORM DATA
     var postData = {
         id: room_id,
@@ -204,18 +244,27 @@ function AjaxDeleteSensor(sensor_id) {
 }
 
 
+
+
+
+
+
+
+
 function HideComponents() {
     var table_rooms = document.getElementById('carousel_3133');
     var table_sensors = document.getElementById('sec-3e05');
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
 
     table_rooms.style.display = "none";
     table_sensors.style.display = "none";
     config_form.style.display = "none";
     new_sensor.style.display = "none";
     new_room.style.display = "none";
+    table_history_sensors.style.display="none";
 
 }
 
@@ -225,14 +274,15 @@ function ShowTableRooms() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
 
 
     table_rooms.style.display = "block";
-
     table_sensors.style.display = "none";
     config_form.style.display = "none";
     new_sensor.style.display = "none";
     new_room.style.display = "none";
+    table_history_sensors.style.display="none";
 }
 
 function ShowTableSensors() {
@@ -241,15 +291,32 @@ function ShowTableSensors() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
 
     table_sensors.style.display = "block";
-
     table_rooms.style.display = "none";
     config_form.style.display = "none";
     new_sensor.style.display = "none";
     new_room.style.display = "none";
+    table_history_sensors.style.display="none";
 }
 
+function ShowHistorySensors() {
+    var table_rooms = document.getElementById('carousel_3133');
+    var table_sensors = document.getElementById('sec-3e05');
+    var config_form = document.getElementById('carousel_ad56');
+    var new_sensor = document.getElementById('carousel_8ccf');
+    var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
+
+    table_rooms.style.display = "none";
+    table_sensors.style.display = "none";
+    config_form.style.display = "none";
+    new_sensor.style.display = "none";
+    new_room.style.display = "none";
+    table_history_sensors.style.display="block";
+
+}
 
 function ShowConfigForm(num) {
     var table_rooms = document.getElementById('carousel_3133');
@@ -257,11 +324,12 @@ function ShowConfigForm(num) {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
     var id = null;
 
     if (num == -1) {
         id = document.getElementById('idSelected').value;
-    }else{
+    } else {
         id = num;
     }
     config_form.style.display = "block";
@@ -270,6 +338,7 @@ function ShowConfigForm(num) {
     table_sensors.style.display = "none";
     new_sensor.style.display = "none";
     new_room.style.display = "none";
+    table_history_sensors.style.display="none";
     document.getElementById("editID").innerHTML = id;
     if (num == -1) {
         document.getElementById('idSelected').value = '' //reset search
@@ -279,11 +348,11 @@ function ShowConfigForm(num) {
 
 function ShowNewRoom() {
     var table_rooms = document.getElementById('carousel_3133');
-    ;
     var table_sensors = document.getElementById('sec-3e05');
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
 
     new_room.style.display = "block";
 
@@ -291,21 +360,22 @@ function ShowNewRoom() {
     table_sensors.style.display = "none";
     config_form.style.display = "none";
     new_sensor.style.display = "none";
+    table_history_sensors.style.display="none";
 }
 
 function ShowNewSensor() {
     var table_rooms = document.getElementById('carousel_3133');
-    ;
     var table_sensors = document.getElementById('sec-3e05');
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
 
     new_sensor.style.display = "block";
-
     table_rooms.style.display = "none";
     table_sensors.style.display = "none";
     config_form.style.display = "none";
     new_room.style.display = "none";
+    table_history_sensors.style.display="none";
 }
 
