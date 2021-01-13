@@ -15,31 +15,50 @@ GET: $(document).ready(
                             trHTML += '<tr style="height: 75px;" ><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + room.department +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.dnumber +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.number + '</td>';
-                            if(room.sensorList.length > 0) {
-                                if(room.sensorList[0].dataCaptured >= room.maxSeats){
+
+                            //Sort by sensorType
+                            room.sensorList = room.sensorList.sort((a,b) => {
+                                if(a.sensorType > b.sensorType){
+                                    return 1
+                                } else{
+                                    return -1
+                                }});
+
+                            //Fill Table
+                            if(room.sensorList.length < 1) {
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td>';
+                            }
+                            else if(room.sensorList.length < 2 && room.sensorList[0].sensorType == "PeopleCounter"){
+                                if(room.sensorList[0].dataCaptured >= room.maxSeats)
                                     trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:red">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
                                         '</p></td>';
-                                }
-                                else if (room.sensorList[0].dataCaptured ==0){
+                                else if (room.sensorList[0].dataCaptured ==0)
                                     trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:green">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
                                         '</p></td>';
-                                }
-                                else{
-                                    console.log("smaller than limit");
+                                else
                                     trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
                                         '</td>';
-                                }
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
+                                    '</td>'
                             }
-                            else{
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                            else if(room.sensorList.length <2  && room.sensorList[0].sensorType == "Temperature"){
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "ºC" +
                                     '</td>';
                             }
-                            if(room.sensorList.length > 1) {
+                            else{
+                                if(room.sensorList[0].dataCaptured >= room.maxSeats)
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:red">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</p></td>';
+                                else if (room.sensorList[0].dataCaptured ==0)
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:green">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</p></td>';
+                                else
+                                    trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</td>';
                                 trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[1].dataCaptured + "ºC" +
-                                    '</td>';
-                            }
-                            else{
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td>';
                             }
                         });
@@ -86,34 +105,52 @@ $(document).ready(
                             trHTML += '<tr style="height: 75px;" ><td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + room.department +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.dnumber +
                                 '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + room.number + '</td>';
-                            if(room.sensorList.length > 0) {
-                                if(room.sensorList[0].dataCaptured >= room.maxSeats){
-                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:red">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
-                                        '</p></td>';
-                                }
-                                else if (room.sensorList[0].dataCaptured ==0){
-                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:green">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
-                                        '</p></td>';
-                                }
-                                else{
-                                    console.log("smaller than limit");
-                                    trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
-                                        '</td>';
-                                }
-                            }
-                            else{
+                            //Sort by sensorType
+                            room.sensorList = room.sensorList.sort((a,b) => {
+                                if(a.sensorType > b.sensorType){
+                                    return 1
+                                } else{
+                                    return -1
+                                }});
+
+                            //Fill Table
+                            if(room.sensorList.length < 1) {
                                 trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td>';
                             }
-                            if(room.sensorList.length > 1) {
+                            else if(room.sensorList.length < 2 && room.sensorList[0].sensorType == "PeopleCounter"){
+                                if(room.sensorList[0].dataCaptured >= room.maxSeats)
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:red">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</p></td>';
+                                else if (room.sensorList[0].dataCaptured ==0)
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:green">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</p></td>';
+                                else
+                                    trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</td>';
+                                trHTML+='<td class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
+                                    '</td>';
+                            }
+                            else if(room.sensorList.length <2  && room.sensorList[0].sensorType == "Temperature"){
+                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
+                                    '</td><td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "ºC" +
+                                    '</td>';
+                            }
+                            else{
+                                if(room.sensorList[0].dataCaptured >= room.maxSeats)
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:red">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</p></td>';
+                                else if (room.sensorList[0].dataCaptured ==0)
+                                    trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell"><p style="color:green">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</p></td>';
+                                else
+                                    trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
+                                        '</td>';
                                 trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[1].dataCaptured + "ºC" +
                                     '</td>';
                             }
-                            else{
-                                trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
-                                    '</td>';
-                            }
-                        });
+                       });
                     console.log("Success: ", result);
                     $('#table_body').append(trHTML);
                         if ($('#roomsTable tr').length == 1) {
@@ -134,5 +171,7 @@ $(document).ready(
 
         }
     })
+
+
 
 
