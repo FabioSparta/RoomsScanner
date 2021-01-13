@@ -1,13 +1,18 @@
 package ies.p1.rooms_scanner.Entities;
+
+import ies.p1.rooms_scanner.Entities.UserRole;
 import lombok.*;
-import org.hibernate.engine.internal.Collections;
+//import org.hibernate.engine.internal.Collections;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Collection;
-
+import java.util.Collections;
 
 @Getter
 @Setter
@@ -40,9 +45,11 @@ public class User implements UserDetails {
     private Boolean enabled = false;
 
     @Override
-    public java.util.Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
         final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(userRole.name());
-        return Collections.singletonList(simpleGrantedAuthority);
+        //return Collections.singletonList(simpleGrantedAuthority);
+        return java.util.Collections.singletonList(simpleGrantedAuthority);
     }
 
     @Override
@@ -53,18 +60,6 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     }
 
     @Override
@@ -85,5 +80,17 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

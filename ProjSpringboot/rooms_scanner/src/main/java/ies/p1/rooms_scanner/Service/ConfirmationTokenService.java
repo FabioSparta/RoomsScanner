@@ -3,6 +3,7 @@ package ies.p1.rooms_scanner.Service;
 import ies.p1.rooms_scanner.Entities.ConfirmationToken;
 import ies.p1.rooms_scanner.Repository.ConfirmationTokenRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
@@ -10,7 +11,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ConfirmationTokenService {
 
-    private final ConfirmationTokenRepository confirmationTokenRepository;
+    @Autowired
+    private ConfirmationTokenRepository confirmationTokenRepository;
 
     void saveConfirmationToken(ConfirmationToken confirmationToken) {
         confirmationTokenRepository.save(confirmationToken);

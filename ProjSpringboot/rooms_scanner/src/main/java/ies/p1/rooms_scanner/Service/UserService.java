@@ -1,10 +1,11 @@
 package ies.p1.rooms_scanner.Service;
 
-import com.sun.el.stream.Optional;
 import ies.p1.rooms_scanner.Entities.ConfirmationToken;
 import ies.p1.rooms_scanner.Entities.User;
 import ies.p1.rooms_scanner.Repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,17 +15,21 @@ import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
 import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private final ConfirmationTokenService confirmationTokenService;
+    @Autowired
+    private ConfirmationTokenService confirmationTokenService;
 
-    private final EmailService emailSenderService;
+    @Autowired
+    private EmailService emailSenderService;
 
     void sendConfirmationMail(String userMail, String token) {
 
@@ -42,10 +47,14 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        final Optional<User> optionalUser = userRepository.findByEmail(email);
+        User optionalUser = userRepository.findByEmail(email);
 
-        return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with email {0} cannot be found.", email)));
-
+        if (optionalUser != null) {
+            return optionalUser;
+        }
+        else {
+            throw new UsernameNotFoundException("User cannot be found.");
+        }
     }
 
     public void signUpUser(User user) {
@@ -74,5 +83,11 @@ public class UserService implements UserDetailsService {
 
         confirmationTokenService.deleteConfirmationToken(confirmationToken.getId());
 
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
     }
 }
