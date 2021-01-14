@@ -17,7 +17,7 @@ import java.text.MessageFormat;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class UserService implements UserDetailsService {
 
     @Autowired
@@ -90,4 +90,5 @@ public class UserService implements UserDetailsService {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
+
 }

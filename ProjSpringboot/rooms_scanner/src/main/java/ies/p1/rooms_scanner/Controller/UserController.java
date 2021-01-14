@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-@AllArgsConstructor
+//@AllArgsConstructor
 public class UserController {
 
     @Autowired
