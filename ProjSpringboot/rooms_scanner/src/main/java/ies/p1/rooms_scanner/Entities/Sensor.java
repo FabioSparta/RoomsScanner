@@ -14,9 +14,11 @@ public class Sensor  {
     private int dataCaptured;
     private String sensorType;
 
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "sensor_data_history", joinColumns = @JoinColumn(name = "sensor_id"))
     private List<SensorHistory> sensor_history = new ArrayList<>();
+
 
     public Sensor() { }
 

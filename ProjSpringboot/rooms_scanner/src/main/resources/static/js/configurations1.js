@@ -29,8 +29,8 @@ GET: $(document).ready(
                                 if(a.sensorType > b.sensorType){
                                     return 1
                                 } else{
-                                return -1
-                            }});
+                                    return -1
+                                }});
 
                             //Fill Table
                             if(room.sensorList.length < 1) {
@@ -127,6 +127,66 @@ function ajaxSensorHistory(sensor_id) {
                 }
             console.log("Success: ", result);
             $('#senhist_list').append(trHTML);
+        },
+        error: function (e) {
+            $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
+            console.log("ERROR: ", e);
+        }
+    });
+}
+
+// GET 1 ROOM
+function ajaxGetRoom(room_id) {
+    $.ajax({
+        type: "GET",
+        url: "rooms?id=" + room_id,
+        success: function (result) {
+            console.log("Success: ", result);
+            var seats = document.getElementById("seatsEdit");
+            var people = document.getElementById("peopleEdit");
+            var temp = document.getElementById("tempEdit");
+            people.disabled = false;
+            temp.disabled = false;
+            var maxSeats = result.maxSeats; // id="seatsEdit"
+            var SensorPeople = ''; // id="peopleEdit"
+            var SensorTemp = '';  // id="tempEdit"
+
+
+            //Sort sensors by sensorType
+            result.sensorList = result.sensorList.sort((a,b) => {
+                if(a.sensorType > b.sensorType){
+                    return 1
+                } else{
+                    return -1
+                }});
+
+            //GET SENSORS INFO
+            if(result.sensorList.length > 1) {
+                SensorPeople = result.sensorList[0].id;
+                SensorTemp = result.sensorList[1].id;
+            }
+            else if(result.sensorList.length){
+                if(result.sensorList[0].sensorType == "PeopleCounter"){
+                    SensorPeople = result.sensorList[0].id
+                }
+                else
+                    SensorTemp = result.sensorList[0].id
+            }
+
+            //LOAD INFO ON HTML
+            seats.value = maxSeats ;
+            people.value = SensorPeople;
+            temp.value = SensorTemp;
+
+            if(people.value.length > 0){
+                people.disabled=true;
+                console.log("disabled true");
+            }
+            if(temp.value.length > 0)
+                temp.disabled=true;
+
+
+
         },
         error: function (e) {
             $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
@@ -327,18 +387,25 @@ function ShowConfigForm(num) {
     var table_history_sensors = document.getElementById('senhistory');
     var id = null;
 
+
+    // vem do input box
     if (num == -1) {
         id = document.getElementById('idSelected').value;
-    } else {
+    } else { // Não vem do input
         id = num;
     }
-    config_form.style.display = "block";
 
-    table_rooms.style.display = "none";
-    table_sensors.style.display = "none";
-    new_sensor.style.display = "none";
-    new_room.style.display = "none";
-    table_history_sensors.style.display="none";
+    console.log(id)
+    if(id !=""){
+        table_rooms.style.display = "none";
+        table_sensors.style.display = "none";
+        new_sensor.style.display = "none";
+        new_room.style.display = "none";
+        table_history_sensors.style.display="none";
+        config_form.style.display = "block";
+        ajaxGetRoom(id)
+    }
+
     document.getElementById("editID").innerHTML = id;
     if (num == -1) {
         document.getElementById('idSelected').value = '' //reset search
