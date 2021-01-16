@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Rooms List, Login, Sign UP">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title id="el_title">Login</title>
+    <!-- BootStrap Stuff-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <!-- End -->
+    <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/Configs.css}" media="screen">
+    <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
+    <script src="js/popups.js"></script>
+    <script src="js/popups.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+            integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+            crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/e953ab24de.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "",
+        "url": "index.html",
+        "logo": "images/1345300403-0.png",
+        "sameAs": []
+    }</script>
+    <meta property="og:title" content="Configurations">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+</head>
+
+<body>
+<!--
+<div style="background-color:#337ab7;height:50px;"></div>
+<div class="container-fluid">
+    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 80px;background-color:#fff;padding:20px;border:solid 1px #ddd;">
+         // <img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo" />
+        <form th:action="@{/login}" method="POST" class="form-signin">
+            <h3 class="form-signin-heading" th:text="Login"></h3>
+            <br /> <input type="text" id="username" name="username" th:placeholder="username" class="form-control" /> <br /> <input type="password" th:placeholder="Password" id="password" name="password" class="form-control" /> <br />
+
+            <div align="center" th:if="${param.error}">
+                <p style="font-size: 20px; color: #FF1C19;">username or Password is invalid.</p>
+            </div>
+            <button class="btn btn-lg btn-primary" name="Submit" value="Login" type="Submit" th:text="Login" style="margin-right:10px;"></button>
+            <a href="/recover-password">Forgot password?</a>
+        </form>
+    </div>
+</div>
+-->
+<div class="row ">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1" >
+        <form class="form-signin" method="POST" th:action="@{/login}">
+            <div class="form-group ">
+                <span th:text="${message}"></span>
+                </br>
+                </br>
+                <label >Username:</label><br>
+                <input name="username" type="text" class="form-control" placeholder="Username"/>
+                <label >Password:</label><br>
+                <input name="password" type="password" class="form-control" placeholder="Password"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <br/>
+                <button class="btn btn-primary right" type="submit">Log In</button>
+                <h4 class="text"><a href="/registration">Create an account</a></h4>
+            </div>
+        </form>
+    </div>
+
+
+<style>
+    .u-section-12 {
+    min-height: 500px;
+}
+
+.u-section-12 .u-dialog-1 {
+    width: 566px;
+    min-height: 390px;
+    margin: 30px auto;
+}
+
+.u-section-12 .u-container-layout-1 {
+    padding: 5px 5px;
+}
+
+.u-section-12 .u-text-1 {
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 auto;
+}
+
+.u-section-12 .u-form-1 {
+    height: 104px;
+    width: 400px;
+    margin: 10px auto 0;
+}
+
+.u-section-12 .u-form-group-1 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-1 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-2 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-2 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-3 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-3 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-4 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-4 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-5 {
+    width: 100%;
+}
+
+.u-section-12 .u-btn-1 {
+    padding-left: 60px;
+    padding-right: 60px;
+    background-image: none;
+    border-style: none;
+    text-transform: none;
+}
+
+.u-section-12 .u-text-2 {
+    margin: 11px auto 0;
+}
+
+.u-section-12 .u-btn-2 {
+    padding: 0;
+}
+
+.u-section-12 .u-icon-1 {
+    width: 15px;
+    height: 15px;
+    left: auto;
+    top: 17px;
+    position: absolute;
+    right: 16px;
+}
+
+</style>
+</body>
+</html>

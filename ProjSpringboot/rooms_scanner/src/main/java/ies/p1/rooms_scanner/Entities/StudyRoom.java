@@ -18,20 +18,11 @@ public class StudyRoom {
     private int floor;
     private Timestamp openHour;
     private Timestamp closingHour;
-    private State state; //TODO: associar estado a uma Data e Hora..
-    //TODO: na pagina inicial lista de salas reservadas q permite terminar uma reserva -> atualiza o estado das salas de estudo
-    //  pagina inicial lista de salas reservadas q permite estender uma reserva -> atualiza a duracao
 
     //construtor
     public StudyRoom() {}
 
-    public State getState() {
-        return state;
-    }
 
-    public void setState(State state) {
-        this.state = state;
-    }
 
     public int getMaxSeats() {
         return maxSeats;

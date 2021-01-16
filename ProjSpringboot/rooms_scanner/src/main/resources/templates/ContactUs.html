@@ -9,6 +9,20 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>ContactUs</title>
+    <!-- BootStrap Stuff-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <!-- End -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/ContactUs.css}" media="screen">
     <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
@@ -412,7 +426,7 @@
                         <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
                         <input type="submit" value="submit" class="u-form-control-hidden">
                     </div>
-                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
+                    <div id="signUp_result" class="u-form-send-message u-form-send-success"> Signed Up Sucessfully.</div>
                     <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
                         then try again.
                     </div>
@@ -554,27 +568,32 @@
                 <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
                       style="padding: 0px;" source="custom" name="form">
                     <div class="u-form-group u-form-group-1">
-                        <label for="text-995f" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
-                        <input type="text" placeholder="Email" id="text-995f" name="text"
+                        <label for="nmec_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
+                        <input type="text" placeholder="nmec" id="nmec_field" name="text"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                    </div>
+                    <div class="u-form-group u-form-group-1">
+                        <label for="email_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
+                        <input type="text" placeholder="Email" id="email_field" name="text"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-2">
-                        <label for="text-e4c2" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
-                        <input type="text" placeholder="Username" id="text-e4c2" name="text-1"
+                        <label for="username_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
+                        <input type="text" placeholder="Username" id="username_field" name="text-1"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-3">
-                        <label for="text-aabe" class="u-form-control-hidden u-label u-text-grey-30 u-label-3"></label>
-                        <input type="text" placeholder="Password" id="text-aabe" name="text-2"
+                        <label for="pw_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-3"></label>
+                        <input type="text" placeholder="Password" id="pw_field" name="text-2"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-4">
-                        <label for="text-9401" class="u-form-control-hidden u-label u-text-grey-30 u-label-4"></label>
-                        <input type="text" placeholder="Confirm Password" id="text-9401" name="text-3"
+                        <label for="conf_pw_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-4"></label>
+                        <input type="text" placeholder="Confirm Password" id="conf_pw_field" name="text-3"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-align-center u-form-group u-form-submit u-form-group-5">
-                        <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                        <a href="" id="signUp_click"  class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
                         <input type="submit" value="submit" class="u-form-control-hidden">
                     </div>
                     <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
@@ -606,7 +625,7 @@
     width: 566px;
     min-height: 495px;
     height: auto;
-    margin: 157px auto 60px;
+    margin: 100px auto 60px;
 }
 
 .u-section-6 .u-container-layout-1 {
@@ -720,5 +739,6 @@
         width: auto;
     }
 }</style>
+<script src="js/user.js"></script>
 </body>
 </html>
