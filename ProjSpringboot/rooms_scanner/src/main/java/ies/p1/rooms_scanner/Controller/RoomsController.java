@@ -32,15 +32,6 @@ public class RoomsController {
         return "/index";
     }
 
-    /*
-    @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-    public ModelAndView login() {
-        System.out.println("INSIDE LOGIN CONTROLLER");
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login"); // resources/template/login.html
-        return modelAndView;
-    }
-     */
     @RequestMapping("/contactUs")
     public String Contacts() { return "/ContactUs"; }
 

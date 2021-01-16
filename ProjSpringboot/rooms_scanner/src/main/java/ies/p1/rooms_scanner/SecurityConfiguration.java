@@ -37,7 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // URLs matching for access rights
-                //.anyRequest().permitAll().and().csrf().disable();
+        .anyRequest().permitAll().and().csrf().disable();
+        /*
                 .antMatchers("/").permitAll()
                 .antMatchers("/css/**", "/js/**").permitAll()
                 .antMatchers("/home").permitAll()
@@ -63,7 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .accessDeniedPage("/access-denied");
 
-
+*/
     }
 
 
