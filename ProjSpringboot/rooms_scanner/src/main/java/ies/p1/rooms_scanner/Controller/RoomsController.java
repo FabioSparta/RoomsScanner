@@ -30,7 +30,9 @@ public class RoomsController {
         return "/index"; }
 
     @RequestMapping("/contactUs")
-    public String Contacts() { return "/ContactUs"; }
+    public String Contacts() {
+        // haha
+        return "/ContactUs"; }
 
     @RequestMapping("/roomsStatistics")
     public String getStatistics() { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
