@@ -1,6 +1,7 @@
 package ies.p1.rooms_scanner.Controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
+import ies.p1.rooms_scanner.Entities.Role;
 import ies.p1.rooms_scanner.Entities.Room;
 import ies.p1.rooms_scanner.Entities.Sensor;
 import ies.p1.rooms_scanner.Entities.User;
@@ -10,6 +11,7 @@ import ies.p1.rooms_scanner.Service.RoomsService;
 import ies.p1.rooms_scanner.Service.SensorService;
 import ies.p1.rooms_scanner.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,10 +44,19 @@ public class AdminController {
 
     @GetMapping("/user")
     public ResponseEntity<Object> Login(@RequestParam String username,@RequestParam String pw) {
-        if (userService.exist(username,pw)!= null){
-            return new ResponseEntity<>("Logged in successfully", HttpStatus.OK);}
-        else
-            return  new ResponseEntity<>("Log in failed", HttpStatus.NOT_ACCEPTABLE);
+        if (userService.exist(username, pw) != null) {
+            User u = userService.getUserByUsername(username);
+            /*
+            for (Role r: u.getRoles()){
+                if(r.getDesc().equals("ADMIN_USER") || r.getDesc().equals("SUPER_USER") ){
+                    System.out.println("has right to acess");
+                    return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).header(HttpHeaders.LOCATION, "http://localhost:8080/configurations").build();
+                }
+            }
+             */
+            return new ResponseEntity<>(u, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("User does not exist", HttpStatus.NOT_ACCEPTABLE);
     }
 
 

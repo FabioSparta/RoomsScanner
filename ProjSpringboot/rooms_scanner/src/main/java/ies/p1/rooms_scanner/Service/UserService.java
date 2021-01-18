@@ -1,5 +1,6 @@
 package ies.p1.rooms_scanner.Service;
 
+import ies.p1.rooms_scanner.Entities.Room;
 import ies.p1.rooms_scanner.Entities.Sensor;
 import ies.p1.rooms_scanner.Entities.User;
 import ies.p1.rooms_scanner.Repository.SensorRepository;
@@ -24,11 +25,7 @@ public class UserService{
         return true;
     }
 
-    public User exist(String username,String pw)
-    {
-
-        return repository.getUserByUsernameAndAndPassword(username,pw);
-    }
-
+    public User exist(String username,String pw) { return repository.getUserByUsernameAndAndPassword(username,pw); }
+    public User getUserByUsername(String username) {return repository.getUserByUsername(username);}
 
 }

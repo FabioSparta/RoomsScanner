@@ -110,6 +110,45 @@ GET: $(document).ready(
         }
     })
 
+//GET 1 sensor
+GET: $(document).ready(
+    function () {
+        // GET REQUEST
+        $("#getASensor").click(function (event) {
+            ShowTableSensors();
+            event.preventDefault();
+            console.log("Sensor id below")
+            console.log(document.getElementById("Sensor_id").value);
+            ajaxGet();
+        });
+
+        // DO GET
+        function ajaxGet() {
+            $.ajax({
+                type: "GET",
+                url: "sensors?id=" + document.getElementById("Sensor_id").value,
+                success: function (sensor) {
+                    var trHTML = '';
+                    $("#sensorsTable").find("tr:gt(0)").remove();
+
+                    trHTML += '<tr style="height: 75px;" ><td id="idSelected" align="center" class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-6">' + sensor.id +
+                        '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.sensorType +
+                        '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + sensor.dataCaptured +
+                        '</td><td align="center" align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:blue;"class="fas fa-history fa-lg"></i> </td>' +
+                        '<td align="center" align="center" class="u-border-1 u-border-grey-30 u-table-cell"><i style="color:red;" class="fas fa-times-circle fa-lg"></i> </td></tr>';
+
+                    console.log("Success: ", sensor);
+                    $('#sensors_list').append(trHTML);
+                    ActivateDeleteSensor();
+                    ActivateSensorHistory(3,0,'sensorsTable')
+                },
+                error: function (e) {
+                    $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
+    })
 
 // GET SENSOR HISTORY
 function ajaxSensorHistory(sensor_id) {

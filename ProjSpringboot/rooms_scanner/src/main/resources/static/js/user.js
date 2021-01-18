@@ -1,6 +1,7 @@
 // SIGN UP
 GET: $(document).ready(
     function () {
+        console.log("ready");
         // GET REQUEST
         $("#signUp_click").click(function (event) {
             event.preventDefault();
@@ -33,7 +34,7 @@ GET: $(document).ready(
                     console.log(result);
                     //$("#postResultDiv").html("<p> Room created successfully! </p>");
                     $("#signUp_result").show();
-                    setTimeout(displayLogin, 1200);
+                    setTimeout(closePopUp, 1200);
                     $("#signUp_result").hide();
                     //$("#newRoomForm")[0].reset();
                     //$('#postResultDiv').fadeIn().delay(5000).fadeOut();
@@ -65,9 +66,19 @@ GET: $(document).ready(
                 url: "user?username=" + username + "&pw=" + pw,
                 success: function (result) {
                     console.log(result)
+                    for (i = 0; i < result.roles.length; i++) {
+                        if(result.roles[i].desc =="SUPER_USER" || result.roles[i].desc =="ADMIN_USER" ){
+                            console.log("Its a valid user.");
+                            window.location.replace('http://localhost:8080/configurations');
+                        }
+                    }
+                    console.log("after for cycle");
+                    document.getElementById("loginFailed").innerHTML = "Currently only admins can login";
+                    $('#loginFailed').fadeIn().delay(4000).fadeOut();
                 },
                 error: function (e) {
-                    $("#getResultDiv").html("<strong>Failed to Load Rooms</strong>");
+                    document.getElementById("loginFailed").innerHTML =e.responseText;
+                    $('#loginFailed').fadeIn().delay(4000).fadeOut();
                     console.log("ERROR: ", e);
                 }
             });
