@@ -4,8 +4,6 @@ function displaySignUp() {
     modal.style.display = "none";
     var modal = document.getElementById('sec-f378');
     modal.style.display = "block";
-    $("#signUpForm")[0].reset();
-    $("#signUp_result").hide();
 }
 function displayLogin() {
     var modal = document.getElementById('sec-f378');
