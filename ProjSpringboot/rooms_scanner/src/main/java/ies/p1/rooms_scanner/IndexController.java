@@ -12,6 +12,5 @@ public class IndexController {
     public String index( HttpServletResponse httpResponse) throws Exception {
         httpResponse.sendRedirect("/home");
         return "success";
-
     }
 }

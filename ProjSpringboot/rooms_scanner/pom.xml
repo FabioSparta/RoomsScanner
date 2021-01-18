@@ -20,14 +20,11 @@
         <maven.compiler.target>11</maven.compiler.target>
         <junit.version>4.8.2</junit.version>
     </properties>
-
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -82,6 +79,11 @@
             <artifactId>velocity</artifactId>
             <version>1.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
     </dependencies>
 
 
@@ -130,7 +132,6 @@
             <timezone>+1</timezone>
         </developer>
     </developers>
-
 
     <build>
         <plugins>

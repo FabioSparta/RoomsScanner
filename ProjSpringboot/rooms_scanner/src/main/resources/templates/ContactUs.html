@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -9,11 +8,23 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>ContactUs</title>
-    <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
-    <link rel="stylesheet" th:href="@{/css/ContactUs.css}" media="screen">
-    <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
+    <!-- BootStrap Stuff-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <!-- End -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="/css/ContactUs.css" media="screen">
     <script src="js/popups.js"></script>
-    <script class="u-script" type="text/javascript" th:href="@{/static/js/nicepage.js}" defer=""></script>
     <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -60,7 +71,7 @@
                         <a class="nav-link" href="/roomsStatistics">Rooms Statistics</a>
                     </li>
                     <li class="nav-item active ">
-                        <a class="nav-link " href="/configurations">Configurations</a>
+                        <a class="nav-link " onclick="displayLogin()">Configurations</a>
                     </li>
                     <li class="nav-item active ">
                         <a class="nav-link " href="/contactUs">Contact Us</a>
@@ -398,22 +409,22 @@
                 <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
                       style="padding: 0px;" source="custom" name="form">
                     <div class="u-form-group u-form-name u-form-group-1">
-                        <label for="name-81a7"
-                               class="u-form-control-hidden u-label u-text-grey-30 u-label-1">Nome</label>
-                        <input type="text" placeholder="Username" id="name-81a7" name="name"
+                        <label for="login_username"
+                               class="u-form-control-hidden u-label u-text-grey-30 u-label-1">Username</label>
+                        <input type="text" placeholder="Username" id="login_username" name="name"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                     </div>
                     <div class="u-form-group u-form-group-2">
-                        <label for="text-9210" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
-                        <input type="text" placeholder="Password" id="text-9210" name="text"
+                        <label for="login_pw" class="u-form-control-hidden u-label u-text-grey-30 u-label-2">Password</label>
+                        <input type="password" placeholder="Password" id="login_pw" name="text"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-align-center u-form-group u-form-submit u-form-group-3">
-                        <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                        <a id="login_click" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
                         <input type="submit" value="submit" class="u-form-control-hidden">
                     </div>
                     <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
-                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
+                    <div class="u-form-send-error u-form-send-message" id="loginFailed"> Unable to send your message. Please fix errors
                         then try again.
                     </div>
                     <input type="hidden" value="" name="recaptchaResponse">
@@ -545,7 +556,7 @@
         width: auto;
     }
 }</style>
-<section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-6"
+<section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-12"
          id="sec-f378">
     <div class="u-align-center-xs u-container-style u-dialog u-white u-dialog-1">
         <div class="u-container-layout u-container-layout-1">
@@ -554,27 +565,32 @@
                 <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
                       style="padding: 0px;" source="custom" name="form">
                     <div class="u-form-group u-form-group-1">
-                        <label for="text-995f" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
-                        <input type="text" placeholder="Email" id="text-995f" name="text"
+                        <label for="nmec_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
+                        <input type="text" placeholder="nmec" id="nmec_field" name="text"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                    </div>
+                    <div class="u-form-group u-form-group-1">
+                        <label for="email_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
+                        <input type="text" placeholder="Email" id="email_field" name="text"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-2">
-                        <label for="text-e4c2" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
-                        <input type="text" placeholder="Username" id="text-e4c2" name="text-1"
+                        <label for="username_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
+                        <input type="text" placeholder="Username" id="username_field" name="text-1"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-3">
-                        <label for="text-aabe" class="u-form-control-hidden u-label u-text-grey-30 u-label-3"></label>
-                        <input type="text" placeholder="Password" id="text-aabe" name="text-2"
+                        <label for="pw_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-3"></label>
+                        <input type="text" placeholder="Password" id="pw_field" name="text-2"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-4">
-                        <label for="text-9401" class="u-form-control-hidden u-label u-text-grey-30 u-label-4"></label>
-                        <input type="text" placeholder="Confirm Password" id="text-9401" name="text-3"
+                        <label for="conf_pw_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-4"></label>
+                        <input type="text" placeholder="Confirm Password" id="conf_pw_field" name="text-3"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-align-center u-form-group u-form-submit u-form-group-5">
-                        <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                        <a href="" id="signUp_click"  class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
                         <input type="submit" value="submit" class="u-form-control-hidden">
                     </div>
                     <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
@@ -606,7 +622,7 @@
     width: 566px;
     min-height: 495px;
     height: auto;
-    margin: 157px auto 60px;
+    margin: 100px auto 60px;
 }
 
 .u-section-6 .u-container-layout-1 {
@@ -720,5 +736,129 @@
         width: auto;
     }
 }</style>
+<style>
+    .u-section-12 {
+    min-height: 500px;
+}
+
+.u-section-12 .u-dialog-1 {
+    width: 566px;
+    min-height: 390px;
+    margin: 30px auto;
+}
+
+.u-section-12 .u-container-layout-1 {
+    padding: 5px 5px;
+}
+
+.u-section-12 .u-text-1 {
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 auto;
+}
+
+.u-section-12 .u-form-1 {
+    height: 104px;
+    width: 400px;
+    margin: 10px auto 0;
+}
+
+.u-section-12 .u-form-group-1 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-1 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-2 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-2 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-3 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-3 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-4 {
+    width: 100%;
+}
+
+.u-section-12 .u-label-4 {
+    font-size: 1rem;
+}
+
+.u-section-12 .u-form-group-5 {
+    width: 100%;
+}
+
+.u-section-12 .u-btn-1 {
+    padding-left: 60px;
+    padding-right: 60px;
+    background-image: none;
+    border-style: none;
+    text-transform: none;
+}
+
+.u-section-12 .u-text-2 {
+    margin: 11px auto 0;
+}
+
+.u-section-12 .u-btn-2 {
+    padding: 0;
+}
+
+.u-section-12 .u-icon-1 {
+    width: 15px;
+    height: 15px;
+    left: auto;
+    top: 17px;
+    position: absolute;
+    right: 16px;
+}
+
+@media (max-width: 991px) {
+    .u-section-12 .u-container-layout-1 {
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .u-section-12 .u-dialog-1 {
+        width: 540px;
+    }
+}
+
+@media (max-width: 575px) {
+    .u-section-12 .u-dialog-1 {
+        width: 340px;
+    }
+
+    .u-section-12 .u-container-layout-1 {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .u-section-12 .u-text-1 {
+        margin-top: 29px;
+    }
+
+    .u-section-12 .u-form-1 {
+        height: 152px;
+        margin-right: initial;
+        margin-left: initial;
+        width: auto;
+    }
+}</style>
+
+<script src="js/user.js"></script>
 </body>
 </html>

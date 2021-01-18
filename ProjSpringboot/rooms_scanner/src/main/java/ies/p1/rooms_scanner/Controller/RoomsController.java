@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -20,21 +21,19 @@ public class RoomsController {
     @Autowired
     SensorService sensorService;
 
-    //RoomsList Page
     @RequestMapping("/roomsList")
     public String getRoomsLists() { return "/Rooms-List";}
 
+    @GetMapping("/home")
+    public String Home() {
+        System.out.println("inside /home");
+        return "/index"; }
 
-
-    @RequestMapping("/home")
-    public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
-        return "/index";
-    }
     @RequestMapping("/contactUs")
     public String Contacts() { return "/ContactUs"; }
 
     @RequestMapping("/roomsStatistics")
-    public String getStatistics(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
+    public String getStatistics() { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
         return "/Rooms-Statistics";
     }
 
@@ -42,12 +41,12 @@ public class RoomsController {
     public String getReservations() {
         return "/Room-Reservations";
     }
-
   
    @RequestMapping("/configurations")
    public String getConfigurations(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
         return "/Configurations";
     }
+
 
 
 

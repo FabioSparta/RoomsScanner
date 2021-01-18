@@ -53,21 +53,36 @@ public class RoomsService {
     public boolean updateSensorRoom(int roomID,int sensorId) {
         Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
         if(sensorRepo.existsById(sensorId)){
+            System.out.println("EXIST SENSOR IDD ");
             r.getSensorList().add(sensorRepo.getSensorById(sensorId));
             repository.save(r);
             return true;
         }
+        System.out.println("DOESNT EXIST ");
         return false;
     }
 
     public boolean removeSensorRoom(int roomID,int sensorId) {
         Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
         if(sensorRepo.existsById(sensorId)){
-            int i = r.getSensorList().indexOf(sensorRepo.getSensorById(sensorId));
-            r.getSensorList().remove(i);
+            //int i = r.getSensorList().indexOf(sensorRepo.getSensorById(sensorId));
+            //r.getSensorList().remove(i);
+
+
+
+            Sensor x = sensorRepo.getSensorById(sensorId);
+            System.out.println("sizeeeeeeeeee");
+            System.out.println(r.getSensorList().size());
+
+            while(true){
+                int i = r.getSensorList().indexOf(sensorRepo.getSensorById(sensorId));
+                if( i == -1)
+                    break;
+                r.getSensorList().remove(i);
+            }
             repository.save(r);
             return true;
-        }
+            }
         return false;
     }
     public boolean deleteRoom(int id) {
