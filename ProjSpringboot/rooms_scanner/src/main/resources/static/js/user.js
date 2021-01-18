@@ -69,7 +69,7 @@ GET: $(document).ready(
                     for (i = 0; i < result.roles.length; i++) {
                         if(result.roles[i].desc =="SUPER_USER" || result.roles[i].desc =="ADMIN_USER" ){
                             console.log("Its a valid user.");
-                            window.location.href="lesConfigsz";
+                            window.location.href="configurations";
                         }
                     }
                     console.log("after for cycle");
