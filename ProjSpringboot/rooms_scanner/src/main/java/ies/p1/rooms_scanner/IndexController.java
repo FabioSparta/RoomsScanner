@@ -10,8 +10,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index( HttpServletResponse httpResponse) throws Exception {
-        httpResponse.sendRedirect("/home");
+        httpResponse.sendRedirect("/Home");
         return "success";
-
     }
 }
