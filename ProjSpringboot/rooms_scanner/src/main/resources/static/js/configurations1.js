@@ -199,7 +199,9 @@ function HideComponents() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
 
+    notifications_table.style.display = "none";
     table_rooms.style.display = "none";
     table_sensors.style.display = "none";
     config_form.style.display = "none";
@@ -214,8 +216,9 @@ function ShowTableRooms() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
 
-
+    notifications_table.style.display = "none";
     table_rooms.style.display = "block";
 
     table_sensors.style.display = "none";
@@ -230,7 +233,9 @@ function ShowTableSensors() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
 
+    notifications_table.style.display = "none";
     table_sensors.style.display = "block";
 
     table_rooms.style.display = "none";
@@ -246,6 +251,8 @@ function ShowConfigForm(num) {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
+    notifications_table.style.display = "none";
     var id = null;
 
     if (num == -1) {
@@ -273,6 +280,9 @@ function ShowNewRoom() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
+
+    notifications_table.style.display = "none";
 
     new_room.style.display = "block";
 
@@ -289,6 +299,9 @@ function ShowNewSensor() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
+
+    notifications_table.style.display = "none";
 
     new_sensor.style.display = "block";
 
@@ -297,3 +310,37 @@ function ShowNewSensor() {
     config_form.style.display = "none";
     new_room.style.display = "none";
 }
+
+function connect() {
+    // Create and init the SockJS object
+    var socket = new SockJS('/ws');
+    var stompClient = Stomp.over(socket);
+
+    // Subscribe the '/notify' channell
+    stompClient.connect({}, function(frame) {
+        stompClient.subscribe('/queue/notify', function(notification) {
+            // Call the notify function when receive a notification
+            notify(notification.body);
+        });
+    });
+    return;
+} // function connect
+
+/**
+ * Display the notification message.
+ */
+function notify(message) {
+    $('#notificationText').text(message)
+
+    $("#myModal").modal('show').delay(3000);
+    $("#myModal").modal('hide');
+    return;
+}
+
+/**
+ * Init operations.
+ */
+$(document).ready(function() {
+    // Start the web socket connection.
+    connect();
+});

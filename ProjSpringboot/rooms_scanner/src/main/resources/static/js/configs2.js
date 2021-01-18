@@ -211,3 +211,55 @@ $(document).ready(
             });
         }
     })
+
+// GET NOTIFICATIONS
+GET: $(document).ready(
+    function () {
+        // GET REQUEST
+        $("#getNotifications").click(function (event) {
+            ShowTableNotifications();
+            event.preventDefault();
+            ajaxGet();
+        });
+
+        // DO GET
+        function ajaxGet() {
+            $.ajax({
+                type: "GET",
+                url: "notifications",
+                success: function (result) {
+                    var trHTML = '';
+                    $("#notificationsTable").find("tr:gt(0)").remove();
+                    $.each(result,
+                        function (i, notification) {
+                            trHTML += '<tr style="height: 75px;" ><<td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + notification.message +
+                                '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + notification.date +" "+ notification.time;
+                            });
+
+                    console.log("Success: ", result);
+                    $('#tableN').append(trHTML);
+                },
+                error: function (e) {
+                    $("#getResNotifications").html("<strong>Failed to Load Notifications</strong>");
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
+    })
+
+function ShowTableNotifications() {
+    var table_rooms = document.getElementById('carousel_3133');
+    var table_sensors = document.getElementById('sec-3e05');
+    var config_form = document.getElementById('carousel_ad56');
+    var new_sensor = document.getElementById('carousel_8ccf');
+    var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
+
+    notifications_table.style.display = "block";
+
+    table_rooms.style.display = "none";
+    table_sensors.style.display = "none";
+    config_form.style.display = "none";
+    new_sensor.style.display = "none";
+    new_room.style.display = "none";
+}

@@ -34,7 +34,6 @@ public class RoomsController {
     }
 
 
-
     ////////////// NOT IN USE
 
     //TODO: mapear o ESTADO das salas de forma individual ou apresentar essa info na pagina de estatisticas AKA pagina inicial no sistema

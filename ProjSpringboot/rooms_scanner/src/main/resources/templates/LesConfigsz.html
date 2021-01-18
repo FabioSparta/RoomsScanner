@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Configurations</title>
+    <script src="/js/jquery.js"></script>
     <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
     <link rel="stylesheet" th:href="@{/css/Configs.css}" media="screen">
-    <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
     <script src="js/popups.js"></script>
     <script src="js/popups.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -131,6 +131,8 @@
         <a onclick="ShowNewSensor()" style="display:inline-block;"
            class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-5">New
             Sensor</a>
+        <a href="#" id="getNotifications" style="display:inline-block;"
+           class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-4">All Notifications</a>
     </div>
 
 </section>
@@ -193,6 +195,27 @@
         </div>
     </div>
 </section>
+<section class="u-align-center u-clearfix u-section-5"  style="padding-bottom: 5%" id="notificationsSection">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+            <table id="notificationsTable" class="u-table-entity u-table-entity-1">
+                <colgroup>
+                    <col width="80%">
+                    <col width="20%">
+                </colgroup>
+                <thead class="u-palette-4-base u-table-header u-table-header-1">
+                <tr align="center" style="height: 26px;">
+                    <th>Notification</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody id='tableN' class="u-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
 <section class="u-align-center u-clearfix u-section-6" id="sec-29f5">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <p class="u-text u-text-default u-text-1">New Room:</p>
@@ -410,6 +433,22 @@
         </button>
     </div>
 </section>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: center" ><strong>Notification</strong></h4>
+            </div>
+            <div class="modal-body">
+                <p id="notificationText">Error</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
 <style>.u-section-11 {
     min-height: 826px;
 }
@@ -697,8 +736,10 @@
         width: auto;
     }
 }</style>
-
-<script src="js/configurations1.js"></script>
-<script src="js/configs2.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="sockjs-0.3.4.min.js"></script>
+    <script src="stomp.min.js"></script>
+    <script src="js/configurations1.js"></script>
+    <script src="js/configs2.js"></script>
 </body>
 </html>

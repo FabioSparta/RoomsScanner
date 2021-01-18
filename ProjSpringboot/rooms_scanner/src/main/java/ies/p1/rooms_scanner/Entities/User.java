@@ -8,16 +8,16 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
-    private int nmecUser;
+    private int nmec;
     private String username;
     private String email;
-    private String role; //TODO: retirar???
+    private String role;
 
     // room(id, departamento, andar, numLugaresOcupados, maxSeats)
     public User() {}
 
     public int getNmecUser() {
-        return nmecUser;
+        return nmec;
     }
 
     public String getUsername() {

@@ -4,6 +4,11 @@ import ies.p1.rooms_scanner.Repository.SensorRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Collection;
 
 @Service
@@ -141,9 +146,13 @@ public class SensorService {
         return true;
     }
 
-    public boolean updateSensor(int id,int data) {
+    public boolean updateSensor(int id,int data,boolean flag) {
         Sensor s = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Sensor not found for this id :: " + id));
         s.setDataCaptured(data);
+        if(flag){
+            int max = repository.getMaxSeatsBySensorID(id);
+            notifications(max,data,id);
+        }
         repository.save(s);
         return true;
     }
@@ -157,5 +166,38 @@ public class SensorService {
     }
     public Sensor getSensorsById(int id) {
         return repository.getSensorById(id);
+    }
+
+    public boolean notifications(int max,int data,int id){
+        if( data > max) {
+            String msg = ""+data+"#"+max+"#"+repository.getNumberBySensorID(id)+"#"+repository.getDepartmentBySensorID(id);
+            // DO POST IN WEBSOCKET
+            int responseCode = 0;
+            try {
+                URL obj = new URL("http://localhost:8080/roomNotification");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) obj.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+
+                // For POST only - START
+                httpURLConnection.setDoOutput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                os.write(("msg="+msg).getBytes());
+                os.flush();
+                os.close();
+                // For POST only - END
+
+                responseCode = httpURLConnection.getResponseCode();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                System.out.println("POST WORKEEED");
+            } else {
+                System.out.println("POST request not worked");
+                return false;
+            }
+        }
+        return true;
     }
 }
