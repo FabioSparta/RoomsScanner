@@ -298,16 +298,16 @@ function ActivateDeleteRoom() {
 
 
 function AjaxDeleteRoom(room_id) {
+
     // PREPARE FORM DATA
     var postData = {
         id: room_id,
     }
     // DO POST
     $.ajax({
-        type: "POST",
+        type: "DELETE",
         contentType: "application/json",
-        url: "deleteRoom",
-        data: JSON.stringify(postData),
+        url: "deleteRoom/"+room_id,
         success: function (result) {
             $("#postResultDiv").html("<p> Room Deleted Successfully! </p>");
             console.log(result);
@@ -323,17 +323,11 @@ function AjaxDeleteRoom(room_id) {
 
 function AjaxDeleteSensor(sensor_id) {
     console.log("This will be deleted.");
-    console.log(sensor_id);
-    // PREPARE FORM DATA
-    var postData = {
-        id: sensor_id,
-    }
     // DO POST
     $.ajax({
-        type: "POST",
+        type: "DELETE",
         contentType: "application/json",
-        url: "deleteSensor",
-        data: JSON.stringify(postData),
+        url: "deleteSensor/"+sensor_id,
         success: function (result) {
             $("#postResultDiv").html("<p> Sensor Deleted Successfully! </p>");
             $('#postResultDiv').fadeIn().delay(5000).fadeOut();
