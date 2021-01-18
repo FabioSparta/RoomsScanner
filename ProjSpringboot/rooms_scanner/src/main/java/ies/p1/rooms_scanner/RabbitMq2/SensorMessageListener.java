@@ -24,6 +24,7 @@ public class SensorMessageListener {
     public void receiveMessage(final SensorMessage sensorMessage) {
         log.info("Received message as specific class: {}", sensorMessage.toString());
         sensorService.updateSensor(sensorMessage.getId(),sensorMessage.getData());
+
     }
 
     // Temp

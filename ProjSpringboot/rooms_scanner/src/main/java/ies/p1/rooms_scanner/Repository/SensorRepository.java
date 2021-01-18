@@ -12,6 +12,4 @@ public interface SensorRepository extends  JpaRepository<Sensor, Integer>{
     List<Sensor> findAll();
 
     Sensor getSensorById (int id);
-
-
 }
