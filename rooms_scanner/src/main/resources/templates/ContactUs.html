@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Login, Sign UP">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>ContactUs</title>
+    <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/ContactUs.css}" media="screen">
+    <script class="u-script" type="text/javascript" th:href="@{/js/jquery.js}" defer=""></script>
+    <script src="js/popups.js"></script>
+    <script class="u-script" type="text/javascript" th:href="@{/static/js/nicepage.js}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
+
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "",
+        "url": "index.html",
+        "logo": "images/1345300403-0.png",
+        "sameAs": []
+    }</script>
+    <meta property="og:title" content="ContactUs">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body class="u-body">
+<header>
+    <div>
+        <nav class="navbar navbar-expand-lg py-0 navbar navbar-dark bg-dark">
+            <a style="margin-left: 15px " class="navbar-brand" href="/home">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div   class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active" >
+                        <a class="nav-link" href="/roomsList">Rooms List <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/roomReservations">Room Reservations</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/roomsStatistics">Rooms Statistics</a>
+                    </li>
+                    <li class="nav-item active ">
+                        <a class="nav-link " href="/configurations">Configurations</a>
+                    </li>
+                    <li class="nav-item active ">
+                        <a class="nav-link " href="/contactUs">Contact Us</a>
+                    </li>
+                </ul>
+                <div style="margin-left: auto; margin-right: 15px"; >
+                    <button onclick="displayLogin()" class="btn btn-outline-success my-2 my-sm-0" >Login</button>
+                    <button onclick="displaySignUp()" class="btn btn-outline-success my-2 my-sm-0" >SignUp</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="256"
+         data-image-height="256" id="sec-9fdd">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h1 class="u-text u-text-default u-title u-text-1">CONTACT US</h1>
+        <p class="u-large-text u-text u-text-default u-text-variant u-text-2">Want to know more about us? Want to
+            clarify something? Check below!</p>
+    </div>
+</section>
+<section class="u-align-center u-clearfix u-grey-5 u-section-2" id="carousel_e421">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h5 class="u-text u-text-1">BECAUSE WE WANT YOU TO STAY FOCUSED</h5>
+        <h2 class="u-custom-font u-font-oswald u-text u-text-2">About Us</h2>
+        <p class="u-text u-text-3">Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id
+            suscipit ex. Suspendisse rhoncus laoreet purus <a href="https://nicepage.com/templates"
+                                                              class="u-border-1 u-border-grey-75 u-border-hover-palette-1-base u-btn u-button-style u-none u-text-body-color u-btn-1">quis
+                elementum</a>. Phasellus sed efficitur dolor, et ultricies sapien. Quisque fringilla sit amet dolor
+            commodo efficitur.
+            Aliquam et sem odio. In ullamcorper nisi nunc, et molestie ipsum iaculis sit amet.
+        </p>
+        <div class="u-clearfix u-gutter-50 u-layout-wrap u-layout-wrap-1">
+            <div class="u-gutter-0 u-layout">
+                <div class="u-layout-col">
+                    <div class="u-size-30">
+                        <div class="u-layout-row">
+                            <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-1">
+                                <div class="u-container-layout u-container-layout-1"><span
+                                        class="u-icon u-icon-circle u-palette-3-base u-spacing-16 u-icon-1"><svg
+                                        class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 -31 512 512"
+                                        style=""><use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                      xlink:href="#svg-b2cd"></use></svg><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 -31 512 512"
+                                        id="svg-b2cd"><path d="m497.09375 60.003906c-.03125 0-.0625-.003906-.09375-.003906h-136v-15c0-24.8125-20.1875-45-45-45h-120c-24.8125 0-45 20.1875-45 45v15h-136c-8.351562 0-15 6.84375-15 15v330c0 24.8125 20.1875 45 45 45h422c24.8125 0 45-20.1875 45-45v-329.683594c0-.019531 0-.039062 0-.058594-.574219-9.851562-6.632812-15.199218-14.90625-15.253906zm-316.09375-15.003906c0-8.269531 6.730469-15 15-15h120c8.269531 0 15 6.730469 15 15v15h-150zm295.1875 45-46.582031 139.742188c-2.042969 6.136718-7.761719 10.257812-14.226563 10.257812h-84.378906v-15c0-8.285156-6.714844-15-15-15h-120c-8.285156 0-15 6.714844-15 15v15h-84.378906c-6.464844 0-12.183594-4.121094-14.226563-10.257812l-46.582031-139.742188zm-175.1875 150v30h-90v-30zm181 165c0 8.269531-6.730469 15-15 15h-422c-8.269531 0-15-6.730469-15-15v-237.566406l23.933594 71.796875c6.132812 18.40625 23.289062 30.769531 42.6875 30.769531h84.378906v15c0 8.285156 6.714844 15 15 15h120c8.285156 0 15-6.714844 15-15v-15h84.378906c19.398438 0 36.554688-12.363281 42.6875-30.769531l23.933594-71.796875zm0 0"></path></svg></span>
+                                    <h4 class="u-custom-font u-font-oswald u-text u-text-default u-text-4">Anthony
+                                        Pereira</h4>
+                                    <p class="u-text u-text-default u-text-grey-50 u-text-5">Sample text. Click to
+                                        select the text box. Click again or double click to start editing the text.</p>
+                                    <div class="u-social-icons u-spacing-10 u-social-icons-1">
+                                        <a class="u-social-url" target="_blank" href=""><span
+                                                class="u-icon u-icon-circle u-social-facebook u-social-type-color u-icon-2"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-47b0"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-47b0" style="color: rgb(59, 89, 152);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2
+            c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-linkedin u-social-type-color u-icon-3"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6650"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-6650" style="color: rgb(0, 122, 185);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M41.3,83.7H27.9V43.4h13.4V83.7z M34.6,37.9L34.6,37.9c-4.6,0-7.5-3.1-7.5-7c0-4,3-7,7.6-7s7.4,3,7.5,7
+            C42.2,34.8,39.2,37.9,34.6,37.9z M89.6,83.7H76.2V62.2c0-5.4-1.9-9.1-6.8-9.1c-3.7,0-5.9,2.5-6.9,4.9c-0.4,0.9-0.4,2.1-0.4,3.3v22.5
+            H48.7c0,0,0.2-36.5,0-40.3h13.4v5.7c1.8-2.7,5-6.7,12.1-6.7c8.8,0,15.4,5.8,15.4,18.1V83.7z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-google u-social-type-color u-icon-4"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-ec33"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-ec33" style="color: rgb(220, 78, 65);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M60.8,76.3c-6.6,8.6-19,11.1-29,7.7c-10.6-3.5-18.4-14.2-18.2-25.5C13,44.6,25.3,31.8,39.1,31.6
+            c7.1-0.6,14,2.1,19.3,6.6c-2.2,2.4-4.4,4.8-6.9,7.1c-4.8-2.9-10.4-5-15.9-3.1c-8.8,2.6-14.3,13-10.9,21.8
+            c2.7,9.1,13.7,14.1,22.5,10.2c4.5-1.6,7.5-5.7,8.7-10.2c-5.1-0.1-10.2,0-15.5-0.2c0-3,0-6.1,0-9.2c8.6,0,17.1,0,25.7,0
+            C66.7,62.3,65.5,70.4,60.8,76.3z M98.3,62.5c-2.6,0-5.1,0-7.7,0c0,2.6,0,5.1,0,7.7c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7
+            c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7c2.6,0,5.1,0,7.7,0c0-2.6,0-5.1,0.1-7.7c2.6,0,5.1,0,7.7,0c0,2.6,0,5.1,0,7.7
+            c2.6,0,5.1,0,7.7,0C98.3,57.3,98.3,59.9,98.3,62.5z"></path></svg></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-2">
+                                <div class="u-container-layout u-container-layout-2"><span
+                                        class="u-icon u-icon-circle u-palette-3-base u-spacing-16 u-icon-5"><svg
+                                        class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 -31 512 512"
+                                        style=""><use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                      xlink:href="#svg-7c98"></use></svg><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 -31 512 512"
+                                        id="svg-7c98"><path d="m497.09375 60.003906c-.03125 0-.0625-.003906-.09375-.003906h-136v-15c0-24.8125-20.1875-45-45-45h-120c-24.8125 0-45 20.1875-45 45v15h-136c-8.351562 0-15 6.84375-15 15v330c0 24.8125 20.1875 45 45 45h422c24.8125 0 45-20.1875 45-45v-329.683594c0-.019531 0-.039062 0-.058594-.574219-9.851562-6.632812-15.199218-14.90625-15.253906zm-316.09375-15.003906c0-8.269531 6.730469-15 15-15h120c8.269531 0 15 6.730469 15 15v15h-150zm295.1875 45-46.582031 139.742188c-2.042969 6.136718-7.761719 10.257812-14.226563 10.257812h-84.378906v-15c0-8.285156-6.714844-15-15-15h-120c-8.285156 0-15 6.714844-15 15v15h-84.378906c-6.464844 0-12.183594-4.121094-14.226563-10.257812l-46.582031-139.742188zm-175.1875 150v30h-90v-30zm181 165c0 8.269531-6.730469 15-15 15h-422c-8.269531 0-15-6.730469-15-15v-237.566406l23.933594 71.796875c6.132812 18.40625 23.289062 30.769531 42.6875 30.769531h84.378906v15c0 8.285156 6.714844 15 15 15h120c8.285156 0 15-6.714844 15-15v-15h84.378906c19.398438 0 36.554688-12.363281 42.6875-30.769531l23.933594-71.796875zm0 0"></path></svg></span>
+                                    <h4 class="u-custom-font u-font-oswald u-text u-text-6">Eleandro Laureano</h4>
+                                    <p class="u-text u-text-default u-text-grey-50 u-text-7">Sample text. Click to
+                                        select the text box. Click again or double click to start editing the text.</p>
+                                    <div class="u-social-icons u-spacing-10 u-social-icons-2">
+                                        <a class="u-social-url" target="_blank" href=""><span
+                                                class="u-icon u-icon-circle u-social-facebook u-social-type-color u-icon-6"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-07a1"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-07a1" style="color: rgb(59, 89, 152);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2
+            c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-linkedin u-social-type-color u-icon-7"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-9826"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-9826" style="color: rgb(0, 122, 185);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M41.3,83.7H27.9V43.4h13.4V83.7z M34.6,37.9L34.6,37.9c-4.6,0-7.5-3.1-7.5-7c0-4,3-7,7.6-7s7.4,3,7.5,7
+            C42.2,34.8,39.2,37.9,34.6,37.9z M89.6,83.7H76.2V62.2c0-5.4-1.9-9.1-6.8-9.1c-3.7,0-5.9,2.5-6.9,4.9c-0.4,0.9-0.4,2.1-0.4,3.3v22.5
+            H48.7c0,0,0.2-36.5,0-40.3h13.4v5.7c1.8-2.7,5-6.7,12.1-6.7c8.8,0,15.4,5.8,15.4,18.1V83.7z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-google u-social-type-color u-icon-8"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3844"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-3844" style="color: rgb(220, 78, 65);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M60.8,76.3c-6.6,8.6-19,11.1-29,7.7c-10.6-3.5-18.4-14.2-18.2-25.5C13,44.6,25.3,31.8,39.1,31.6
+            c7.1-0.6,14,2.1,19.3,6.6c-2.2,2.4-4.4,4.8-6.9,7.1c-4.8-2.9-10.4-5-15.9-3.1c-8.8,2.6-14.3,13-10.9,21.8
+            c2.7,9.1,13.7,14.1,22.5,10.2c4.5-1.6,7.5-5.7,8.7-10.2c-5.1-0.1-10.2,0-15.5-0.2c0-3,0-6.1,0-9.2c8.6,0,17.1,0,25.7,0
+            C66.7,62.3,65.5,70.4,60.8,76.3z M98.3,62.5c-2.6,0-5.1,0-7.7,0c0,2.6,0,5.1,0,7.7c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7
+            c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7c2.6,0,5.1,0,7.7,0c0-2.6,0-5.1,0.1-7.7c2.6,0,5.1,0,7.7,0c0,2.6,0,5.1,0,7.7
+            c2.6,0,5.1,0,7.7,0C98.3,57.3,98.3,59.9,98.3,62.5z"></path></svg></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-size-30">
+                        <div class="u-layout-row">
+                            <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-3">
+                                <div class="u-container-layout u-container-layout-3"><span
+                                        class="u-icon u-icon-circle u-palette-1-base u-spacing-16 u-icon-9"><svg
+                                        class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                        viewBox="0 0 511.927 511.927" style=""><use
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-b96f"></use></svg><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        version="1.1" xml:space="preserve" class="u-svg-content"
+                                        viewBox="0 0 511.927 511.927" id="svg-b96f"><g><path d="m496.899.063c-107.348.099-212.523 45.282-288.585 123.979l-27.046 27.046-28.754-28.754-84.879 23.958-67.635 67.634 59.212 59.214-.001.001 3.062 3.061-27.853 57.46 18.359 18.359-44.905 44.906 21.213 21.213 44.905-44.905 21.717 21.719-95.096 95.094 21.213 21.213 95.096-95.095 21.717 21.717-44.907 44.907 21.213 21.213 44.907-44.907 18.359 18.36 57.462-27.853 62.274 62.274 67.629-67.626 24.041-84.809-28.831-28.829 27.045-27.045c37.509-36.154 68.597-80.734 89.905-128.928 40.467-91.521 33.292-165 34.191-174.591zm-413.585 172.975 60.422-17.054 16.317 16.316-79.629 79.628-37.999-38.002zm101.018 268.113-113.607-113.609 14.002-28.884 128.492 128.491zm171.619-72.946-17.108 60.354-40.896 40.894-38-37.999 79.625-79.625zm10.966-86.145-27.343 27.343-.003-.003-100.835 100.836-137.097-137.095c10.108-10.107 91.088-91.086 100.842-100.84 3.156-3.156-10.724 10.725 27.322-27.325 66.815-69.171 157.838-110.413 251.764-114.566-4.149 93.993-45.421 184.971-114.65 251.65z"></path><path
+                                        d="m367.495 241.092c26.69-26.69 26.711-70.097.048-96.76-12.895-12.895-30.061-19.997-48.336-19.997-37.725 0-68.393 30.4-68.384 68.355.005 18.283 7.111 35.455 20.01 48.354 26.409 26.407 69.855 26.856 96.662.048zm-48.288-86.757c10.262 0 19.895 3.981 27.123 11.21 14.966 14.967 14.944 39.341-.048 54.334-7.181 7.18-16.792 11.134-27.064 11.134-21.466 0-38.389-17.211-38.395-38.332-.003-10.26 17.372-38.346 38.384-38.346z"></path>
+</g></svg></span>
+                                    <h4 class="u-custom-font u-font-oswald u-text u-text-default u-text-8">Fábio
+                                        Carmelino</h4>
+                                    <p class="u-text u-text-default u-text-grey-50 u-text-9">Sample text. Click to
+                                        select the text box. Click again or double click to start editing the text.</p>
+                                    <div class="u-social-icons u-spacing-10 u-social-icons-3">
+                                        <a class="u-social-url" target="_blank" href=""><span
+                                                class="u-icon u-icon-circle u-social-facebook u-social-type-color u-icon-10"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-04be"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-04be" style="color: rgb(59, 89, 152);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2
+            c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-linkedin u-social-type-color u-icon-11"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1766"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-1766" style="color: rgb(0, 122, 185);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M41.3,83.7H27.9V43.4h13.4V83.7z M34.6,37.9L34.6,37.9c-4.6,0-7.5-3.1-7.5-7c0-4,3-7,7.6-7s7.4,3,7.5,7
+            C42.2,34.8,39.2,37.9,34.6,37.9z M89.6,83.7H76.2V62.2c0-5.4-1.9-9.1-6.8-9.1c-3.7,0-5.9,2.5-6.9,4.9c-0.4,0.9-0.4,2.1-0.4,3.3v22.5
+            H48.7c0,0,0.2-36.5,0-40.3h13.4v5.7c1.8-2.7,5-6.7,12.1-6.7c8.8,0,15.4,5.8,15.4,18.1V83.7z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-google u-social-type-color u-icon-12"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-408e"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-408e" style="color: rgb(220, 78, 65);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M60.8,76.3c-6.6,8.6-19,11.1-29,7.7c-10.6-3.5-18.4-14.2-18.2-25.5C13,44.6,25.3,31.8,39.1,31.6
+            c7.1-0.6,14,2.1,19.3,6.6c-2.2,2.4-4.4,4.8-6.9,7.1c-4.8-2.9-10.4-5-15.9-3.1c-8.8,2.6-14.3,13-10.9,21.8
+            c2.7,9.1,13.7,14.1,22.5,10.2c4.5-1.6,7.5-5.7,8.7-10.2c-5.1-0.1-10.2,0-15.5-0.2c0-3,0-6.1,0-9.2c8.6,0,17.1,0,25.7,0
+            C66.7,62.3,65.5,70.4,60.8,76.3z M98.3,62.5c-2.6,0-5.1,0-7.7,0c0,2.6,0,5.1,0,7.7c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7
+            c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7c2.6,0,5.1,0,7.7,0c0-2.6,0-5.1,0.1-7.7c2.6,0,5.1,0,7.7,0c0,2.6,0,5.1,0,7.7
+            c2.6,0,5.1,0,7.7,0C98.3,57.3,98.3,59.9,98.3,62.5z"></path></svg></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="u-align-left u-container-style u-layout-cell u-size-30 u-white u-layout-cell-4">
+                                <div class="u-container-layout u-container-layout-4"><span
+                                        class="u-icon u-icon-circle u-palette-4-base u-spacing-16 u-icon-13"><svg
+                                        class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 512 512"
+                                        style=""><use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                      xlink:href="#svg-dc35"></use></svg><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 512 512"
+                                        id="svg-dc35"><g><path d="m151 421c0-17.284-7.356-32.875-19.09-43.833l.006-.083c1.063-14.686 1.924-30.168 2.578-46.143 30.713 5.786 52.476 17.431 64.796 34.728 15.886 22.302 11.655 48.495 9.98 55.991-5.584 24.991 9.215 50.308 34.285 55.124 14.49 2.783 28.95 4.173 43.314 4.173 50.36 0 100.864-17.212 142.556-51.648 52.459-43.33 82.557-106.497 82.574-173.304.036-126.622-110.09-229.925-225.096-225.796-62.835 2.257-119.305 33.211-158.24 67.283-.498-4.643-1.019-9.164-1.564-13.548-2.856-22.982-6.23-41.2-10.028-54.149-2.614-8.916-8.738-29.795-26.071-29.795s-23.457 20.879-26.071 29.795c-3.798 12.949-7.171 31.167-10.028 54.149-5.74 46.185-8.901 107.289-8.901 172.056 0 42.314 1.412 84.184 4.084 121.083l.006.084c-11.734 10.958-19.09 26.549-19.09 43.833v31c0 16.262-14.196 30-31 30v30h61c49.55 0 90-41.067 90-91zm136.979-360.81c96.651-3.468 194.052 84.771 194.021 195.806-.016 57.831-26.142 112.57-71.679 150.183-45.002 37.17-103.726 52.165-161.106 41.144-8.352-1.604-12.552-10.684-10.666-19.121 3.023-13.532 7.632-48.412-14.823-79.938-17.618-24.735-47.273-40.72-88.256-47.619.348-14.693.527-45.763.527-46.323 5.845 6.811 13.587 11.714 22.444 14.087 24.021 6.437 48.706-7.907 55.114-31.82 6.422-23.968-7.853-48.691-31.82-55.113-18-4.823-35.97 1.971-46.646 15.164-.667-21.309-1.694-41.749-3.054-60.855 33.943-35.861 91.33-73.274 155.944-75.595zm-132.379 160.869c2.146-8.008 10.362-12.753 18.371-10.607 7.989 2.141 12.748 10.382 10.607 18.371-2.141 7.99-10.386 12.748-18.372 10.607-8.007-2.145-12.752-10.361-10.606-18.371zm-72.406-120.617c2.591-24.144 5.363-40.509 7.806-51.524 2.443 11.015 5.215 27.38 7.806 51.524 4.639 43.231 7.194 98.476 7.194 155.558 0 5.01-.021 10.012-.061 15h-29.878c-.04-4.988-.061-9.99-.061-15 0-57.082 2.555-112.327 7.194-155.558zm-6.649 200.548h28.91c-.514 21.183-1.389 41.784-2.604 61.191-3.833-.771-7.795-1.181-11.851-1.181s-8.018.41-11.851 1.181c-1.214-19.407-2.089-40.007-2.604-61.191zm-15.545 151.01v-31c0-16.542 13.458-30 30-30s30 13.458 30 30c0 33.635-26.916 61-60 61h-8.256c5.386-9.041 8.256-19.314 8.256-30z"></path><path
+                                        d="m402.673 202.967c17.586-17.585 17.59-46.051 0-63.64-17.544-17.545-46.094-17.546-63.64 0-17.586 17.585-17.59 46.051 0 63.64 17.545 17.545 46.094 17.546 63.64 0zm-42.427-42.426c5.849-5.848 15.364-5.849 21.214 0 5.863 5.863 5.863 15.35 0 21.213-5.851 5.849-15.365 5.848-21.214 0-5.862-5.863-5.863-15.351 0-21.213z"></path><path
+                                        d="m266.588 183.556c23.967-6.422 38.243-31.146 31.821-55.113-6.424-23.967-31.148-38.242-55.114-31.82-23.967 6.422-38.242 31.146-31.82 55.114 6.437 24.022 31.087 38.256 55.113 31.819zm-15.528-57.956c8.006-2.145 16.235 2.636 18.372 10.606 2.141 7.989-2.618 16.231-10.607 18.371-8.007 2.145-16.225-2.597-18.371-10.606-2.142-7.989 2.616-16.23 10.606-18.371z"></path><path
+                                        d="m273.591 383.559c6.414 23.932 31.112 38.251 55.115 31.819 23.967-6.422 38.241-31.146 31.819-55.113-6.437-24.019-31.082-38.258-55.114-31.82-23.967 6.422-38.242 31.146-31.82 55.114zm39.586-26.137c8.022-2.15 16.23 2.614 18.37 10.606 2.141 7.99-2.617 16.231-10.606 18.372-7.99 2.141-16.23-2.619-18.371-10.606-2.141-7.99 2.617-16.231 10.607-18.372z"></path><path
+                                        d="m358.444 275.412c-6.422 23.968 7.853 48.691 31.82 55.114 24.004 6.432 48.671-7.778 55.113-31.82 6.436-24.022-7.794-48.676-31.819-55.113-24.021-6.44-48.675 7.793-55.114 31.819zm57.955 15.529c-2.143 8.006-10.362 12.753-18.37 10.607-7.989-2.141-12.747-10.382-10.606-18.372 2.14-7.991 10.346-12.756 18.37-10.606 7.988 2.14 12.747 10.381 10.606 18.371z"></path>
+</g></svg></span>
+                                    <h4 class="u-custom-font u-font-oswald u-text u-text-default u-text-10">Maria
+                                        Rocha</h4>
+                                    <p class="u-text u-text-default u-text-grey-50 u-text-11">Sample text. Click to
+                                        select the text box. Click again or double click to start editing the text.</p>
+                                    <div class="u-social-icons u-spacing-10 u-social-icons-4">
+                                        <a class="u-social-url" target="_blank" href=""><span
+                                                class="u-icon u-icon-circle u-social-facebook u-social-type-color u-icon-14"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-262d"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-262d" style="color: rgb(59, 89, 152);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2
+            c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-linkedin u-social-type-color u-icon-15"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6dd4"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-6dd4" style="color: rgb(0, 122, 185);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M41.3,83.7H27.9V43.4h13.4V83.7z M34.6,37.9L34.6,37.9c-4.6,0-7.5-3.1-7.5-7c0-4,3-7,7.6-7s7.4,3,7.5,7
+            C42.2,34.8,39.2,37.9,34.6,37.9z M89.6,83.7H76.2V62.2c0-5.4-1.9-9.1-6.8-9.1c-3.7,0-5.9,2.5-6.9,4.9c-0.4,0.9-0.4,2.1-0.4,3.3v22.5
+            H48.7c0,0,0.2-36.5,0-40.3h13.4v5.7c1.8-2.7,5-6.7,12.1-6.7c8.8,0,15.4,5.8,15.4,18.1V83.7z"></path></svg></span>
+                                        </a>
+                                        <a class="u-social-url" target="_blank" href="#"><span
+                                                class="u-icon u-icon-circle u-social-google u-social-type-color u-icon-16"><svg
+                                                class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                viewBox="0 0 112 112" style=""><use
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-9824"></use></svg><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                                xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px"
+                                                y="0px" id="svg-9824" style="color: rgb(220, 78, 65);"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path
+                                                fill="#FFFFFF" d="M60.8,76.3c-6.6,8.6-19,11.1-29,7.7c-10.6-3.5-18.4-14.2-18.2-25.5C13,44.6,25.3,31.8,39.1,31.6
+            c7.1-0.6,14,2.1,19.3,6.6c-2.2,2.4-4.4,4.8-6.9,7.1c-4.8-2.9-10.4-5-15.9-3.1c-8.8,2.6-14.3,13-10.9,21.8
+            c2.7,9.1,13.7,14.1,22.5,10.2c4.5-1.6,7.5-5.7,8.7-10.2c-5.1-0.1-10.2,0-15.5-0.2c0-3,0-6.1,0-9.2c8.6,0,17.1,0,25.7,0
+            C66.7,62.3,65.5,70.4,60.8,76.3z M98.3,62.5c-2.6,0-5.1,0-7.7,0c0,2.6,0,5.1,0,7.7c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7
+            c-2.6,0-5.1,0-7.7,0c0-2.6,0-5.1,0-7.7c2.6,0,5.1,0,7.7,0c0-2.6,0-5.1,0.1-7.7c2.6,0,5.1,0,7.7,0c0,2.6,0,5.1,0,7.7
+            c2.6,0,5.1,0,7.7,0C98.3,57.3,98.3,59.9,98.3,62.5z"></path></svg></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5ff6">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Projeto da Cadeira de Introdução á Engenharia de Software, Curso de Licenciatura em Engenharia Informática na Universidade de Aveiro</p>
+        <div class="u-social-icons u-spacing-10 u-social-icons-1">
+            <a class="u-social-url" target="_blank" href=""><span
+                    class="u-icon u-icon-circle u-social-facebook u-social-type-logo u-icon-1"><svg class="u-svg-link"
+                                                                                                    preserveAspectRatio="xMidYMin slice"
+                                                                                                    viewBox="0 0 112 112"
+                                                                                                    style=""><use
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d3a"></use></svg><svg
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" id="svg-1d3a"><path d="M75.5,28.8H65.4c-1.5,0-4,0.9-4,4.3v9.4h13.9l-1.5,15.8H61.4v45.1H42.8V58.3h-8.8V42.4h8.8V32.2 c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path></svg></span>
+            </a>
+            <a class="u-social-url" target="_blank" href=""><span
+                    class="u-icon u-icon-circle u-social-twitter u-social-type-logo u-icon-2"><svg class="u-svg-link"
+                                                                                                   preserveAspectRatio="xMidYMin slice"
+                                                                                                   viewBox="0 0 112 112"
+                                                                                                   style=""><use
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-4f0b"></use></svg><svg
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" id="svg-4f0b"><path d="M92.2,38.2c0,0.8,0,1.6,0,2.3c0,24.3-18.6,52.4-52.6,52.4c-10.6,0.1-20.2-2.9-28.5-8.2 c1.4,0.2,2.9,0.2,4.4,0.2c8.7,0,16.7-2.9,23-7.9c-8.1-0.2-14.9-5.5-17.3-12.8c1.1,0.2,2.4,0.2,3.4,0.2c1.6,0,3.3-0.2,4.8-0.7 c-8.4-1.6-14.9-9.2-14.9-18c0-0.2,0-0.2,0-0.2c2.5,1.4,5.4,2.2,8.4,2.3c-5-3.3-8.3-8.9-8.3-15.4c0-3.4,1-6.5,2.5-9.2 c9.1,11.1,22.7,18.5,38,19.2c-0.2-1.4-0.4-2.8-0.4-4.3c0.1-10,8.3-18.2,18.5-18.2c5.4,0,10.1,2.2,13.5,5.7c4.3-0.8,8.1-2.3,11.7-4.5 c-1.4,4.3-4.3,7.9-8.1,10.1c3.7-0.4,7.3-1.4,10.6-2.9C98.9,32.3,95.7,35.5,92.2,38.2z"></path></svg></span>
+            </a>
+            <a class="u-social-url" target="_blank" href=""><span
+                    class="u-icon u-icon-circle u-social-instagram u-social-type-logo u-icon-3"><svg class="u-svg-link"
+                                                                                                     preserveAspectRatio="xMidYMin slice"
+                                                                                                     viewBox="0 0 112 112"
+                                                                                                     style=""><use
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-dd4a"></use></svg><svg
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" id="svg-dd4a"><path d="M55.9,32.9c-12.8,0-23.2,10.4-23.2,23.2s10.4,23.2,23.2,23.2s23.2-10.4,23.2-23.2S68.7,32.9,55.9,32.9z M55.9,69.4c-7.4,0-13.3-6-13.3-13.3c-0.1-7.4,6-13.3,13.3-13.3s13.3,6,13.3,13.3C69.3,63.5,63.3,69.4,55.9,69.4z"></path><path
+                    d="M79.7,26.8c-3,0-5.4,2.5-5.4,5.4s2.5,5.4,5.4,5.4c3,0,5.4-2.5,5.4-5.4S82.7,26.8,79.7,26.8z"></path><path
+                    d="M78.2,11H33.5C21,11,10.8,21.3,10.8,33.7v44.7c0,12.6,10.2,22.8,22.7,22.8h44.7c12.6,0,22.7-10.2,22.7-22.7 V33.7C100.8,21.1,90.6,11,78.2,11z M91,78.4c0,7.1-5.8,12.8-12.8,12.8H33.5c-7.1,0-12.8-5.8-12.8-12.8V33.7 c0-7.1,5.8-12.8,12.8-12.8h44.7c7.1,0,12.8,5.8,12.8,12.8V78.4z"></path></svg></span>
+            </a>
+        </div>
+        <p class="u-text u-text-2">RoomsScanner<b>®&nbsp;</b>All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+<section
+        class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-section-5"
+        id="sec-e252">
+    <div class="u-align-center-xs u-container-style u-dialog u-white u-dialog-1">
+        <div class="u-container-layout u-container-layout-1">
+            <h2 class="u-align-center u-text u-text-default u-text-1">Login</h2>
+            <div class="u-expanded-width-xs u-form u-form-1">
+                <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
+                      style="padding: 0px;" source="custom" name="form">
+                    <div class="u-form-group u-form-name u-form-group-1">
+                        <label for="name-81a7"
+                               class="u-form-control-hidden u-label u-text-grey-30 u-label-1">Nome</label>
+                        <input type="text" placeholder="Username" id="name-81a7" name="name"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                    </div>
+                    <div class="u-form-group u-form-group-2">
+                        <label for="text-9210" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
+                        <input type="text" placeholder="Password" id="text-9210" name="text"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                    </div>
+                    <div class="u-align-center u-form-group u-form-submit u-form-group-3">
+                        <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                        <input type="submit" value="submit" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
+                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
+                        then try again.
+                    </div>
+                    <input type="hidden" value="" name="recaptchaResponse">
+                </form>
+            </div>
+            <p class="u-align-center u-text u-text-default u-text-2">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
+                   onclick="displaySignUp()">Don't have an account yet? Create One!</a>
+            </p>
+        </div>
+        <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
+            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style="">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                 xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg>
+        </button>
+    </div>
+</section>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: center" ><strong>Notification</strong></h4>
+            </div>
+            <div class="modal-body">
+                <p id="notificationText">Error</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+<style>.u-section-5 {
+    min-height: 826px;
+}
+
+.u-section-5 .u-dialog-1 {
+    width: 566px;
+    min-height: 454px;
+    margin: 60px auto;
+}
+
+.u-section-5 .u-container-layout-1 {
+    padding: 40px 30px;
+}
+
+.u-section-5 .u-text-1 {
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 46px auto 0;
+}
+
+.u-section-5 .u-form-1 {
+    height: 154px;
+    width: 400px;
+    margin: 20px auto 0;
+}
+
+.u-section-5 .u-form-group-1 {
+    width: 100%;
+}
+
+.u-section-5 .u-label-1 {
+    font-size: 1rem;
+}
+
+.u-section-5 .u-form-group-2 {
+    width: 100%;
+}
+
+.u-section-5 .u-label-2 {
+    font-size: 1rem;
+}
+
+.u-section-5 .u-form-group-3 {
+    width: 100%;
+}
+
+.u-section-5 .u-btn-1 {
+    padding-left: 60px;
+    padding-right: 60px;
+    background-image: none;
+    border-style: none;
+    text-transform: none;
+}
+
+.u-section-5 .u-text-2 {
+    margin: 20px auto 0;
+}
+
+.u-section-5 .u-btn-2 {
+    padding: 0;
+}
+
+.u-section-5 .u-icon-1 {
+    width: 15px;
+    height: 15px;
+    left: auto;
+    top: 17px;
+    position: absolute;
+    right: 16px;
+}
+
+@media (max-width: 1199px) {
+    .u-section-5 .u-dialog-1 {
+        height: auto;
+    }
+}
+
+@media (max-width: 991px) {
+    .u-section-5 .u-container-layout-1 {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .u-section-5 .u-dialog-1 {
+        width: 540px;
+    }
+}
+
+@media (max-width: 575px) {
+    .u-section-5 .u-dialog-1 {
+        width: 340px;
+    }
+
+    .u-section-5 .u-container-layout-1 {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .u-section-5 .u-text-1 {
+        margin-top: 29px;
+    }
+
+    .u-section-5 .u-form-1 {
+        height: 152px;
+        margin-right: initial;
+        margin-left: initial;
+        width: auto;
+    }
+}</style>
+<section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-section-6"
+         id="sec-f378">
+    <div class="u-align-center-xs u-container-style u-dialog u-white u-dialog-1">
+        <div class="u-container-layout u-container-layout-1">
+            <h2 class="u-align-center u-text u-text-default u-text-1">Sign UP</h2>
+            <div class="u-expanded-width-xs u-form u-form-1">
+                <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
+                      style="padding: 0px;" source="custom" name="form">
+                    <div class="u-form-group u-form-group-1">
+                        <label for="text-995f" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
+                        <input type="text" placeholder="Email" id="text-995f" name="text"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                    </div>
+                    <div class="u-form-group u-form-group-2">
+                        <label for="text-e4c2" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
+                        <input type="text" placeholder="Username" id="text-e4c2" name="text-1"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                    </div>
+                    <div class="u-form-group u-form-group-3">
+                        <label for="text-aabe" class="u-form-control-hidden u-label u-text-grey-30 u-label-3"></label>
+                        <input type="text" placeholder="Password" id="text-aabe" name="text-2"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                    </div>
+                    <div class="u-form-group u-form-group-4">
+                        <label for="text-9401" class="u-form-control-hidden u-label u-text-grey-30 u-label-4"></label>
+                        <input type="text" placeholder="Confirm Password" id="text-9401" name="text-3"
+                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                    </div>
+                    <div class="u-align-center u-form-group u-form-submit u-form-group-5">
+                        <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                        <input type="submit" value="submit" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
+                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
+                        then try again.
+                    </div>
+                    <input type="hidden" value="" name="recaptchaResponse">
+                </form>
+            </div>
+            <p class="u-align-center u-text u-text-default u-text-2">
+                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
+                   onclick="displayLogin()">Already have an account? Click here to Login In</a>
+            </p>
+        </div>
+        <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
+            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style="">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                 xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg>
+        </button>
+    </div>
+</section>
+<style>.u-section-6 {
+    min-height: 826px;
+}
+
+.u-section-6 .u-dialog-1 {
+    width: 566px;
+    min-height: 495px;
+    height: auto;
+    margin: 157px auto 60px;
+}
+
+.u-section-6 .u-container-layout-1 {
+    padding: 16px 30px 38px;
+}
+
+.u-section-6 .u-text-1 {
+    font-size: 1.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 auto;
+}
+
+.u-section-6 .u-form-1 {
+    height: 104px;
+    width: 400px;
+    margin: 20px 53px 0;
+}
+
+.u-section-6 .u-form-group-1 {
+    width: 100%;
+}
+
+.u-section-6 .u-label-1 {
+    font-size: 1rem;
+}
+
+.u-section-6 .u-form-group-2 {
+    width: 100%;
+}
+
+.u-section-6 .u-label-2 {
+    font-size: 1rem;
+}
+
+.u-section-6 .u-form-group-3 {
+    width: 100%;
+}
+
+.u-section-6 .u-label-3 {
+    font-size: 1rem;
+}
+
+.u-section-6 .u-form-group-4 {
+    width: 100%;
+}
+
+.u-section-6 .u-label-4 {
+    font-size: 1rem;
+}
+
+.u-section-6 .u-form-group-5 {
+    width: 100%;
+}
+
+.u-section-6 .u-btn-1 {
+    padding-left: 60px;
+    padding-right: 60px;
+    background-image: none;
+    border-style: none;
+    text-transform: none;
+}
+
+.u-section-6 .u-text-2 {
+    margin: 11px auto 0;
+}
+
+.u-section-6 .u-btn-2 {
+    padding: 0;
+}
+
+.u-section-6 .u-icon-1 {
+    width: 15px;
+    height: 15px;
+    left: auto;
+    top: 17px;
+    position: absolute;
+    right: 16px;
+}
+
+@media (max-width: 991px) {
+    .u-section-6 .u-container-layout-1 {
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .u-section-6 .u-dialog-1 {
+        width: 540px;
+    }
+}
+
+@media (max-width: 575px) {
+    .u-section-6 .u-dialog-1 {
+        width: 340px;
+    }
+
+    .u-section-6 .u-container-layout-1 {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .u-section-6 .u-text-1 {
+        margin-top: 29px;
+    }
+
+    .u-section-6 .u-form-1 {
+        height: 152px;
+        margin-right: initial;
+        margin-left: initial;
+        width: auto;
+    }
+}</style>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="sockjs-0.3.4.min.js"></script>
+<script src="stomp.min.js"></script>
+<script src="js/configurations1.js"></script>
+<script src="js/configs2.js"></script>
+</body>
+</html>
