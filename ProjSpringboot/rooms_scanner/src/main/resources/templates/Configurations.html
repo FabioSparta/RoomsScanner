@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Rooms List, Login, Sign UP">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title id="el_title">Configurations</title>
-    <!-- BootStrap Stuff-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    <!-- End -->
-    <link rel="stylesheet" href="/css/nicepage.css" media="screen">
-    <link rel="stylesheet" href="/css/Configs.css" media="screen">
+    <title>Configurations</title>
+    <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+    <link rel="stylesheet" th:href="@{/css/Configs.css}" media="screen">
+    <script src="js/popups.js"></script>
     <script src="js/popups.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -79,13 +69,16 @@
                         <a class="nav-link" href="/roomsStatistics">Rooms Statistics</a>
                     </li>
                     <li class="nav-item active ">
-                        <a class="nav-link " href="configurations">Configurations</a>
+                        <a class="nav-link " href="/configurations">Configurations</a>
                     </li>
                     <li class="nav-item active ">
                         <a class="nav-link " href="/contactUs">Contact Us</a>
                     </li>
                 </ul>
-
+                <div style="margin-left: auto; margin-right: 15px" ;>
+                    <button onclick="displayLogin()" class="btn btn-outline-success my-2 my-sm-0" >Login</button>
+                    <button onclick="displaySignUp()" class="btn btn-outline-success my-2 my-sm-0" >SignUp</button>
+                </div>
             </div>
         </nav>
     </div>
@@ -93,7 +86,7 @@
 <section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="256"
          data-image-height="256" id="sec-4b7a">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 id="fk_title" class="u-text u-text-default u-title u-text-1">Configurations </h1>
+        <h1  id="fk_title" class="u-text u-text-default u-title u-text-1">Configurations </h1>
         <p class="u-large-text u-text u-text- default u-text-variant u-text-2">Page where an admin can configure the
             rooms information present in the database&nbsp; and sensors</p>
     </div>
@@ -104,13 +97,12 @@
             <form>
                 <div style="display: inline-block; *display: inline; " class="form-group mx-sm-3 mb-2">
                     <label for="id" class="sr-only">Select a room by id</label>
-                    <input type="text" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" id="idSelected"
-                           placeholder="Select a room by id">
+                    <input type="text" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" id="idSelected" placeholder="Select a room by id">
                 </div>
-                <div style="display: inline-block; *display: inline;">
-                    <a href="#" onclick="ShowConfigForm(-1)" class="u-btn u-btn-submit u-button-style">Submit</a>
+                <div style="display: inline-block; *display: inline;" >
+                    <a href="#" onclick="ShowConfigForm(-1)"  class="u-btn u-btn-submit u-button-style">Submit</a>
                 </div>
-                <div style="display: inline-block; *display: inline; color:white">
+                <div style="display: inline-block; *display: inline;" >
                     <a id="getRooms" class="u-btn u-btn-submit u-button-style">Show All</a>
                 </div>
             </form>
@@ -121,16 +113,13 @@
             <form>
                 <div style="display: inline-block; *display: inline; " class="form-group mx-sm-3 mb-2">
                     <label for="id" class="sr-only">Select a room by id</label>
-                    <input type="text" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" id="Sensor_id"
-                           placeholder="Select sensor by id">
+                    <input type="text" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" id="id2" placeholder="Select sensor by id">
                 </div>
-                <div style="display: inline-block; *display: inline;">
-                    <button onclick="ShowTableSensors()" id="getASensor" type="submit" class="u-btn u-btn-submit u-button-style">
-                        Submit
-                    </button>
+                <div style="display: inline-block; *display: inline;" >
+                    <button onclick="ShowTableSensors()" type="submit" class="u-btn u-btn-submit u-button-style">Submit</button>
                 </div>
-                <div style="display: inline-block; *display: inline; color:white">
-                    <a id="getSensors" class="u-btn u-btn-submit u-button-style">Show All</a>
+                <div style="display: inline-block; *display: inline;" >
+                    <a id="getSensors"  class="u-btn u-btn-submit u-button-style">Show All</a>
                 </div>
             </form>
         </div>
@@ -142,20 +131,27 @@
         <a onclick="ShowNewSensor()" style="display:inline-block;"
            class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-5">New
             Sensor</a>
+        <a href="#" id="getNotifications" style="display:inline-block;"
+           class="u-border-2 u-border-hover-palette-1-base u-border-palette-1-base u-btn u-btn-round u-button-style u-hover-palette-1-base u-none u-radius-50 u-btn-4">All Notifications</a>
     </div>
 
 </section>
 
-<section class="u-align-center u-clearfix u-section-4" style="padding-bottom: 5%" id="sec-3e05">
+<section class="u-align-center u-clearfix u-section-4"  style="padding-bottom: 5%" id="sec-3e05">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
             <table id='sensorsTable' class="u-table-entity u-table-entity-1">
+                <colgroup>
+                    <col width="24.9%">
+                    <col width="21.9%">
+                    <col width="28.4%">
+                    <col width="24.800000000000004%">
+                </colgroup>
                 <thead class="u-palette-4-base u-table-header u-table-header-1">
-                <tr align="center" style="height: 26px;">
+                <tr  align="center" style="height: 26px;">
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Sensor ID</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Type</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Last Captured Value</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">History</th>
                     <th class="u-border-1 u-border-palette-4-base u-table-cell">Delete</th>
                 </tr>
                 </thead>
@@ -165,25 +161,7 @@
         </div>
     </div>
 </section>
-<section class="u-align-center u-clearfix u-section-4" style="padding-bottom: 5%" id="senhistory">
-    <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <table id='sensor_history' class="u-table-entity u-table-entity-1">
-                <thead class="u-palette-4-base u-table-header u-table-header-1">
-                <tr align="center" style="height: 26px;">
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Sensor ID</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Type</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Date</th>
-                    <th class="u-border-1 u-border-palette-4-base u-table-cell">Values</th>
-                </tr>
-                </thead>
-                <tbody id="senhist_list" class="u-table-body">
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-<section class="u-align-center u-clearfix u-section-5" style="padding-bottom: 5%" id="carousel_3133">
+<section class="u-align-center u-clearfix u-section-5"  style="padding-bottom: 5%" id="carousel_3133">
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
             <table id="roomsTable" class="u-table-entity u-table-entity-1">
@@ -217,6 +195,27 @@
         </div>
     </div>
 </section>
+<section class="u-align-center u-clearfix u-section-5"  style="padding-bottom: 5%" id="notificationsSection">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+            <table id="notificationsTable" class="u-table-entity u-table-entity-1">
+                <colgroup>
+                    <col width="80%">
+                    <col width="20%">
+                </colgroup>
+                <thead class="u-palette-4-base u-table-header u-table-header-1">
+                <tr align="center" style="height: 26px;">
+                    <th>Notification</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody id='tableN' class="u-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
 <section class="u-align-center u-clearfix u-section-6" id="sec-29f5">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <p class="u-text u-text-default u-text-1">New Room:</p>
@@ -224,8 +223,7 @@
         <p class="u-text u-text-default u-text-3">Room Number</p>
         <p class="u-text u-text-default u-text-4">Department Name</p>
         <div class="u-form u-form-1">
-            <form action="#" method="POST"
-                  class="was-validated u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
+            <form action="#" method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form"
                   style="padding: 15px;" source="custom" name="form" id="newRoomForm">
                 <div class="u-form-group u-form-name u-form-group-1">
                     <label for="department" class="u-form-control-hidden u-label">Name</label>
@@ -239,29 +237,26 @@
                 <div class="u-form-group u-form-group-4">
                     <label for="floor" class="u-form-control-hidden u-label"></label>
                     <input type="text" placeholder="floor" id="floor" name="text"
-                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                 </div>
                 <div class="u-form-group u-form-group-3">
                     <label for="number" class="u-form-control-hidden u-label"></label>
                     <input type="text" placeholder="dd.aa.nn" id="number" name="number"
-                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                 </div>
                 <div class="u-form-group u-form-group-5">
                     <label for="maxSeats" class="u-form-control-hidden u-label"></label>
                     <input type="text" placeholder="maxSeats" id="maxSeats" name="text-1"
-                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                           class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-form-group-6">
-                    <button type="submit" onclick="validateRoomsFormSubmission()"
-                            class="u-btn u-btn-submit u-button-style">Submit
-                    </button>
+                    <button type="submit" class="u-btn u-btn-submit u-button-style">Submit</button>
                 </div>
                 <input type="hidden" value="" name="recaptchaResponse">
             </form>
         </div>
         <p class="u-text u-text-default u-text-5">Max Seats</p>
         <p class="u-text u-text-default u-text-6">Department Number</p>
-        <label id="submissionMessage"></label>
     </div>
     <div id="postResultDiv" class="u-form-send-message u-form-send-success">
     </div>
@@ -271,7 +266,7 @@
         <div class="row" style="padding-bottom: 1%;">
             <div class="col-md-3 offset-md-2">
                 <label class="col-form-label col-form-label-lg">Edit room: </label>
-                <label id="editID" class="col-form-label col-form-label-lg">number ...</label>
+                <label id="editID"  class="col-form-label col-form-label-lg">number ...</label>
             </div>
         </div>
         <div class="row">
@@ -290,7 +285,7 @@
                 <input type="text" id="tempEdit" class="form-control mb-2 mr-sm-2" placeholder="temperature id">
             </div>
             <div class="col-md-2 text-center">
-                <button type="submit" value="rmTemp" class="btn btn-danger"> Remove</button>
+                <button type="submit" value="rmTemp"  class="btn btn-danger"> Remove </button>
             </div>
         </div>
         <div class="row">
@@ -301,14 +296,12 @@
                 <input type="text" id="peopleEdit" class="form-control mb-2 mr-sm-2" placeholder="occupancy id">
             </div>
             <div class="col-md-2 text-center">
-                <button type="submit" value="rmPeop" class="btn btn-danger"> Remove</button>
+                <button type="submit" value="rmPeop" class="btn btn-danger"> Remove </button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 offset-md-5">
-                <button type="submit" value="update" style="color: white; background-color: dodgerblue" class="btn">
-                    Update
-                </button>
+                <button type="submit" value="update" style="color: white; background-color: dodgerblue" class="btn"> Update </button>
             </div>
         </div>
     </form>
@@ -334,7 +327,7 @@
                         <select id="selectBox" name="select"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                             <option value="temp">Temperature</option>
-                            <option value="peopC">PeopleCounter</option>
+                            <option value="peopC">People Counter</option>
                         </select>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret">
                             <path fill="currentColor" d="M4 8L0 4h8z"></path>
@@ -343,9 +336,7 @@
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-form-group-3">
                     <div class="u-align-left u-form-group u-form-submit u-form-group-6">
-                        <button onclick="validateSensorFormSubmission()" type="submit"
-                                class="u-btn u-btn-submit u-button-style">Submit
-                        </button>
+                        <button type="submit" class="u-btn u-btn-submit u-button-style">Submit</button>
                     </div>
                 </div>
                 <input type="hidden" value="" name="recaptchaResponse">
@@ -360,8 +351,7 @@
 
 <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5ff6">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Projeto da Cadeira de Introdução á Engenharia de
-            Software, Curso de Licenciatura em Engenharia Informática na Universidade de Aveiro</p>
+        <p class="u-small-text u-text u-text-variant u-text-1">Projeto da Cadeira de Introdução á Engenharia de Software, Curso de Licenciatura em Engenharia Informática na Universidade de Aveiro</p>
         <div class="u-social-icons u-spacing-10 u-social-icons-1">
             <a class="u-social-url" target="_blank" href=""><span
                     class="u-icon u-icon-circle u-social-facebook u-social-type-logo u-icon-1"><svg class="u-svg-link"
@@ -408,22 +398,22 @@
                 <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
                       style="padding: 0px;" source="custom" name="form">
                     <div class="u-form-group u-form-name u-form-group-1">
-                        <label for="login_username"
-                               class="u-form-control-hidden u-label u-text-grey-30 u-label-1">Username</label>
-                        <input type="text" placeholder="Username" id="login_username" name="name"
+                        <label for="name-81a7"
+                               class="u-form-control-hidden u-label u-text-grey-30 u-label-1">Nome</label>
+                        <input type="text" placeholder="Username" id="name-81a7" name="name"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                     </div>
                     <div class="u-form-group u-form-group-2">
-                        <label for="login_pw" class="u-form-control-hidden u-label u-text-grey-30 u-label-2">Password</label>
-                        <input type="password" placeholder="Password" id="login_pw" name="text"
+                        <label for="text-9210" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
+                        <input type="text" placeholder="Password" id="text-9210" name="text"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-align-center u-form-group u-form-submit u-form-group-3">
-                        <a id="login_click" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                        <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
                         <input type="submit" value="submit" class="u-form-control-hidden">
                     </div>
                     <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
-                    <div class="u-form-send-error u-form-send-message" id="loginFailed"> Unable to send your message. Please fix errors
+                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
                         then try again.
                     </div>
                     <input type="hidden" value="" name="recaptchaResponse">
@@ -431,7 +421,7 @@
             </div>
             <p class="u-align-center u-text u-text-default u-text-2">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
-                   onclick="displaySignUp()">Don't have an account yet? Create One!</a>
+                   href="#sec-f378">Don't have an account yet? Create One!</a>
             </p>
         </div>
         <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
@@ -443,6 +433,22 @@
         </button>
     </div>
 </section>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: center" ><strong>Notification</strong></h4>
+            </div>
+            <div class="modal-body">
+                <p id="notificationText">Error</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
 <style>.u-section-11 {
     min-height: 826px;
 }
@@ -561,44 +567,34 @@
         <div class="u-container-layout u-container-layout-1">
             <h2 class="u-align-center u-text u-text-default u-text-1">Sign UP</h2>
             <div class="u-expanded-width-xs u-form u-form-1">
-                <form id="signUpForm" action="#" method="POST"
-                      class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
-                      source="custom" name="form">
+                <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
+                      style="padding: 0px;" source="custom" name="form">
                     <div class="u-form-group u-form-group-1">
-                        <label for="nmec_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
-                        <input type="text" placeholder="nmec" id="nmec_field" name="text"
-                               class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
-                    </div>
-                    <div class="u-form-group u-form-group-1">
-                        <label for="email_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
-                        <input type="email" placeholder="Email" id="email_field" name="text"
+                        <label for="text-995f" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
+                        <input type="text" placeholder="Email" id="text-995f" name="text"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-2">
-                        <label for="username_field"
-                               class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
-                        <input type="text" placeholder="Username" id="username_field" name="text-1"
+                        <label for="text-e4c2" class="u-form-control-hidden u-label u-text-grey-30 u-label-2"></label>
+                        <input type="text" placeholder="Username" id="text-e4c2" name="text-1"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-3">
-                        <label for="pw_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-3"></label>
-                        <input type="password" placeholder="Password" id="pw_field" name="text-2"
+                        <label for="text-aabe" class="u-form-control-hidden u-label u-text-grey-30 u-label-3"></label>
+                        <input type="text" placeholder="Password" id="text-aabe" name="text-2"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-form-group u-form-group-4">
-                        <label for="conf_pw_field"
-                               class="u-form-control-hidden u-label u-text-grey-30 u-label-4"></label>
-                        <input type="text" placeholder="Confirm Password" id="conf_pw_field" name="text-3"
+                        <label for="text-9401" class="u-form-control-hidden u-label u-text-grey-30 u-label-4"></label>
+                        <input type="text" placeholder="Confirm Password" id="text-9401" name="text-3"
                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                     </div>
                     <div class="u-align-center u-form-group u-form-submit u-form-group-5">
-                        <a href="" id="signUp_click"
-                           class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                        <a href="" class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
                         <input type="submit" value="submit" class="u-form-control-hidden">
                     </div>
-                    <div id="signUp_result" class="u-form-send-message u-form-send-success"> Signed Up Sucessfully.
-                    </div>
-                    <div id="signUp_failed" class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
+                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
+                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
                         then try again.
                     </div>
                     <input type="hidden" value="" name="recaptchaResponse">
@@ -606,7 +602,7 @@
             </div>
             <p class="u-align-center u-text u-text-default u-text-2">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base u-btn-2"
-                   onclick="displayLogin()" href="#sec-e252">Already have an account? Click here to Login In</a>
+                   href="#sec-e252">Already have an account? Click here to Login In</a>
             </p>
         </div>
         <button onclick="closePopUp()" class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
@@ -619,17 +615,18 @@
     </div>
 </section>
 <style>.u-section-12 {
-    min-height: 500px;
+    min-height: 826px;
 }
 
 .u-section-12 .u-dialog-1 {
     width: 566px;
-    min-height: 390px;
-    margin: 30px auto;
+    min-height: 495px;
+    height: auto;
+    margin: 157px auto 60px;
 }
 
 .u-section-12 .u-container-layout-1 {
-    padding: 5px 5px;
+    padding: 16px 30px 38px;
 }
 
 .u-section-12 .u-text-1 {
@@ -642,7 +639,7 @@
 .u-section-12 .u-form-1 {
     height: 104px;
     width: 400px;
-    margin: 10px auto 0;
+    margin: 20px 53px 0;
 }
 
 .u-section-12 .u-form-group-1 {
@@ -739,88 +736,10 @@
         width: auto;
     }
 }</style>
-
-<script src="js/configurations1.js"></script>
-<script src="js/configs2.js"></script>
-<script src="js/user.js"></script>
-<script>
-    /*
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
-
-    function validateRoomSearch() {
-        var room = document.getElementById("idSelected").value;
-        if (room == "") {
-            document.getElementById("idSelected").value = "Empty input"
-        } else if (isNaN(room)) {
-            document.getElementById("idSelected").value = "Not a number"
-        } else if (!(Number(room) == room && !isNaN(parseInt(room, 10)))) {
-            document.getElementById("idSelected").value = "Invalid input"
-        }
-    }
-
-    function validateRoomsFormSubmission() {
-        var department = document.getElementById("department").value;
-        var dnumber = document.getElementById("dnumber").value;
-        var floor = document.getElementById("floor").value;
-        var number = document.getElementById("number").value;
-        var maxSeats = document.getElementById("maxSeats").value;
-
-        var departments = ["DETI", "DMAT", "DEGEIT", "DECA", "DLC", "DBIO", "BIBLIOTECA", "DQUI", "DFIS"];
-
-        if (department == "" || dnumber == "" || floor == "" || number == "" || maxSeats == "") {
-            document.getElementById("submissionMessage").innerText = "Error! Some spaces are empty!";
-        } else {
-            document.getElementById("submissionMessage").innerText = "";
-        }
-
-        if (!departments.includes(department) && department != "") {
-            document.getElementById("department").value = "Error! Not a valid input";
-        }
-
-        if (!Number.isInteger(+dnumber)) {
-            document.getElementById("dnumber").value = "Error! Not Integer";
-        }
-        if (!Number.isInteger(+floor)) {
-            document.getElementById("floor").value = "Error! Not Integer";
-        }
-        if (!Number.isInteger(+maxSeats)) {
-            document.getElementById("maxSeats").value = "Error! Not Integer";
-        }
-
-        setTimeout(function () {
-            document.getElementById("newRoomForm").reset();
-        }, 3000);
-    }
-
-    function validateSensorFormSubmission() {
-        var id = document.getElementById("id");
-        if (!Number.isInteger(+id)) {
-            document.getElementById("id").value = "Error! Not Integer";
-        }
-        setTimeout(function () {
-            document.getElementById("newSensorForm").reset();
-        }, 3000);
-    }*/
-
-</script>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="sockjs-0.3.4.min.js"></script>
+    <script src="stomp.min.js"></script>
+    <script src="js/configurations1.js"></script>
+    <script src="js/configs2.js"></script>
 </body>
 </html>

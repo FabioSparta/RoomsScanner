@@ -20,11 +20,13 @@
         <maven.compiler.target>11</maven.compiler.target>
         <junit.version>4.8.2</junit.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -79,13 +81,54 @@
             <artifactId>velocity</artifactId>
             <version>1.5</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>5.2.2.RELEASE</version>
+        </dependency>
+
+        <!-- Web Sockets -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-websocket</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-messaging</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-integration</artifactId>
+            </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20200518</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0.1</version>
         </dependency>
 
     </dependencies>
-
 
     <developers>
         <developer>
@@ -102,7 +145,6 @@
         <developer>
             <id>eleandro</id>
             <name>Eleandro Gamboa</name>
-            <email>???? @ua.pt</email>  <!-- COMPLETAR -->
             <organization>IES</organization>
             <roles>
                 <role>developer</role>
@@ -113,7 +155,7 @@
         <developer>
             <id>fabio</id>
             <name>Fabio Carmelino</name>
-            <email>faac@ua.pt</email> <!-- CONFIRMAR -->
+            <email>faac@ua.pt</email>
             <organization>IES</organization>
             <roles>
                 <role>developer</role>
@@ -132,6 +174,7 @@
             <timezone>+1</timezone>
         </developer>
     </developers>
+
 
     <build>
         <plugins>

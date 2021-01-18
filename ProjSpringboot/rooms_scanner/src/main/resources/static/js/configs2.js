@@ -54,35 +54,28 @@ $(document).ready(function(){
     });
 });
 function rmSensor(type) {
-
-    if ($("#"+type).val().length > 0 ){
-        // PREPARE FORM DATA
-        var formData = {
-            id:  $("#"+type).val()
-        }
-        // DO POST
-        $.ajax({
-            type : "POST",
-            contentType : "application/json",
-            url : "roomRmSensor/"+document.getElementById('editID').innerText,
-            data : JSON.stringify(formData),
-            success : function(result) {
-                $("#editRoomdiv4").html("<p style='color:white'> Sensor removed! </p>");
-                console.log(result);
-                document.getElementById(type).disabled=false;
-                document.getElementById(type).value="";
-                $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
-
-            },
-            error : function(e) {
-                $("#editRoomdiv4").html("<p style='background-color:red;'> Error! </p>");
-                console.log("ERROR: ", e);
-                $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
-            }
-        });
+    // PREPARE FORM DATA
+    var formData = {
+        id:  $("#"+type).val()
     }
-
-
+    // DO POST
+    $.ajax({
+        type : "POST",
+        contentType : "application/json",
+        url : "roomRmSensor/"+document.getElementById('editID').innerText,
+        data : JSON.stringify(formData),
+        success : function(result) {
+            $("#editRoomdiv4").html("<p style='color:white'> Sensor removed! </p>");
+            console.log(result);
+            $("#editForm")[0].reset();
+            $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
+        },
+        error : function(e) {
+            $("#editRoomdiv4").html("<p style='background-color:red;'> Error! </p>");
+            console.log("ERROR: ", e);
+            $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
+        }
+    });
 }
 
 
@@ -94,13 +87,9 @@ $(document).ready(
             // Prevent the form from submitting via the browser.
             event.preventDefault();
             var roomID =  document.getElementById('editID').innerText;
-            var people = document.getElementById("peopleEdit");
-            var temp = document.getElementById("tempEdit");
             ajaxPost(roomID);
-            if(!people.disabled && people.value.length > 0)
-                ajaxPost1(roomID);
-            if(!temp.disabled && temp.value.length > 0 )
-                ajaxPost2(roomID);
+            ajaxPost1(roomID);
+            ajaxPost2(roomID);
         });
 
         function ajaxPost(roomID) {
@@ -118,6 +107,7 @@ $(document).ready(
                 success : function(result) {
                     $("#editRoomdiv").html("<p style='color:white'> Seats updated successfully! </p>");
                     console.log(result);
+                    $("#editForm")[0].reset();
                     $('#editRoomdiv').fadeIn().delay(5000).fadeOut();
                 },
                 error : function(e) {
@@ -142,7 +132,7 @@ $(document).ready(
                 success : function(result) {
                     $("#editRoomdiv2").html("<p style='color:white'> Occupancy sensor added to room "+roomID+"! </p>");
                     console.log(result);
-                    document.getElementById("peopleEdit").disabled = true;
+                    $("#editForm")[0].reset();
                     $('#editRoomdiv2').fadeIn().delay(5000).fadeOut();
                 },
                 error : function(e) {
@@ -167,8 +157,7 @@ $(document).ready(
                 success : function(result) {
                     $("#editRoomdiv3").html("<p style='color:white'> Temperature sensor added to room "+roomID+"! </p>");
                     console.log(result);
-                    var temp = document.getElementById("tempEdit");
-                    temp.disabled = true;
+                    $("#editForm")[0].reset();
                     $('#editRoomdiv3').fadeIn().delay(5000).fadeOut();
                 },
                 error : function(e) {
@@ -212,6 +201,7 @@ $(document).ready(
                     $("#postsensor").html("<p> Sensor created successfully! </p>");
                     $('#postsensor').fadeIn().delay(5000).fadeOut();
                     console.log(result);
+                    $("#newSensorForm")[0].reset();
                 },
                 error: function (e) {
                     $("#postsensor").html("<p style='background-color:red;'> Error! </p>");
@@ -221,3 +211,55 @@ $(document).ready(
             });
         }
     })
+
+// GET NOTIFICATIONS
+GET: $(document).ready(
+    function () {
+        // GET REQUEST
+        $("#getNotifications").click(function (event) {
+            ShowTableNotifications();
+            event.preventDefault();
+            ajaxGet();
+        });
+
+        // DO GET
+        function ajaxGet() {
+            $.ajax({
+                type: "GET",
+                url: "notifications",
+                success: function (result) {
+                    var trHTML = '';
+                    $("#notificationsTable").find("tr:gt(0)").remove();
+                    $.each(result,
+                        function (i, notification) {
+                            trHTML += '<tr style="height: 75px;" ><<td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + notification.message +
+                                '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + notification.date +" "+ notification.time;
+                            });
+
+                    console.log("Success: ", result);
+                    $('#tableN').append(trHTML);
+                },
+                error: function (e) {
+                    $("#getResNotifications").html("<strong>Failed to Load Notifications</strong>");
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
+    })
+
+function ShowTableNotifications() {
+    var table_rooms = document.getElementById('carousel_3133');
+    var table_sensors = document.getElementById('sec-3e05');
+    var config_form = document.getElementById('carousel_ad56');
+    var new_sensor = document.getElementById('carousel_8ccf');
+    var new_room = document.getElementById('sec-29f5');
+    var notifications_table = document.getElementById('notificationsSection');
+
+    notifications_table.style.display = "block";
+
+    table_rooms.style.display = "none";
+    table_sensors.style.display = "none";
+    config_form.style.display = "none";
+    new_sensor.style.display = "none";
+    new_room.style.display = "none";
+}
