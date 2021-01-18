@@ -21,16 +21,13 @@ public class RoomsController {
     @Autowired
     SensorService sensorService;
 
-    //RoomsList Page
     @RequestMapping("/roomsList")
     public String getRoomsLists() { return "/Rooms-List";}
 
-
-
-    @RequestMapping("/home")
-    public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
-        return "/index";
-    }
+    @GetMapping("/home")
+    public String Home() {
+        System.out.println("inside /home");
+        return "/index"; }
 
     @RequestMapping("/contactUs")
     public String Contacts() { return "/ContactUs"; }
@@ -44,7 +41,6 @@ public class RoomsController {
     public String getReservations() {
         return "/Room-Reservations";
     }
-
   
    @RequestMapping("/lesConfigsz")
    public String getConfigurations(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
