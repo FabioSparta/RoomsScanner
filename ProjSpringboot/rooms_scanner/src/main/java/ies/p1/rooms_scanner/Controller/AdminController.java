@@ -1,6 +1,5 @@
 package ies.p1.rooms_scanner.Controller;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import ies.p1.rooms_scanner.Entities.Room;
 import ies.p1.rooms_scanner.Entities.Sensor;
 import ies.p1.rooms_scanner.Repository.RoomsRepository;
@@ -10,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import java.io.IOException;
 
 @RestController
 public class AdminController {
@@ -17,7 +19,6 @@ public class AdminController {
     RoomsService roomsService;
     @Autowired
     SensorService sensorService;
-
     @Autowired
     RoomsRepository roomsRepository;
 
@@ -132,4 +133,24 @@ public class AdminController {
             return new ResponseEntity<>(roomsService.getRooms(), HttpStatus.OK);
     }
 
+    // ---------------------------------------------- NOTIFICATIONS --------------------------------------
+    @GetMapping("/notifications")
+    public SseEmitter getNotifications() { //user pode seguir uma sala e nesse caso passavamos como argumento o ID do user pra ver a lista de salas q segue
+        SseEmitter sseEmitter = new SseEmitter();
+        /*for (Room r : roomsService.getRooms()) {
+            if (r.getSensorList().size() > 0) {
+                if (r.getSensorList().get(0).getDataCaptured() > r.getMaxSeats()) {
+                    System.out.println(r.getSensorList().get(0).getSensorType());
+                    try {
+                        System.out.println("hereeeeeeeee");
+                        sseEmitter.send("Message 1");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        sseEmitter.complete();*/
+        return sseEmitter;
+    }
 }

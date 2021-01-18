@@ -1,4 +1,4 @@
-package ies.p1.rooms_scanner.Controller;
+package ies.p1.rooms_scanner.Alarmes;
 
 import ies.p1.rooms_scanner.Alarmes.NotificationMessage;
 import org.springframework.beans.factory.annotation.Autowired;

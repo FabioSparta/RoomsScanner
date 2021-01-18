@@ -29,7 +29,7 @@ GET: $(document).ready(
                                     trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id +
                                         '</td>';
                                 }
-                                else if (room.sensorList[0].dataCaptured ==0){
+                                else if (room.sensorList[0].dataCaptured == 0){
                                     trHTML += '<td  class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].id +
                                         '</td>';
                                 }
@@ -297,4 +297,3 @@ function ShowNewSensor() {
     config_form.style.display = "none";
     new_room.style.display = "none";
 }
-

@@ -1,30 +1,14 @@
 package ies.p1.rooms_scanner.Controller;
 import ies.p1.rooms_scanner.Entities.*;
-import ies.p1.rooms_scanner.Repository.RoomsRepository;
-import ies.p1.rooms_scanner.Service.RoomsService;
-import ies.p1.rooms_scanner.Service.SensorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class RoomsController {
-    @Autowired
-    private RoomsRepository RoomsRepository;
-    @Autowired
-    RoomsService roomsService;
-
-    @Autowired
-    SensorService sensorService;
-
     //RoomsList Page
     @RequestMapping("/roomsList")
     public String getRoomsLists() { return "/Rooms-List";}
-
-
 
     @RequestMapping("/home")
     public String Home(Model model) { // pagina inicial com duas seçoes, uma q mostra o numero de salas de estudo livres para reserva e outra q mostra o numero de lugares livres (total ou separar logo por departamentos?)
@@ -51,23 +35,7 @@ public class RoomsController {
 
 
 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ////////////// NOT IN USE
 
     //TODO: mapear o ESTADO das salas de forma individual ou apresentar essa info na pagina de estatisticas AKA pagina inicial no sistema
 
@@ -77,13 +45,4 @@ public class RoomsController {
         model.addAttribute("submitted", true);
         return "/Room-Reservations";
     }
-
-
-
-
-    @GetMapping("/bookingsList")
-    public String getRoomBookings(Model model) {  //TODO: pagina disponivel apenas para funcionarias da biblioteca
-        return "/bookingsList";
-    }
-
 }

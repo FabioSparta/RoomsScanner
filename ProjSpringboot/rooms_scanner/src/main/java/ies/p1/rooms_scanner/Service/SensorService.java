@@ -143,7 +143,6 @@ public class SensorService {
 
     public boolean updateSensor(int id,int data) {
         Sensor s = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Sensor not found for this id :: " + id));
-        System.out.println("Data to be set ===== " + data);
         s.setDataCaptured(data);
         repository.save(s);
         return true;
