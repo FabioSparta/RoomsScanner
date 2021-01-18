@@ -33,22 +33,27 @@ GET: $(document).ready(
                                 }});
 
                             //Fill Table
+                            console.log(room);
                             if(room.sensorList.length < 1) {
+                                console.log("first");
                                 trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td>';
                             }
                             else if(room.sensorList.length < 2 && room.sensorList[0].sensorType == "PeopleCounter"){
+                                console.log("second");
                                 trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' +  room.sensorList[0].id +
                                     '</u></td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell">' + "No sensor" +
                                     '</td>';
                             }
                             else if(room.sensorList.length <2  && room.sensorList[0].sensorType == "Temperature"){
+                                console.log("third");
                                 trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell">'  + "No sensor" +
                                     '</td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' +  room.sensorList[0].id +
                                     '</u></td>';
                             }
                             else{
+                                console.log("fourth");
                                 trHTML += '<td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' + room.sensorList[0].id+
                                     '</u></td><td align="center" class="u-border-1 u-border-grey-30 u-table-cell"><u style="color:blue">' +  room.sensorList[1].id +
                                     '</u></td>';
