@@ -380,7 +380,7 @@
         <div class="u-container-layout u-container-layout-1">
             <h2 class="u-align-center u-text u-text-default u-text-1">Sign UP</h2>
             <div class="u-expanded-width-xs u-form u-form-1">
-                <form action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
+                <form  id="signUpForm" action="#" method="POST" class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
                       style="padding: 0px;" source="custom" name="form">
                     <div class="u-form-group u-form-group-1">
                         <label for="nmec_field" class="u-form-control-hidden u-label u-text-grey-30 u-label-1"></label>
@@ -411,8 +411,9 @@
                         <a href="" id="signUp_click"  class="u-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
                         <input type="submit" value="submit" class="u-form-control-hidden">
                     </div>
-                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent.</div>
-                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
+                    <div id="signUp_result" class="u-form-send-message u-form-send-success"> Signed Up Sucessfully.
+                    </div>
+                    <div id="signUp_failed" class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors
                         then try again.
                     </div>
                     <input type="hidden" value="" name="recaptchaResponse">

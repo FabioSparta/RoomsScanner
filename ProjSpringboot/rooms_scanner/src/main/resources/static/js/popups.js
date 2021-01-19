@@ -3,13 +3,11 @@ function displaySignUp() {
     modal1.style.display = "none";
     var modal2 = document.getElementById('sec-f378');
     modal2.style.display = "block";
-    console.log("should be displaying sign up")
     $("#signUpForm")[0].reset();
     $("#signUp_result").hide();
 }
 
 function displayLogin() {
-    console.log("should display login")
     var modal = document.getElementById('sec-f378');
     modal.style.display = "none";
     var modal = document.getElementById('sec-e252');

@@ -25,7 +25,6 @@ GET: $(document).ready(
                                         '</p></td>';
                                 }
                                 else{
-                                    console.log("smaller than limit");
                                     trHTML += '<td class="u-border-1 u-border-grey-30 u-table-cell">' + room.sensorList[0].dataCaptured + "/" + room.maxSeats +
                                         '</td>';
                                 }
