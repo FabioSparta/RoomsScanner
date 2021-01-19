@@ -11,7 +11,7 @@ public class RoomsController {
     public String getRoomsLists() { return "/Rooms-List"; }
 
     @GetMapping("/home")
-    public String Home() { return "/index"; }
+    public String Home() { return "/home"; }
 
     @RequestMapping("/contactUs")
     public String Contacts() { return "/ContactUs"; }
