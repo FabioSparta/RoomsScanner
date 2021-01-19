@@ -54,28 +54,33 @@ $(document).ready(function(){
     });
 });
 function rmSensor(type) {
-    // PREPARE FORM DATA
-    var formData = {
-        id:  $("#"+type).val()
-    }
-    // DO POST
-    $.ajax({
-        type : "POST",
-        contentType : "application/json",
-        url : "roomRmSensor/"+document.getElementById('editID').innerText,
-        data : JSON.stringify(formData),
-        success : function(result) {
-            $("#editRoomdiv4").html("<p style='color:white'> Sensor removed! </p>");
-            console.log(result);
-            $("#editForm")[0].reset();
-            $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
-        },
-        error : function(e) {
-            $("#editRoomdiv4").html("<p style='background-color:red;'> Error! </p>");
-            console.log("ERROR: ", e);
-            $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
+
+    if ($("#" + type).val().length > 0) {
+        // PREPARE FORM DATA
+        var formData = {
+            id: $("#" + type).val()
         }
-    });
+        // DO POST
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "roomRmSensor/" + document.getElementById('editID').innerText,
+            data: JSON.stringify(formData),
+            success: function (result) {
+                $("#editRoomdiv4").html("<p style='color:white'> Sensor removed! </p>");
+                console.log(result);
+                document.getElementById(type).disabled = false;
+                document.getElementById(type).value = "";
+                $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
+
+            },
+            error: function (e) {
+                $("#editRoomdiv4").html("<p style='background-color:red;'> Error! </p>");
+                console.log("ERROR: ", e);
+                $('#editRoomdiv4').fadeIn().delay(5000).fadeOut();
+            }
+        });
+    }
 }
 
 
@@ -87,9 +92,13 @@ $(document).ready(
             // Prevent the form from submitting via the browser.
             event.preventDefault();
             var roomID =  document.getElementById('editID').innerText;
+            var people = document.getElementById("peopleEdit");
+            var temp = document.getElementById("tempEdit");
             ajaxPost(roomID);
-            ajaxPost1(roomID);
-            ajaxPost2(roomID);
+            if(!people.disabled && people.value.length > 0)
+                ajaxPost1(roomID);
+            if(!temp.disabled && temp.value.length > 0 )
+                ajaxPost2(roomID);
         });
 
         function ajaxPost(roomID) {
@@ -107,7 +116,6 @@ $(document).ready(
                 success : function(result) {
                     $("#editRoomdiv").html("<p style='color:white'> Seats updated successfully! </p>");
                     console.log(result);
-                    $("#editForm")[0].reset();
                     $('#editRoomdiv').fadeIn().delay(5000).fadeOut();
                 },
                 error : function(e) {
@@ -132,7 +140,7 @@ $(document).ready(
                 success : function(result) {
                     $("#editRoomdiv2").html("<p style='color:white'> Occupancy sensor added to room "+roomID+"! </p>");
                     console.log(result);
-                    $("#editForm")[0].reset();
+                    document.getElementById("peopleEdit").disabled = true;
                     $('#editRoomdiv2').fadeIn().delay(5000).fadeOut();
                 },
                 error : function(e) {
@@ -157,7 +165,8 @@ $(document).ready(
                 success : function(result) {
                     $("#editRoomdiv3").html("<p style='color:white'> Temperature sensor added to room "+roomID+"! </p>");
                     console.log(result);
-                    $("#editForm")[0].reset();
+                    var temp = document.getElementById("tempEdit");
+                    temp.disabled = true;
                     $('#editRoomdiv3').fadeIn().delay(5000).fadeOut();
                 },
                 error : function(e) {
@@ -168,6 +177,8 @@ $(document).ready(
             });
         }
     })
+
+
 
 // CREATE SENSOR
 $(document).ready(
@@ -201,7 +212,6 @@ $(document).ready(
                     $("#postsensor").html("<p> Sensor created successfully! </p>");
                     $('#postsensor').fadeIn().delay(5000).fadeOut();
                     console.log(result);
-                    $("#newSensorForm")[0].reset();
                 },
                 error: function (e) {
                     $("#postsensor").html("<p style='background-color:red;'> Error! </p>");
@@ -253,6 +263,7 @@ function ShowTableNotifications() {
     var config_form = document.getElementById('carousel_ad56');
     var new_sensor = document.getElementById('carousel_8ccf');
     var new_room = document.getElementById('sec-29f5');
+    var table_history_sensors = document.getElementById('senhistory');
     var notifications_table = document.getElementById('notificationsSection');
 
     notifications_table.style.display = "block";
@@ -262,4 +273,5 @@ function ShowTableNotifications() {
     config_form.style.display = "none";
     new_sensor.style.display = "none";
     new_room.style.display = "none";
+    table_history_sensors.style.display="none";
 }

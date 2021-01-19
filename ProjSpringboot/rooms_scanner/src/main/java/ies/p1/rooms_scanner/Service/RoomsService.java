@@ -63,13 +63,19 @@ public class RoomsService {
     public boolean removeSensorRoom(int roomID,int sensorId) {
         Room r = repository.findById(roomID).orElseThrow(() -> new ResourceNotFoundException("Room not found for this id :: " + roomID));
         if(sensorRepo.existsById(sensorId)){
-            int i = r.getSensorList().indexOf(sensorRepo.getSensorById(sensorId));
-            r.getSensorList().remove(i);
+            Sensor x = sensorRepo.getSensorById(sensorId);
+            while(true){
+                int i = r.getSensorList().indexOf(sensorRepo.getSensorById(sensorId));
+                if( i == -1)
+                    break;
+                r.getSensorList().remove(i);
+            }
             repository.save(r);
             return true;
         }
         return false;
     }
+
     public boolean deleteRoom(int id) {
         repository.deleteById(id);
         return true;

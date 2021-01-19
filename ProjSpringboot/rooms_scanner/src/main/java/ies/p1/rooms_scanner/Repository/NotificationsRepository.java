@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface NotificationsRepository extends JpaRepository<Notification,Integer> {
-    List<Notification> findAllByOrderByTimeDesc(); // TODO: CONFIRMAR Q ESTA A FUNCIONAR
+    List<Notification> findAllByOrderByDateDescTimeDesc();
     Notification getNotificationById (int id);
 
     @Query(value="select count(*) from notifications",nativeQuery = true)

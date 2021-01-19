@@ -57,7 +57,7 @@ public class NotificationService {
   }
 
   public Collection<Notification> getNotifications() {
-    return repository.findAllByOrderByTimeDesc();
+    return repository.findAllByOrderByDateDescTimeDesc();
   }
   public Notification getNotificationById(int id) {return repository.getNotificationById(id);}
 
