@@ -20,7 +20,7 @@ public class User {
     @Column(name = "auth_user_nmec")
     private int nmec;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
     @Column(name = "email")
     private String email;

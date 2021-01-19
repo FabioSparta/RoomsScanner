@@ -14,6 +14,12 @@ public class UsersController {
 
     @PostMapping("/user")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
+        if (userService.existNmec(user.getNmec())){
+            return  new ResponseEntity<>("The given nmec is already in use.", HttpStatus.NOT_ACCEPTABLE);
+        }
+        if (userService.existUsername(user.getUsername()) != null){
+            return  new ResponseEntity<>("The given username is already in use.", HttpStatus.NOT_ACCEPTABLE);
+        }
         if (userService.createUser(user)){
             return new ResponseEntity<>("User created successfully", HttpStatus.OK);}
         else
@@ -23,6 +29,7 @@ public class UsersController {
 
     @GetMapping("/user")
     public ResponseEntity<Object> Login(@RequestParam String username, @RequestParam String pw) {
+        System.out.println(username + " " + pw);
         if (userService.exist(username, pw) != null) {
             User u = userService.getUserByUsername(username);
             return new ResponseEntity<>(u, HttpStatus.OK);

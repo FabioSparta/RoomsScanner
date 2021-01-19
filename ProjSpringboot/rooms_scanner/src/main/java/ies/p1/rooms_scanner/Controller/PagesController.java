@@ -10,8 +10,8 @@ public class PagesController {
     @RequestMapping("/roomsList")
     public String getRoomsLists() { return "/Rooms-List"; }
 
-    @GetMapping("/home")
-    public String Home() { return "/home"; }
+    @RequestMapping("/home")
+    public String Home() { return "/index"; }
 
     @RequestMapping("/contactUs")
     public String Contacts() { return "/ContactUs"; }

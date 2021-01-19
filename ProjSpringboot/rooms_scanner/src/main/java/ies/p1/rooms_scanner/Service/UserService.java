@@ -26,6 +26,9 @@ public class UserService{
     }
 
     public User exist(String username,String pw) { return repository.getUserByUsernameAndAndPassword(username,pw); }
+    public User existUsername(String username) { return repository.getUserByUsername(username); }
+    public boolean existNmec(int nmec) { return repository.existsById(nmec); }
     public User getUserByUsername(String username) {return repository.getUserByUsername(username);}
+
 
 }

@@ -1,11 +1,9 @@
 // SIGN UP
 GET: $(document).ready(
     function () {
-        console.log("ready");
         // GET REQUEST
         $("#signUp_click").click(function (event) {
             event.preventDefault();
-            console.log("Entered sign up onclick event ");
             if($("#pw_field").val() == $("#conf_pw_field").val() )
                 ajaxPost();
             else
@@ -14,8 +12,6 @@ GET: $(document).ready(
 
         function ajaxPost() {
             // PREPARE FORM DATA
-            console.log("nmec below")
-            console.log($("#nmec_field").val());
             var formData = {
                 nmec : $("#nmec_field").val(),
                 username : $("#username_field").val(),
@@ -31,7 +27,6 @@ GET: $(document).ready(
                 success : function(result) {
                     //$("#postResultDiv").html("<p> Room created successfully! </p>");
                     console.log("User signed up successfully");
-                    console.log(result);
                     //$("#postResultDiv").html("<p> Room created successfully! </p>");
                     $("#signUp_result").show();
                     setTimeout(closePopUp, 1200);

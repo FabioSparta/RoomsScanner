@@ -20,7 +20,7 @@ public class NotificationsController {
         Notification n = new Notification(Integer.parseInt(data[0]),Integer.parseInt(data[1]),data[2],data[3],id);
         notificationService.createNotification(n);
         notificationService.notify(n.getMessage(), "Admin" ); //TODO: select * from users where ADMIN e enviar pra todos
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(n, HttpStatus.OK);
     }
 
     //Get
