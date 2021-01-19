@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+    rabbitmq-container:
+        image: rabbitmq:management
+        tty: true
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+
+    mysql-container:
+        image: mysql
+        tty: true
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_DATABASE=RoomsScanner
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=pass
+            - MYSQL_ROOT_PASSWORD=root
+        volumes:
+            - ./mysql:/docker-entrypoint-initdb.d:ro

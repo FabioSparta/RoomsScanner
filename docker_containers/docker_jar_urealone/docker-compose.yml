@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+    app-container:
+        tty: true
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8080:8080
+            - 8085:8085
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:mysql://docker_in_a_nutshell_mysql-container_1:3306/RoomsScanner?useSSL=false&allowPublicKeyRetrieval=true
+            - SPRING_DATASOURCE_USERNAME=user
+            - SPRING_DATASOURCE_PASSWORD=pass
+            - SPRING_RABBITMQ_HOST=rabbitmq-container
+networks:
+  default:
+    external:
+      name: docker_in_a_nutshell_default
